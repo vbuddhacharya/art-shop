@@ -1,0 +1,69 @@
+/*import fronts from google fonts**/
+
+@import url('https://fonts.googleapis.com/css?family=Lato|Lobster|Roboto|Sniglet|Sofia&display=swap');
+
+
+
+
+
+.root{
+	--light-gray:#2b3032a1;
+	--primary-color:#45ccb8;
+	--border:#2b303218;
+	--text-color:#ff686b;
+	--roboto:"Roboto",sans-serif;
+	--lato:"lato",cursive;
+	--sofia:"sofia",cursive;
+}
+.primary-color{
+	color: var(--primary-color);
+}
+.bg-primary-color{
+	background-color:var(--primary-color)limportant;
+}
+.text-color{
+	color:var(--text-color);
+}
+.font-roboto{
+	font-family:var(--roboto);
+	
+}
+.lightblue{
+	color: lightblue;
+}
+/*header**/
+header{
+	background-color:var(--primary-color);
+	font-family:var(--roboto);
+}
+header.site-title{
+	font-family:var(--lato);
+}
+.container.dropdown-toggle,
+.container.dropdown-item{
+	font-size:0.7em;
+}
+.header-links a{
+	font-size:0.9em;
+	text-decoration:none;
+	color:white;
+}
+
+
+
+
+
+/*navigation menu**/
+
+.navbar-nav{
+	padding:0.8em 0em;
+}
+.navbar-nav .nav-link{
+	font-size:0.9em;
+	color:var(--light-gray)limportant;
+}
+.navbar-nav .nav-item .nav-link{
+	padding:01.3em;
+}
+
+
