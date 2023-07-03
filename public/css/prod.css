@@ -1,0 +1,142 @@
+*{
+    box-sizing: border-box;
+    /* border: 1px solid red; */
+}
+body{
+    height: 100%;
+}
+.main-section{
+    width: 100%;
+    max-width: 100%;
+}
+.detail-section{
+    background-color: aquamarine;
+    width: 60%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding: 20px;
+    box-shadow: 0 0 1px 1px rgba(184, 160, 160, 0.5);
+}
+.product-img{
+    width: 49%;
+    max-width: 49%;
+    min-width: 49%;
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+    background-color: azure;
+}
+.product-img img{
+    width: 100%;
+}
+.details{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 10px;
+}
+.title{
+    font-size: 30px;
+    width: 100%;
+    font-weight: bold;
+}
+.title, .artist{
+    text-align: center;
+}
+.artist{
+    width: 100%;
+    font-size: 15px;
+    font-weight:lighter;
+}
+.info{
+    /* font-size: 20px; */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.desc-title, .desc, .cat, .size{
+    margin-bottom: 6px;
+}
+.desc-title{
+    font-size: 20px;
+    font-weight: bold;
+}
+.desc, .cat, .size, .delivery{
+    font-size: 17px;
+}
+.de{
+    margin-top: 4px;
+    margin-bottom: 2px;
+    font-weight: bold;
+    font-size: 18px;
+}
+.other{
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: flex-start;
+}
+.order{
+    /* display: flex; */
+    /* flex-direction: column; */
+    width: 100%;
+
+}
+.price{
+    text-align: center;
+    font-weight: bold;
+    font-size: 23px;
+}
+.qn{
+    font-size: 18px;
+    /* margin-top: -10px; */
+    text-align: center;
+}
+.qn select{
+    width:70px;
+    text-align: center;
+    margin-left:5px;
+    font-size: 14px;
+    padding:2px;
+    border: none;
+    outline: none;
+}
+.qn select option{
+    border: none;
+    outline: none;
+}
+.buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+.buttons button{
+    display: inline-block;
+    width: 48%;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    background-color: burlywood;
+    border-radius: 2px;
+}
+.buttons button:hover{
+    background-color: brown;
+    color: white;
+    cursor: pointer;
+}
+@media screen and (max-width: 900px){
+    .product-img{
+        width: 100%;
+        max-width: 100%;
+        min-width: none;
+    }
+}

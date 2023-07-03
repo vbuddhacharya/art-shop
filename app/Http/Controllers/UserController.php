@@ -21,6 +21,9 @@ class UserController extends Controller
     public function viewSignup(){
         return view('signup');
     }
+    public function viewProduct(){
+        return view('product');
+    }
 
     /**
      * Show the form for creating a new resource.

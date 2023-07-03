@@ -20,3 +20,4 @@ Route::get('/', function () {
 Route::get('/artstore',[UserController::class,'index'])->name('home');
 Route::get('/artstore/login',[UserController::class,'viewLogin'])->name('login');
 Route::get('/artstore/signup',[UserController::class,'viewSignup'])->name('signup');
+Route::get('/artstore/product',[UserController::class,'viewProduct'])->name('product');
