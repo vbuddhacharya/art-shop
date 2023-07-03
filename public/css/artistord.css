@@ -1,0 +1,66 @@
+*{
+    box-sizing: border-box;
+    /* border: 1px solid red; */
+}
+body{
+    background: no-repeat url(../images/art/bg.jpg) 0 0;
+    background-color: #EBEBEB;
+    background-repeat: no-repeat;
+}
+.pending{
+    width: 95%;
+    margin: auto;
+    margin-top: 50px;
+   
+}
+.tbl{
+    border: 1px solid #f2f4f4;
+    background: no-repeat url(../images/art/grid.png) 0 0;
+    background-color: #EBEBEB;
+    background-repeat: repeat;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px rgb(171, 131, 131);
+    margin-top:10px;
+    
+}
+.title{
+    text-align: center;
+    font-size: 30px;
+    /* font-weight: bold; */
+}
+.pending button:hover{
+    background-color: crimson;
+    color: azure;
+}
+.bun{
+    background-color: aqua; color:brown;
+}
+button.bun:hover{
+    background-color: crimson;
+}
+.banner{
+    width: 100%;
+    /* height:200px; */
+    position: fixed;
+    top: 0;
+    z-index: -1;
+}
+.banner img{
+    width:100%;
+}
+.color{
+    /* background-color: burlywood; */
+    color: azure;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(86,155,165,1) 54%, rgba(0,212,255,1) 100%);
+}
+.product{
+    max-width:100px;
+    width:100%;
+}
+.product img{
+    box-shadow: 0 0 3px rgba(223, 176, 176,0.7);
+}
+.name{
+    font-weight: bold;
+}

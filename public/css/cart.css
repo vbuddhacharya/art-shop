@@ -1,0 +1,152 @@
+*{
+    box-sizing: border-box;
+    /* border: 1px solid red; */
+}
+.main{
+    width:60%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: auto;
+    justify-content: space-evenly;
+    column-gap:5px;
+}
+.title{
+    font-size: 25px;
+    width: 100%;
+    text-align: center;
+}
+.cart{
+    width:59%;
+    padding: 5px;
+    border: 1px solid black;
+    /* display: flex;
+    flex-direction: column; */
+    /* background: no-repeat url(../images/art/sakura.png) 0 0;
+    background-color: #EBEBEB;
+    background-repeat: repeat; */
+    /* background: rgb(34,193,195);
+background: linear-gradient(97deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%); */
+}
+.order{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    column-gap: 10px;
+    margin-bottom: 8px;
+    /* background-color: darksalmon; */
+    padding:3px;
+    max-height: 400px;
+}
+.order:last-child{
+    margin-bottom: 3px;
+}
+.pic{
+    width:30%;
+    max-width:300px;
+    padding:5px;
+    display: flex;
+    justify-content: center;
+    background-color: aquamarine;
+}
+.pic img{
+    width:100%;
+}
+.prod-detail{
+    width:66%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 2px;
+    justify-content: space-between;
+}
+.side{
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    justify-content: space-between;
+    margin-bottom: 2px;
+}
+.prod-title{
+    font-size: 20px;
+    font-weight: bold;
+}
+.total{
+    max-height: 280px;
+    width:40%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 20px;
+    padding: 5px;
+}
+.buttons{
+    width: 100%;
+    padding: 5px;
+}
+.buttons button{
+    display: block;
+    border: none;
+    padding: 15px;
+    background-color: gainsboro;
+    font-size: 16px;
+    border-radius: 2px;
+    width: 100%;
+    margin-top:5px;
+    margin-bottom: 5px;
+}
+.buttons button:hover{
+    cursor: pointer;
+    background-color: darkslategrey;
+    color: aliceblue;
+}
+.side button{
+    display: block;
+    border: none;
+    padding: 8px;
+    background-color: gainsboro;
+    font-size: 15px;
+    border-radius: 2px;
+    /* margin-top:5px; */
+    /* margin-bottom: 5px; */
+}
+.side button:hover{
+    cursor: pointer;
+    background-color: darkslategrey;
+    color: aliceblue;
+}
+.artist{
+    font-size:13px;
+}
+.det{
+    display: flex;
+    flex-direction: column;
+    row-gap: 2px;
+}
+.price{
+    font-weight: bold;
+    font-size: 20px;
+}
+.info{
+    padding:5px;
+    padding-top: 2px;
+    width: 100%;
+}
+.tots{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    font-size: 18px;
+}
+@media screen and (max-width: 900px){
+    .cart{
+        width:100%;
+    }
+    .total{
+        margin-top: 10px;
+        width: 100%;
+    }
+}

@@ -44,6 +44,7 @@
                                 Delivery Time: 7 days
                             </div>
                             <div class="stock">Available: Yes</div>
+                            <div>Artist Contact: 9823541875</div>
                         </div>
                         
                     </div>
