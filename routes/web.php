@@ -21,6 +21,8 @@ Route::get('/', function () {
 Route::get('/artstore',[UserController::class,'index'])->name('home');
 Route::get('/artstore/login',[UserController::class,'viewLogin'])->name('login');
 Route::get('/artstore/signup',[UserController::class,'viewSignup'])->name('signup');
+Route::get('/artstore/upload',[UserController::class,'viewUpload'])->name('upload');
+Route::get('/artstore/arts/order',[UserController::class,'viewOrderForm'])->name('orderform');
 Route::get('/artstore/product',[UserController::class,'viewProduct'])->name('product');
 Route::get('/artstore/user/orders',[UserController::class,'viewCustOrders'])->name('orders');
 Route::get('/artstore/artist/orders',[UserController::class,'viewArtistOrders'])->name('artist.orders');
