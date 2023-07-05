@@ -1,0 +1,180 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+  }
+
+  .container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  }
+
+  h1 {
+    margin: 0;
+    padding: 50px;
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 5vh;
+    font-size: 42px;
+    background-color: #db9a9a;
+  }
+
+
+
+
+  .form-img {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .artimg {
+    font-weight: bold;
+    color: #555;
+    font-size: 18px;
+    margin-right: 10px;
+  }
+  
+  .file-input {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+  }
+  
+  .file-input input[type="file"] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    font-size: 100px;
+  }
+  
+  .file-input label {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 2px solid #db9a9a;
+    background-color: #f9f9f9;
+    cursor: pointer;
+  }
+  
+  .file-input label:hover {
+    background-color: #f9f9f9;
+  }
+  
+  #file-name {
+    margin-left: 10px;
+  }
+  
+
+
+
+
+  .form-group {
+
+    margin-bottom: 20px;
+  }
+
+  .artlabel {
+    display: block;
+    font-weight: bold;
+    color: #555;
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+
+  input[type="text"],
+  input[type="file"],
+  input[type="number"],
+  select,
+  textarea {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    font-size: 16px;
+    background-color: #f9f9f9;
+    transition: border-bottom-color 0.3s;
+    font-family: Arial, sans-serif;
+  }
+
+  input[type="text"]:focus,
+  input[type="file"]:focus,
+  input[type="number"]:focus,
+  select:focus,
+  textarea:focus {
+    border-bottom-color: #ff7f50;
+    outline: none;
+  }
+
+  textarea {
+    height: 50px;
+  }
+
+  .form-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .form-group {
+    flex: 1;
+    margin-right: 10px;
+  }
+    
+  select,
+  input[type="text"],
+  input[type="number"],
+  input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    font-size: 16px;
+    background-color: #f9f9f9;
+    transition: border-bottom-color 0.3s;
+  }
+
+  
+  select:focus,
+  input[type="text"]:focus,
+  input[type="number"]:focus,
+  input[type="file"]:focus {
+    border-bottom-color: #ff7f50;
+    outline: none;
+  }
+  
+
+
+  .radio-group {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 10px;
+  }
+  
+  .radio-group input[type="radio"],
+  .radio-group label {
+    margin-right: 10px;
+  }
+
+  input[type="submit"] {
+    display: block;
+    margin: 0 auto;
+    padding: 10px 20px;
+    background-color: #f17676;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  input[type="submit"]:hover {
+    background-color: #ff6347;
+  }
