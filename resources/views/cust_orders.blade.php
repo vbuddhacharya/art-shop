@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{asset('css/prod.css')}}">
+    <link rel="stylesheet" href="{{asset('css/order.css')}}">
 
     <link rel="shortcut icon" type="image" href="logo.png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nanum Myeongjo">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bebas Neue">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Urbanist">
+    
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -29,7 +30,7 @@
   <!-- fonts links -->
   <!-- icons links -->
   <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
-    <title>Art Details</title>
+    <title>Order History</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-md" id="navbar">
@@ -70,68 +71,74 @@
         </div>
       </nav>
     <main>
-        <div class="main-section">
-            <div class="detail-section">
-                <div class="product-img">
-                    <img src="{{asset('images/art/3.jpg')}}" alt="Product Image">
-                </div>
-                <div class="details">
-                    <div class="title">Sukuna
-                        <div class="artist">ArtistCha</div>
+        <div class="main">
+            <div class="title-sec">
+                <span class="main-title">
+                    Order History
+                    <hr style="width:90%; background-color:rgba(0, 0, 0,0.2); margin-top:2px" >
+                </span>
+                
+            </div>
+            <div class="orders">
+                <div class="order">
+                    <div class="product">
+                        <img src="{{asset('images/homepage/buddha2.jpg')}}" alt="Product Image">
                     </div>
-                    
-                    <div class="info">
-                        {{-- <div class="desc-title">About the artwork</div> --}}
-                        <div class="desc">
-                            {{-- <div class="de">Description</div> --}}
-                            <div class="de">About the artwork</div>
-                            {{-- A girl dressed traditionally with her hand under her chin. This is one of my favourite art that I've done. --}}
-                            Glass painting of Sukuna from Jujutsu Kaisen anime.
+                    <div class="details">
+                        
+                        <div class="side">
+                            <div class="title">Buddha's Blessing</div>
+                            <div class="inf ord">Order #12</div>
                         </div>
-                        <div class="cat">
-                            <div class="de">Details</div>
-                            Category: Glass Painting
-                            <div class="size">
-                                Size: 5"x7" <br>
-                                Material: Glass
-                            </div>
+                        <div class="info">
+                            <div class="inf">Contact: 9823383030</div>
+                            <div class="inf">Delivery Location: <span class="deet">NCCS College, Paknajol</span></div>
+                            <div class="inf">Delivery Date: <span class="deet">10/7/2023</span></div>
+                            <div class="inf">Status: <span class="deet">Processing</span></div>
+                            <div class="inf total"><span class="deet">Rs.2100</span></div>
                             
                         </div>
-                        
-                        
-                        <div class="delivery">
-                            <div class="de">Delivery Information</div>
-                            Frame Included: Yes
-                            <div>
-                                Delivery Time: 7 days
-                            </div>
-                            <div class="stock">Available: Yes</div>
-                            <div>Artist Contact: 9823541875</div>
-                        </div>
-                        
                     </div>
-                    <div class="other">
-                        <div class="price">Rs 3000</div>
-                        
+                </div>
+                <div class="order">
+                    <div class="product">
+                        <img src="{{asset('images/art/6.jpg')}}" alt="Product Image">
                     </div>
-                    <form action="/" style="width:100%">
-                        <div class="order"> 
-                            <div class="qn">
-                                <label for="quantity">Quantity 
-                                    {{-- <input type="number" name="quantity" id="quantity" value="1" min="1" max="5"> --}}
-                                    <select name="quantity" id="quantity">
-                                        @for($i=1; $i<=5; $i++)
-                                            <option value="{{ $i }}" @if($i == 1) selected @endif>{{ $i }}</option>
-                                        @endfor
-                                    </select>
-                                </label>
-                            </div>
-                            <div class="buttons">
-                                <button type="submit" value="buy">Buy</button>
-                                <button type="submit" value="cart">Add to Cart</button>
-                            </div>                        
+                    <div class="details">
+                        
+                        <div class="side">
+                            <div class="title">Nezuko</div>
+                            <div class="inf ord">Order #10</div>
                         </div>
-                    </form>
+                        <div class="info">
+                            <div class="inf">Contact: 9823383030</div>
+                            <div class="inf">Delivery Location: <span class="deet">NCCS College, Paknajol</span></div>
+                            <div class="inf">Delivery Date: <span class="deet">6/7/2023</span></div>
+                            <div class="inf">Status: <span class="deet">Completed</span></div>
+                            <div class="inf total"><span class="deet">Rs.2000</span></div>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="order">
+                    <div class="product">
+                        <img src="{{asset('images/art/7.jpg')}}" alt="Product Image">
+                    </div>
+                    <div class="details">
+                        
+                        <div class="side">
+                            <div class="title">Peace in the Village</div>
+                            <div class="inf ord">Order #7</div>
+                        </div>
+                        <div class="info">
+                            <div class="inf">Contact: 9823383030</div>
+                            <div class="inf">Delivery Location: <span class="deet">NCCS College, Paknajol</span></div>
+                            <div class="inf">Delivery Date: <span class="deet">1/7/2023</span></div>
+                            <div class="inf">Status: <span class="deet">Completed</span></div>
+                            <div class="inf total"><span class="deet">Rs.3000</span></div>
+                            
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

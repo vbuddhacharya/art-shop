@@ -4,40 +4,21 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+    public function viewCart(){
+        return view('cart');
+    }
     public function index()
     {
-        return view('index');
-    }
-    public function viewLogin(){
-        return view('login');
-    }
-    public function viewSignup(){
-        return view('signup');
+        //
     }
 
-    public function viewUpload(){
-        return view('upload');
-    }
-    public function viewOrderForm(){
-        return view('orderform');
-    }
-
-    public function viewProduct(){
-        return view('product');
-    }
-    public function viewCustOrders(){
-        return view('cust_orders');
-    }
-    public function viewArtistOrders(){
-        return view('artist_orders');
-    }
     /**
      * Show the form for creating a new resource.
      *

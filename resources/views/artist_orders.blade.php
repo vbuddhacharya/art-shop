@@ -4,8 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{asset('css/prod.css')}}">
-
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet"/>
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.css" rel="stylesheet"/>
     <link rel="shortcut icon" type="image" href="logo.png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nanum Myeongjo">
@@ -29,9 +33,13 @@
   <!-- fonts links -->
   <!-- icons links -->
   <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
-    <title>Art Details</title>
+    <title>Artist Orders</title>
+    <link rel="stylesheet" href="{{asset('css/artistord.css')}}">
 </head>
 <body>
+    {{-- <div class="banner">
+        <img src="{{asset('images/art/5.jpg')}}" alt="Banner">
+    </div> --}}
     <nav class="navbar navbar-expand-md" id="navbar">
         <!-- Brand -->
         <a class="navbar-brand" href="#" id="logo"><img src="logo.png" alt="" width="30px"
@@ -69,73 +77,72 @@
           <img src="{{asset('images/homepage/shopping-cart (3).png')}}" alt="" width="20px">
         </div>
       </nav>
-    <main>
-        <div class="main-section">
-            <div class="detail-section">
-                <div class="product-img">
-                    <img src="{{asset('images/art/3.jpg')}}" alt="Product Image">
-                </div>
-                <div class="details">
-                    <div class="title">Sukuna
-                        <div class="artist">ArtistCha</div>
-                    </div>
+    <div class="pending">
+        
+        <div class="title">Art Orders</div>
+        <div  class="table-responsive tbl">
+            <table class="table align-middle table-hover" style="margin:auto; text-align:center">
+                <thead>
+                <tr class="color">
+                    <th scope="col">Order#</th>
+                    <th scope="col">Product</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Customer</th>
+                    <th scope="col">Contact</th>
+                    <th scope="col">Location</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Total</th>
+                    <th scope="col">Status</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>
+                        <div class="product">
+                            <img src="{{asset('images/art/1.jpg')}}" alt="" style="width: 100%">    
+                        </div></td>
+                    <td class="name">Beauty in Tradition</td>
+                    <td>1</td>
+                    <td>Nikita Maharjan</td>
+                    <td>9865534109</td>
+                    <td>NCCS College, Paknajol</td>
+                    <td>10/7/2023</td>
+                    <td>1100</td>
+                    <td>
+                    <button type="button" class="bun btn btn-link btn-sm px-3" data-ripple-color="dark"
+                    >
+                        Complete
+                    </button>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">12</th>
+                    <td>
+                        <div class="product">
+                            <img src="{{asset('images/art/3.jpg')}}" alt="" style="width: 100%">    
+                        </div></td>
+                    <td class="name">Sukuna</td>
+                    <td>1</td>
+                    <td>Ramesh Shakya</td>
+                    <td>9865109884</td>
+                    <td>Bhagwan Pau, Swoyambhu</td>
+                    <td>2/7/2023</td>
+                    <td>3100</td>
+                    <td>
+                        Completed
+                    {{-- <button type="button" class="btn btn-link btn-sm px-3" data-ripple-color="dark"
+                    style="background-color: aqua; color:brown">
+                        Complete
+                    </button> --}}
+                    </td>
+                </tr>
                     
-                    <div class="info">
-                        {{-- <div class="desc-title">About the artwork</div> --}}
-                        <div class="desc">
-                            {{-- <div class="de">Description</div> --}}
-                            <div class="de">About the artwork</div>
-                            {{-- A girl dressed traditionally with her hand under her chin. This is one of my favourite art that I've done. --}}
-                            Glass painting of Sukuna from Jujutsu Kaisen anime.
-                        </div>
-                        <div class="cat">
-                            <div class="de">Details</div>
-                            Category: Glass Painting
-                            <div class="size">
-                                Size: 5"x7" <br>
-                                Material: Glass
-                            </div>
-                            
-                        </div>
-                        
-                        
-                        <div class="delivery">
-                            <div class="de">Delivery Information</div>
-                            Frame Included: Yes
-                            <div>
-                                Delivery Time: 7 days
-                            </div>
-                            <div class="stock">Available: Yes</div>
-                            <div>Artist Contact: 9823541875</div>
-                        </div>
-                        
-                    </div>
-                    <div class="other">
-                        <div class="price">Rs 3000</div>
-                        
-                    </div>
-                    <form action="/" style="width:100%">
-                        <div class="order"> 
-                            <div class="qn">
-                                <label for="quantity">Quantity 
-                                    {{-- <input type="number" name="quantity" id="quantity" value="1" min="1" max="5"> --}}
-                                    <select name="quantity" id="quantity">
-                                        @for($i=1; $i<=5; $i++)
-                                            <option value="{{ $i }}" @if($i == 1) selected @endif>{{ $i }}</option>
-                                        @endfor
-                                    </select>
-                                </label>
-                            </div>
-                            <div class="buttons">
-                                <button type="submit" value="buy">Buy</button>
-                                <button type="submit" value="cart">Add to Cart</button>
-                            </div>                        
-                        </div>
-                    </form>
-                </div>
-            </div>
+                </tbody>
+            </table>
         </div>
-    </main>
+    </div>
     <footer id="footer" style="margin-top: 50px;">
         <div class="footer-top">
           <div class="container">
