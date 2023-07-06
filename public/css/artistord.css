@@ -1,160 +1,76 @@
 *{
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
     /* border: 1px solid red; */
     font-family: 'Lora', sans-serif;
-    
-
 }
 body{
-    /* height: 100%; */
-    background-color: #a9a9a929;
+    /* background: no-repeat url(../images/art/bg.jpg) 0 0;
+    background-color: #EBEBEB;
+    background-repeat: no-repeat; */
+    background-color: #fff;
 }
-.main-section{
-    width: 100%;
-    max-width: 100%;
-}
-.detail-section{
-    background-color: #a9a9a929;
-    width: 70%;
+.pending{
+    width: 95%;
     margin: auto;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    padding: 20px;
-    border: 1px solid #a9a9a929;
-    box-shadow: 0 0 2px rgba(169, 169, 169, 0.5);
+    margin-top: 15px;
+   
 }
-.product-img{
-    width: 49%;
-    max-width: 49%;
-    min-width: 200px;
-    display: flex;
-    justify-content: center;
-    padding: 5px;
-    background-color: azure;
-}
-.product-img img{
-    width: 100%;
-}
-.details{
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    padding-left: 10px;
+.tbl{
+    /* border: 1px solid #f2f4f4; */
+    background: no-repeat url(../images/art/grid.png) 0 0;
+    background-color: #EBEBEB;
+    background-repeat: repeat;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px rgb(171, 131, 131);
+    margin-top:10px;
+    
 }
 .title{
+    text-align: center;
     font-size: 30px;
-    width: 100%;
-    font-family: 'Urbanist', sans-serif;
     /* font-weight: bold; */
 }
-.title, .artist{
-    text-align: center;
+.pending button:hover{
+    background-color: crimson;
+    color: azure;
 }
-.artist{
-    width: 100%;
-    font-size: 15px;
-    font-weight:lighter;
-    font-family: 'Urbanist', sans-serif;
+.bun{
+    background-color: #f0cf15; 
+    color:black;
 }
-.info{
-    /* font-size: 20px; */
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-.desc-title, .desc, .cat, .size{
-    margin-bottom: 6px;
-}
-.desc-title{
-    font-size: 20px;
-    font-weight: bold;
-}
-.desc, .cat, .size, .delivery{
-    font-size: 16px;
-}
-.de{
-    margin-top: 4px;
-    margin-bottom: 2px;
-    font-weight: bold;
-    font-size: 18px;
-    
-}
-.other{
-    font-size: 18px;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    justify-content: flex-start;
-}
-.order{
-    /* display: flex; */
-    /* flex-direction: column; */
-    width: 100%;
-
-}
-.price{
-    text-align: center;
-    font-weight: bold;
-    font-size: 24px;
-    font-family: 'Urbanist', sans-serif;
-}
-.qn{
-    font-size: 17px;
-    /* margin-top: -10px; */
-    text-align: center;
-}
-.qn select{
-    width:70px;
-    text-align: center;
-    margin-left:5px;
-    font-size: 14px;
-    padding:2px;
-    border: none;
-    outline: none;
-}
-.qn select option{
-    border: none;
-    outline: none;
-}
-.buttons{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-top: 15px;
-    font-family: 'Urbanist', sans-serif;
-    
-}
-.buttons button{
-    display: inline-block;
-    width: 48%;
-    padding: 10px;
-    font-size: 18px;
-    border: none;
-    background-color: #f0cf15;
-    color: black;
-    border-radius: 2px;
-    
-}
-.buttons button:hover{
+button.bun:hover{
     background-color: #d5ba23;
     color: white;
     cursor: pointer;
 }
-@media screen and (max-width: 900px){
-    .product-img{
-        width: 100%;
-        max-width: 100%;
-        min-width: none;
-    }
+.banner{
+    width: 100%;
+    /* height:200px; */
+    position: fixed;
+    top: 0;
+    z-index: -1;
+}
+.banner img{
+    width:100%;
+}
+.color{
+    /* background-color: burlywood; */
+    /* color: azure;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(86,155,165,1) 54%, rgba(0,212,255,1) 100%); */
+    background-color: rgb(169, 169, 169,0.5);
+    /* border: 1px solid rgb(169, 169, 169,0.5); */
+}
+.product{
+    max-width:100px;
+    width:100%;
+}
+.product img{
+    box-shadow: 0 0 3px rgba(223, 176, 176,0.7);
+}
+.name{
+    /* font-weight: bold; */
+    /* font-family: 'Urbanist', sans-serif; */
 }
 #navbar{
     background-color: #f0cf15;

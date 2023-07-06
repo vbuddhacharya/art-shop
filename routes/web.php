@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,3 +24,6 @@ Route::get('/artstore/signup',[UserController::class,'viewSignup'])->name('signu
 Route::get('/artstore/upload',[UserController::class,'viewUpload'])->name('upload');
 Route::get('/artstore/arts/order',[UserController::class,'viewOrderForm'])->name('orderform');
 Route::get('/artstore/product',[UserController::class,'viewProduct'])->name('product');
+Route::get('/artstore/user/orders',[UserController::class,'viewCustOrders'])->name('orders');
+Route::get('/artstore/artist/orders',[UserController::class,'viewArtistOrders'])->name('artist.orders');
+Route::get('/artstore/user/cart',[OrderController::class,'viewCart'])->name('cart');
