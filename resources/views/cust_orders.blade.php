@@ -65,7 +65,7 @@
     
         </div>
         <div class="icons">
-          <img src="{{asset('images/homepage/search.png')}}" alt="" width="16px">
+          {{-- <img src="{{asset('images/homepage/search.png')}}" alt="" width="16px"> --}}
           <img src="{{asset('images/homepage/user.png')}}" alt="" width="20px">
           <img src="{{asset('images/homepage/shopping-cart (3).png')}}" alt="" width="20px">
         </div>
@@ -144,63 +144,68 @@
         </div>
     </main>
     <footer id="footer" style="margin-top: 50px;">
-        <div class="footer-top">
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-3 col-md-6 footer-contact">
-                <a href="#"><img src="logo.png" alt="" width="32px">Art Shop</a>
-                <p>
-                  Kathmandu <br>
-                  Nepal <br><br>
-                  <strong>Phone:</strong> +00000000000000 <br>
-                  <strong>Email:</strong> info@art-Shop.com <br>
-                </p>
-              </div>
-    
-              <div class="col-lg-3 col-md-6 footer-links">
-                <h4>Useful Links</h4>
-                <ul>
-                  <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-                  <li><i class="bx bx-chevron-right"></i> <a href="#">About Us</a></li>
-                  <li><i class="bx bx-chevron-right"></i> <a href="#">Contact Us</a></li>
-                  <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-                  <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
-                </ul>
-              </div>
-    
-              <div class="col-lg-3 col-md-6 footer-links">
-                <h4>Our Services</h4>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates, veritatis.</p>
-                <ul>
-                  <li><i class="bx bx-chevron-right"></i> <a href="#">Sketch</a></li>
-                  <li><i class="bx bx-chevron-right"></i> <a href="#">Color-Painting</a></li>
-                  <li><i class="bx bx-chevron-right"></i> <a href="#">Glass-Painting</a></li>
-                </ul>
-              </div>
-    
-              <div class="col-lg-3 col-md-6 footer-links">
-                <h4>Our Social Network</h4>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates, veritatis.</p>
-                <div class="social-links mt-3">
-                  <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-                  <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-                  <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-                  <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-                  <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-                </div>
-              </div>
-    
-    
+      <div class="footer-top">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-3 col-md-6 footer-contact">
+              <a href="#"><img src="{{asset('images/homepage/mainlogo.png')}}" alt="" width="32px">Kalaa</a>
+              <p>
+                Kathmandu <br>
+                Nepal <br><br>
+                <strong>Phone:</strong> +9779854187409 <br>
+                <strong>Email:</strong> info@kalaa.com <br>
+              </p>
             </div>
-    
-    
+  
+            <div class="col-lg-3 col-md-6 footer-links">
+              <h4>Useful Links</h4>
+              <ul>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">About Us</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">Contact Us</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+              </ul>
+            </div>
+  
+            <div class="col-lg-3 col-md-6 footer-links">
+              <h4>Our Services</h4>
+              
+              <ul>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">Abstract Art</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">Color-Painting</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">Glass-Painting</a></li>
+              </ul>
+            </div>
+  
+            <div class="col-lg-3 col-md-6 footer-links">
+              <h4>Our Social Network</h4>
+              
+              <div class="social-links mt-3">
+                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+              </div>
+            </div>
+  
+  
           </div>
+  
+  
         </div>
-        <div class="container py-4">
-          <div class="copyright">
-            &copy; Copyright <strong><span>Art Shop</span></strong>. All Rights Reserved
-          </div>
+      </div>
+      <div class="container py-4">
+        <div class="copyright">
+          &copy; Copyright <strong><span>Kalaa</span></strong>. All Rights Reserved
         </div>
-      </footer>
+      </div>
+    </footer>
+    <!-- footer -->
+  
+    <a href="#" class="arrow"><i><img src="{{asset('images/homepage/arrow.png')}}" alt=""></i></a>
+  
+  
 </body>
 </html>
