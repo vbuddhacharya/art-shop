@@ -37,7 +37,7 @@
   <!-- navbar -->
   <nav class="navbar navbar-expand-md" id="navbar">
     <!-- Brand -->
-    <a class="navbar-brand" href="#" id="logo"><img src="logo.png" alt="" width="30px"
+    <a class="navbar-brand" href="#" id="logo"><img src="{{asset('images/homepage/mainlogo.png')}}" alt="" width="30px"
         style="margin-bottom: 10px; margin-right: 10px;">Art Shop</a>
 
     <!-- Toggler/collapsibe Button -->
@@ -106,11 +106,9 @@
         <div class="card">
           <img class="img-size" src="{{asset('images/homepage/buddha2.jpg')}}" alt="">
           <div class="overlay">
-            <button type="button" class="btn btn-secondary" title="Quick Shop"><i><img src="views.png" alt=""
+          <button type="button" class="btn btn-secondary" title="Quick Shop"><i><img src="{{asset('images/homepage/views.png')}}" alt=""
                   width="30px"></i></button>
-            <button type="button" class="btn btn-secondary" title="Add to Wishlist"><i><img src="heart.png" alt=""
-                  width="30px"></i></button>
-            <button type="button" class="btn btn-secondary" title="Add to Cart"><i><img src="add carts.png" alt=""
+            <button type="button" class="btn btn-secondary" title="Add to Cart"><i><img src="{{asset('images/homepage/add carts.png')}}" alt=""
                   width="30px"></i></button>
           </div>
           <div class="card-body">
@@ -118,7 +116,7 @@
           <div class="star text-center">
 				    <br>
           </div>
-            <h5>$100.50 <span><i><img src="add.png" alt="" width="20px"></i></span></h5>
+            <h5>$100.50 <span><i><img src="{{asset('images/homepage/add.png')}}" alt="" width="20px"></i></span></h5>
           </div>
         </div>
       </div>
@@ -136,7 +134,7 @@
             <div class="star text-center">
 				      <br>
             </div>
-            <h5>$150.50 <span><i><img src="add.png" alt="" width="20px"></i></span></h5>
+            <h5>$150.50 <span><i><img src="{{asset('images/homepage/add.png')}}" alt="" width="20px"></i></span></h5>
           </div>
         </div>
       </div>
@@ -154,7 +152,7 @@
             <div class="star text-center">
 				      <br>
             </div>
-            <h5>$500.10 <span><i><img src="add.png" alt="" width="20px"></i></span></h5>
+            <h5>$500.10 <span><i><img src="{{asset('images/homepage/add.png')}}" alt="" width="20px"></i></span></h5>
           </div>
         </div>
       </div>
@@ -172,7 +170,7 @@
             <div class="star text-center">
 				<br>
             </div>
-            <h5>$300.20 <span><i><img src="add.png" alt="" width="20px"></i></span></h5>
+            <h5>$300.20 <span><i><img src="{{asset('images/homepage/add.png')}}" alt="" width="20px"></i></span></h5>
           </div>
         </div>
       </div>
@@ -193,7 +191,7 @@
             <div class="star text-center">
 				<br>
             </div>
-            <h5>$100.50 <span><i><img src="add.png" alt="" width="20px"></i></span></h5>
+            <h5>$100.50 <span><i><img src="{{asset('images/homepage/add.png')}}" alt="" width="20px"></i></span></h5>
           </div>
         </div>
       </div>
@@ -211,7 +209,7 @@
             <div class="star text-center">
 				<br>
             </div>
-            <h5>$50.50 <span><i><img src="add.png" alt="" width="20px"></i></span></h5>
+            <h5>$50.50 <span><i><img src="{{asset('images/homepage/add.png')}}" alt="" width="20px"></i></span></h5>
           </div>
         </div>
       </div>
@@ -229,7 +227,7 @@
             <div class="star text-center">
 				<br>
             </div>
-            <h5>$500.10 <span><i><img src="add.png" alt="" width="20px"></i></span></h5>
+            <h5>$500.10 <span><i><img src="{{asset('images/homepage/add.png')}}" alt="" width="20px"></i></span></h5>
           </div>
         </div>
       </div>
@@ -247,7 +245,7 @@
             <div class="star text-center">
 				<br>
             </div>
-            <h5>$300.20 <span><i><img src="add.png" alt="" width="20px"></i></span></h5>
+            <h5>$300.20 <span><i><img src="{{asset('images/homepage/add.png')}}" alt="" width="20px"></i></span></h5>
           </div>
         </div>
       </div>
@@ -264,11 +262,11 @@
                   width="30px"></i></button>
           </div>
           <div class="card-body">
-            <h3 class="text-center">Hoodies</h3>
+            <h3 class="text-center">Anime</h3>
             <div class="star text-center">
 				<br>
             </div>
-            <h5>$150.50 <span><i><img src="add.png" alt="" width="20px"></i></span></h5>
+            <h5>$150.50 <span><i><img src="{{asset('images/homepage/add.png')}}" alt="" width="20px"></i></span></h5>
           </div>
         </div>
       </div>
@@ -287,7 +285,7 @@
             <div class="star text-center">
 				<br>
             </div>
-            <h5>$200.30 <span><i><img src="add.png" alt="" width="20px"></i></span></h5>
+            <h5>$200.30 <span><i><img src="{{asset('images/homepage/add.png')}}" alt="" width="20px"></i></span></h5>
           </div>
         </div>
       </div>
@@ -302,11 +300,11 @@
                   width="30px"></i></button>
           </div>
           <div class="card-body">
-            <h3 class="text-center">Hoodies</h3>
+            <h3 class="text-center">Acrylic Art</h3>
             <div class="star text-center">
 				<br>
             </div>
-            <h5>$500.10 <span><i><img src="add.png" alt="" width="20px"></i></span></h5>
+            <h5>$500.10 <span><i><img src="{{asset('images/homepage/add.png')}}" alt="" width="20px"></i></span></h5>
           </div>
         </div>
       </div>
@@ -325,7 +323,7 @@
             <div class="star text-center">
 				<br>
             </div>
-            <h5>$100.20 <span><i><img src="add.png" alt="" width="20px"></i></span></h5>
+            <h5>$100.20 <span><i><img src="{{asset('images/homepage/add.png')}}" alt="" width="20px"></i></span></h5>
           </div>
         </div>
       </div>
@@ -346,7 +344,7 @@
               <div class="star text-center">
           <br>
               </div>
-              <h5>$500.10 <span><i><img src="add.png" alt="" width="20px"></i></span></h5>
+              <h5>$500.10 <span><i><img src="{{asset('images/homepage/add.png')}}" alt="" width="20px"></i></span></h5>
             </div>
           </div>
         </div>
@@ -364,7 +362,7 @@
               <div class="star text-center">
           <br>
               </div>
-              <h5>$500.10 <span><i><img src="add.png" alt="" width="20px"></i></span></h5>
+              <h5>$500.10 <span><i><img src="{{asset('images/homepage/add.png')}}" alt="" width="20px"></i></span></h5>
             </div>
           </div>
         </div>
@@ -382,7 +380,7 @@
               <div class="star text-center">
           <br>
               </div>
-              <h5>$500.10 <span><i><img src="add.png" alt="" width="20px"></i></span></h5>
+              <h5>$500.10 <span><i><img src="{{asset('images/homepage/add.png')}}" alt="" width="20px"></i></span></h5>
             </div>
           </div>
         </div>
@@ -400,7 +398,7 @@
               <div class="star text-center">
           <br>
               </div>
-              <h5>$500.10 <span><i><img src="add.png" alt="" width="20px"></i></span></h5>
+              <h5>$500.10 <span><i><img src="{{asset('images/homepage/add.png')}}" alt="" width="20px"></i></span></h5>
             </div>
           </div>
         </div>
@@ -420,7 +418,7 @@
               <div class="star text-center">
           <br>
               </div>
-              <h5>$100.50 <span><i><img src="add.png" alt="" width="20px"></i></span></h5>
+              <h5>$100.50 <span><i><img src="{{asset('images/homepage/add.png')}}" alt="" width="20px"></i></span></h5>
             </div>
           </div>
         </div>
@@ -438,7 +436,7 @@
               <div class="star text-center">
           <br>
               </div>
-              <h5>$150.50 <span><i><img src="add.png" alt="" width="20px"></i></span></h5>
+              <h5>$150.50 <span><i><img src="{{asset('images/homepage/add.png')}}" alt="" width="20px"></i></span></h5>
             </div>
           </div>
         </div>
@@ -456,7 +454,7 @@
               <div class="star text-center">
           <br>
               </div>
-              <h5>$500.10 <span><i><img src="add.png" alt="" width="20px"></i></span></h5>
+              <h5>$500.10 <span><i><img src="{{asset('images/homepage/add.png')}}" alt="" width="20px"></i></span></h5>
             </div>
           </div>
         </div>
@@ -474,7 +472,7 @@
               <div class="star text-center">
           <br>
               </div>
-              <h5>$500.10 <span><i><img src="add.png" alt="" width="20px"></i></span></h5>
+              <h5>$500.10 <span><i><img src="{{asset('images/homepage/add.png')}}" alt="" width="20px"></i></span></h5>
             </div>
           </div>
         </div>
@@ -562,7 +560,7 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-3 col-md-6 footer-contact">
-            <a href="#"><img src="logo.png" alt="" width="32px">Art Shop</a>
+            <a href="#"><img src="{{asset('images/homepage/mainlogo.png')}}" alt="" width="32px">Art Shop</a>
             <p>
               Kathmandu <br>
               Nepal <br><br>
@@ -618,7 +616,7 @@
   </footer>
   <!-- footer -->
 
-  <a href="#" class="arrow"><i><img src="arrow.png" alt=""></i></a>
+  <a href="#" class="arrow"><i><img src="{{asset('images/homepage/arrow.png')}}" alt=""></i></a>
 
 
 </body>
