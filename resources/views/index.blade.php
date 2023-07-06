@@ -76,7 +76,7 @@
   <!-- navbar -->
 
   <!-- home section -->
-  <section class="home" id="home">
+  <!-- <section class="home" id="home">
 
     <div class="content">
       <h3>The Biggest Sale
@@ -92,7 +92,7 @@
     <div class="img">
       <img src="{{asset('images/homepage/background.png')}}" alt="">
     </div>
-  </section>
+  </section> -->
   <!-- home section -->
 
   <!-- cards -->
@@ -115,9 +115,9 @@
           </div>
           <div class="card-body">
             <h3 class="text-center">Buddha</h3>
-            <div class="star text-center">
-				<br>
-            </div>
+          <div class="star text-center">
+				    <br>
+          </div>
             <h5>$100.50 <span><i><img src="add.png" alt="" width="20px"></i></span></h5>
           </div>
         </div>
@@ -134,7 +134,7 @@
           <div class="card-body">
             <h3 class="text-center">Obito</h3>
             <div class="star text-center">
-				<br>
+				      <br>
             </div>
             <h5>$150.50 <span><i><img src="add.png" alt="" width="20px"></i></span></h5>
           </div>
@@ -152,7 +152,7 @@
           <div class="card-body">
             <h3 class="text-center">Mountain</h3>
             <div class="star text-center">
-				<br>
+				      <br>
             </div>
             <h5>$500.10 <span><i><img src="add.png" alt="" width="20px"></i></span></h5>
           </div>
@@ -331,173 +331,168 @@
       </div>
     </div>
 
-	<div class="row" style="margin-top: 50px;">
-	  <div class="col-md-3 py-3 py-md-0">
-        <div class="card">
-          <img class="img-size" src="{{asset('images/homepage/butterfly.jpg')}}" alt="">
-          <div class="overlay">
-            <button type="button" class="btn btn-secondary" title="Quick Shop"><i><img src="{{asset('images/homepage/views.png')}}" alt=""
-                  width="30px"></i></button>
-            <button type="button" class="btn btn-secondary" title="Add to Cart"><i><img src="{{asset('images/homepage/add carts.png')}}" alt=""
-                  width="30px"></i></button>
-          </div>
-          <div class="card-body">
-            <h3 class="text-center">Butterfly</h3>
-            <div class="star text-center">
-				<br>
-            </div>
-            <h5>$500.10 <span><i><img src="add.png" alt="" width="20px"></i></span></h5>
-          </div>
-        </div>
-      </div>
-	  <div class="col-md-3 py-3 py-md-0">
-        <div class="card">
-          <img class="img-size" src="{{asset('images/homepage/glasspainting2.jpg')}}" alt="">
-          <div class="overlay">
-            <button type="button" class="btn btn-secondary" title="Quick Shop"><i><img src="{{asset('images/homepage/views.png')}}" alt=""
-                  width="30px"></i></button>
-            <button type="button" class="btn btn-secondary" title="Add to Cart"><i><img src="{{asset('images/homepage/add carts.png')}}" alt=""
-                  width="30px"></i></button>
-          </div>
-          <div class="card-body">
-            <h3 class="text-center">Luffy</h3>
-            <div class="star text-center">
-				<br>
-            </div>
-            <h5>$500.10 <span><i><img src="add.png" alt="" width="20px"></i></span></h5>
-          </div>
-        </div>
-      </div>
-	  <div class="col-md-3 py-3 py-md-0">
-        <div class="card">
-          <img class="img-size" src="{{asset('images/homepage/wall-decor1.jpg')}}" alt="">
-          <div class="overlay">
-            <button type="button" class="btn btn-secondary" title="Quick Shop"><i><img src="{{asset('images/homepage/views.png')}}" alt=""
-                  width="30px"></i></button>
-            <button type="button" class="btn btn-secondary" title="Add to Cart"><i><img src="{{asset('images/homepage/add carts.png')}}" alt=""
-                  width="30px"></i></button>
-          </div>
-          <div class="card-body">
-            <h3 class="text-center">Abstract Art</h3>
-            <div class="star text-center">
-				<br>
-            </div>
-            <h5>$500.10 <span><i><img src="add.png" alt="" width="20px"></i></span></h5>
-          </div>
-        </div>
-      </div>
-	  <div class="col-md-3 py-3 py-md-0">
-        <div class="card">
-          <img class="img-size" src="{{asset('images/homepage/glasspainting3.jpg')}}" alt="">
-          <div class="overlay">
-            <button type="button" class="btn btn-secondary" title="Quick Shop"><i><img src="{{asset('images/homepage/views.png')}}" alt=""
-                  width="30px"></i></button>
-            <button type="button" class="btn btn-secondary" title="Add to Cart"><i><img src="{{asset('images/homepage/add carts.png')}}" alt=""
-                  width="30px"></i></button>
-          </div>
-          <div class="card-body">
-            <h3 class="text-center">Naruto</h3>
-            <div class="star text-center">
-				<br>
-            </div>
-            <h5>$500.10 <span><i><img src="add.png" alt="" width="20px"></i></span></h5>
-          </div>
-        </div>
-      </div>
-
     <div class="row" style="margin-top: 50px;">
       <div class="col-md-3 py-3 py-md-0">
-        <div class="card">
-          <img class="img-size" src="{{asset('images/homepage/ganesh2.jpg')}}" alt="">
-          <div class="overlay">
-            <button type="button" class="btn btn-secondary" title="Quick Shop"><i><img src="{{asset('images/homepage/views.png')}}" alt=""
-                  width="30px"></i></button>
-            <button type="button" class="btn btn-secondary" title="Add to Cart"><i><img src="{{asset('images/homepage/add carts.png')}}" alt=""
-                  width="30px"></i></button>
-          </div>
-          <div class="card-body">
-            <h3 class="text-center">Ganesh</h3>
-            <div class="star text-center">
-				<br>
+          <div class="card">
+            <img class="img-size" src="{{asset('images/homepage/butterfly.jpg')}}" alt="">
+            <div class="overlay">
+              <button type="button" class="btn btn-secondary" title="Quick Shop"><i><img src="{{asset('images/homepage/views.png')}}" alt=""
+                    width="30px"></i></button>
+              <button type="button" class="btn btn-secondary" title="Add to Cart"><i><img src="{{asset('images/homepage/add carts.png')}}" alt=""
+                    width="30px"></i></button>
             </div>
-            <h5>$100.50 <span><i><img src="add.png" alt="" width="20px"></i></span></h5>
+            <div class="card-body">
+              <h3 class="text-center">Butterfly</h3>
+              <div class="star text-center">
+          <br>
+              </div>
+              <h5>$500.10 <span><i><img src="add.png" alt="" width="20px"></i></span></h5>
+            </div>
           </div>
         </div>
-      </div>
       <div class="col-md-3 py-3 py-md-0">
-        <div class="card">
-          <img class="img-size" src="{{asset('images/homepage/narutoeyes.jpg')}}" alt="">
-          <div class="overlay">
-            <button type="button" class="btn btn-secondary" title="Quick Shop"><i><img src="{{asset('images/homepage/views.png')}}" alt=""
-                  width="30px"></i></button>
-            <button type="button" class="btn btn-secondary" title="Add to Cart"><i><img src="{{asset('images/homepage/add carts.png')}}" alt=""
-                  width="30px"></i></button>
-          </div>
-          <div class="card-body">
-            <h3 class="text-center">Naruto</h3>
-            <div class="star text-center">
-				<br>
+          <div class="card">
+            <img class="img-size" src="{{asset('images/homepage/glasspainting2.jpg')}}" alt="">
+            <div class="overlay">
+              <button type="button" class="btn btn-secondary" title="Quick Shop"><i><img src="{{asset('images/homepage/views.png')}}" alt=""
+                    width="30px"></i></button>
+              <button type="button" class="btn btn-secondary" title="Add to Cart"><i><img src="{{asset('images/homepage/add carts.png')}}" alt=""
+                    width="30px"></i></button>
             </div>
-            <h5>$150.50 <span><i><img src="add.png" alt="" width="20px"></i></span></h5>
+            <div class="card-body">
+              <h3 class="text-center">Luffy</h3>
+              <div class="star text-center">
+          <br>
+              </div>
+              <h5>$500.10 <span><i><img src="add.png" alt="" width="20px"></i></span></h5>
+            </div>
           </div>
         </div>
-      </div>
       <div class="col-md-3 py-3 py-md-0">
-        <div class="card">
-          <img class="img-size" src="{{asset('images/homepage/wall-decor3.jpg')}}" alt="">
-          <div class="overlay">
-            <button type="button" class="btn btn-secondary" title="Quick Shop"><i><img src="{{asset('images/homepage/views.png')}}" alt=""
-                  width="30px"></i></button>
-            <button type="button" class="btn btn-secondary" title="Add to Cart"><i><img src="{{asset('images/homepage/add carts.png')}}" alt=""
-                  width="30px"></i></button>
-          </div>
-          <div class="card-body">
-            <h3 class="text-center">Boho</h3>
-            <div class="star text-center">
-				<br>
+          <div class="card">
+            <img class="img-size" src="{{asset('images/homepage/wall-decor1.jpg')}}" alt="">
+            <div class="overlay">
+              <button type="button" class="btn btn-secondary" title="Quick Shop"><i><img src="{{asset('images/homepage/views.png')}}" alt=""
+                    width="30px"></i></button>
+              <button type="button" class="btn btn-secondary" title="Add to Cart"><i><img src="{{asset('images/homepage/add carts.png')}}" alt=""
+                    width="30px"></i></button>
             </div>
-            <h5>$500.10 <span><i><img src="add.png" alt="" width="20px"></i></span></h5>
+            <div class="card-body">
+              <h3 class="text-center">Abstract Art</h3>
+              <div class="star text-center">
+          <br>
+              </div>
+              <h5>$500.10 <span><i><img src="add.png" alt="" width="20px"></i></span></h5>
+            </div>
           </div>
         </div>
-      </div>
       <div class="col-md-3 py-3 py-md-0">
-        <div class="card">
-          <img class="img-size" src="{{asset('images/homepage/mountain2.jpg')}}" alt="">
-          <div class="overlay">
-            <button type="button" class="btn btn-secondary" title="Quick Shop"><i><img src="{{asset('images/homepage/views.png')}}" alt=""
-                  width="30px"></i></button>
-            <button type="button" class="btn btn-secondary" title="Add to Cart"><i><img src="{{asset('images/homepage/add carts.png')}}" alt=""
-                  width="30px"></i></button>
-          </div>
-          <div class="card-body">
-            <h3 class="text-center">Mountain</h3>
-            <div class="star text-center">
-				<br>
+          <div class="card">
+            <img class="img-size" src="{{asset('images/homepage/glasspainting3.jpg')}}" alt="">
+            <div class="overlay">
+              <button type="button" class="btn btn-secondary" title="Quick Shop"><i><img src="{{asset('images/homepage/views.png')}}" alt=""
+                    width="30px"></i></button>
+              <button type="button" class="btn btn-secondary" title="Add to Cart"><i><img src="{{asset('images/homepage/add carts.png')}}" alt=""
+                    width="30px"></i></button>
             </div>
-            <h5>$500.10 <span><i><img src="add.png" alt="" width="20px"></i></span></h5>
+            <div class="card-body">
+              <h3 class="text-center">Naruto</h3>
+              <div class="star text-center">
+          <br>
+              </div>
+              <h5>$500.10 <span><i><img src="add.png" alt="" width="20px"></i></span></h5>
+            </div>
           </div>
         </div>
-      </div>
 
-    <div class="see-more-container">
-      <div class="see-more-btn">
-        <label>See More</label>
+      <div class="row" style="margin-top: 50px;">
+        <div class="col-md-3 py-3 py-md-0">
+          <div class="card">
+            <img class="img-size" src="{{asset('images/homepage/ganesh2.jpg')}}" alt="">
+            <div class="overlay">
+              <button type="button" class="btn btn-secondary" title="Quick Shop"><i><img src="{{asset('images/homepage/views.png')}}" alt=""
+                    width="30px"></i></button>
+              <button type="button" class="btn btn-secondary" title="Add to Cart"><i><img src="{{asset('images/homepage/add carts.png')}}" alt=""
+                    width="30px"></i></button>
+            </div>
+            <div class="card-body">
+              <h3 class="text-center">Ganesh</h3>
+              <div class="star text-center">
+          <br>
+              </div>
+              <h5>$100.50 <span><i><img src="add.png" alt="" width="20px"></i></span></h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 py-3 py-md-0">
+          <div class="card">
+            <img class="img-size" src="{{asset('images/homepage/narutoeyes.jpg')}}" alt="">
+            <div class="overlay">
+              <button type="button" class="btn btn-secondary" title="Quick Shop"><i><img src="{{asset('images/homepage/views.png')}}" alt=""
+                    width="30px"></i></button>
+              <button type="button" class="btn btn-secondary" title="Add to Cart"><i><img src="{{asset('images/homepage/add carts.png')}}" alt=""
+                    width="30px"></i></button>
+            </div>
+            <div class="card-body">
+              <h3 class="text-center">Naruto</h3>
+              <div class="star text-center">
+          <br>
+              </div>
+              <h5>$150.50 <span><i><img src="add.png" alt="" width="20px"></i></span></h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 py-3 py-md-0">
+          <div class="card">
+            <img class="img-size" src="{{asset('images/homepage/wall-decor3.jpg')}}" alt="">
+            <div class="overlay">
+              <button type="button" class="btn btn-secondary" title="Quick Shop"><i><img src="{{asset('images/homepage/views.png')}}" alt=""
+                    width="30px"></i></button>
+              <button type="button" class="btn btn-secondary" title="Add to Cart"><i><img src="{{asset('images/homepage/add carts.png')}}" alt=""
+                    width="30px"></i></button>
+            </div>
+            <div class="card-body">
+              <h3 class="text-center">Boho</h3>
+              <div class="star text-center">
+          <br>
+              </div>
+              <h5>$500.10 <span><i><img src="add.png" alt="" width="20px"></i></span></h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 py-3 py-md-0">
+          <div class="card">
+            <img class="img-size" src="{{asset('images/homepage/mountain2.jpg')}}" alt="">
+            <div class="overlay">
+              <button type="button" class="btn btn-secondary" title="Quick Shop"><i><img src="{{asset('images/homepage/views.png')}}" alt=""
+                    width="30px"></i></button>
+              <button type="button" class="btn btn-secondary" title="Add to Cart"><i><img src="{{asset('images/homepage/add carts.png')}}" alt=""
+                    width="30px"></i></button>
+            </div>
+            <div class="card-body">
+              <h3 class="text-center">Mountain</h3>
+              <div class="star text-center">
+          <br>
+              </div>
+              <h5>$500.10 <span><i><img src="add.png" alt="" width="20px"></i></span></h5>
+            </div>
+          </div>
+        </div>
+
+      <div class="see-more-container">
+        <div class="see-more-btn">
+          <label>See More</label>
+        </div>
       </div>
     </div>
-  </div>
+</div>
   <!-- product cards -->
 
   <!-- about us -->
   <div class="container" id="about">
     <h2>ABOUT US</h2>
     <hr>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab fuga id sed voluptas, sunt tempora iure provident
-      hic ad natus? Doloremque fugiat maiores ipsam vero nemo aut! A cum impedit provident magnam corporis iste
-      repudiandae rem laboriosam veritatis incidunt, sequi voluptates facere maxime ipsa, nulla enim assumenda
-      reprehenderit itaque. Est velit natus, tenetur nisi excepturi molestiae veniam iure odio aliquam exercitationem ab
-      dicta a accusamus vero delectus nostrum ex maiores voluptatum facilis? At quis possimus expedita porro atque sed
-      voluptatibus deleniti et repellat eum. Ut natus, architecto tempora sit, qui facilis ipsam quis quasi veritatis
-      aliquid, odit aliquam optio dolorem.</p>
+    <p style="text-align:justify;">Welcome to our art store, where creativity finds its home! We are passionate about art and dedicated to providing you with a vibrant collection of masterpieces that inspire and captivate. From stunning paintings and sculptures to exquisite prints and unique handmade crafts, our curated selection showcases the talent of artists from around the world. Whether you're an art enthusiast or a collector, we invite you to explore our diverse range of artistic treasures and let your imagination soar. Embrace the beauty of art with us and bring a touch of creativity into your life.</p>
 
   </div>
   <hr>
@@ -522,7 +517,7 @@
 
       <div class="col-md-4 py-3 py-md-0">
         <img src="email.png" alt="" width="60px">
-        <p>example@gmail.com
+        <p>info@art-Shop.com
         </p>
       </div>
     </div>
@@ -589,9 +584,9 @@
 
           <div class="col-lg-3 col-md-6 footer-links">
             <h4>Our Services</h4>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates, veritatis.</p>
+            
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Sketch</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Abstract Art</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Color-Painting</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Glass-Painting</a></li>
             </ul>
@@ -599,7 +594,7 @@
 
           <div class="col-lg-3 col-md-6 footer-links">
             <h4>Our Social Network</h4>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates, veritatis.</p>
+            
             <div class="social-links mt-3">
               <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
               <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
