@@ -5,12 +5,47 @@ body {
     padding: 0;
   }
 
-  .container {
+ /* navbar */
+  /* *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+} */
+#navbar{
+  background-color: #f0cf15;
+  padding-left: 50px;
+  margin-bottom: 8vh;
+}
+#logo{
+  color: black;
+  font-weight: bold;
+}
+.nav-link{
+  color: white;
+  font-weight: bold;
+  text-shadow: 1px 1px 1px black;
+  margin-left: 15px;
+  transition: 0.5s ease;
+}
+.nav-link:hover{
+  color: black;
+}
+.icons{
+  margin-right: 50px;
+}
+.icons img{
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+  /* Upload Form */
+  .container-box {
     max-width: 500px;
     margin: 0 auto;
     padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     border-radius: 10px;
   }
 
@@ -21,7 +56,7 @@ body {
     text-align: center;
     margin-bottom: 5vh;
     font-size: 42px;
-    background-color: #db9a9a;
+    background-color: #f7d201;
   }
 
 
@@ -35,7 +70,7 @@ body {
   
   .artimg {
     font-weight: bold;
-    color: #555;
+    /* color: #555; */
     font-size: 18px;
     margin-right: 10px;
   }
@@ -57,7 +92,7 @@ body {
   .file-input label {
     display: inline-block;
     padding: 10px 20px;
-    border: 2px solid #db9a9a;
+    border: 2px solid #f0cf15;
     background-color: #f9f9f9;
     cursor: pointer;
   }
@@ -82,7 +117,7 @@ body {
   .artlabel {
     display: block;
     font-weight: bold;
-    color: #555;
+    /* color: #555; */
     font-size: 18px;
     margin-bottom: 5px;
   }
@@ -113,9 +148,10 @@ body {
 
   textarea {
     height: 50px;
+    width:73vh
   }
 
-  .form-row {
+  .form-row-group {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -165,10 +201,9 @@ body {
     display: block;
     margin: 0 auto;
     padding: 10px 20px;
-    background-color: #f17676;
+    background-color: #f0cf15;
     border: none;
     border-radius: 4px;
-    color: #fff;
     font-size: 18px;
     font-weight: bold;
     cursor: pointer;
@@ -176,5 +211,122 @@ body {
   }
 
   input[type="submit"]:hover {
-    background-color: #ff6347;
+    background-color: #f0cf15;
   }
+
+   /* footer */
+#footer{
+  padding: 0 0 30px 0;
+  color: #d0d0d0;
+  font-size: 14px;
+  background: #111111;
+}
+#footer .footer-top{
+  padding: 60px 0 30px;
+  background: #1b1b1b;
+  color: #fff;
+}
+#footer .footer-top .footer-contact a{
+  font-size: 20px;
+  color: #f0cf15;
+  font-weight: bold;
+}
+#footer .footer-top .footer-contact a img{
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+#footer .footer-top .footer-contact h4{
+  font-size: 22px;
+  margin: 0 0 30px 0;
+  padding: 2px 0 2px 0;
+  line-height: 1;
+  font-weight: 700;
+}
+#footer .footer-top .footer-contact p{
+  font-size: 14px;
+  line-height: 24px;
+  margin-bottom: 0;
+  color: #b7b7b7; 
+}
+#footer .footer-top h4{
+  font-size: 16px;
+  font-weight: bold;
+  position: relative;
+  padding-bottom: 12px;
+}
+#footer .footer-top .footer-links{
+  margin-bottom: 30px;
+}
+#footer .footer-top .footer-links ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+#footer .footer-top .footer-links ul li{
+  padding-right: 2px;
+  color: #f0cf15;
+  font-size: 18px;
+  line-height: 1;
+}
+#footer .footer-top .footer-links ul li{
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+}
+#footer .footer-top .footer-links ul li:first-child{
+  padding-top: 0;
+}
+#footer .footer-top .footer-links ul li a{
+  color: #aaaaaa;
+  transition: 0.3s;
+  display: inline-block;
+  line-height: 1;
+}
+#footer .footer-top .footer-links ul a:hover{
+  text-decoration: none;
+  color: #f0cf15;
+}
+#footer .footer-top .social-links a{
+  font-size: 18px;
+  display: inline-block;
+  background: #373737;
+  color: #fff;
+  line-height: 1;
+  padding: 8px 0;
+  margin-right: 4px;
+  border-radius: 50%;
+  text-align: center;
+  width: 36px;
+  height: 36px;
+  transition: 0.3s;
+}
+#footer .footer-top .social-links a:hover{
+  background: #f0cf15;
+  color: #fff;
+  text-decoration: none;
+}
+
+#footer .copyright{
+  text-align: center;
+  float: left;
+}
+#footer .credits{
+  float: right;
+  text-align: center;
+}
+/* footer */
+/* footer content */
+
+html{
+  scroll-behavior: smooth;
+}
+.arrow{
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  bottom: 40px;
+  right: 50px;
+  text-decoration: none;
+  text-align: center;
+  line-height: 50px;
+}
