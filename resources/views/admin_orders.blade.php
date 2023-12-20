@@ -93,6 +93,8 @@
                     <th scope="col">Location</th>
                     <th scope="col">Date</th>
                     <th scope="col">Total</th>
+                    <th scope="col">Artist</th>
+                    <th scope="col">Artist Status</th>
                     <th scope="col">Status</th>
                 </tr>
                 </thead>
@@ -109,15 +111,27 @@
                         <td>{{$order->user->name}}</td>
                         <td>{{$order->contact}}</td>
                         <td>{{$order->location}}</td>
-                        <td>{{$order->created_at}}</td>
+                        @php
+                            $dt = $order->created_at;
+                            $dt->modify('+7 day');
+
+                        @endphp
+                        <td>{{$dt->format('Y-m-d')}}</td>
                         <td>{{$order->total}}</td>
-                        {{-- <td>{{$order->status}}</td> --}}
+                        <td>{{$order->art->user->name}}</td>
+                        <td>{{$order->artist_status}}</td>
                         <td>
                             <p>{{$order->status}}</p>
-                            @if ($order->status == 'pending')
-                            <button type="button" class="bun btn btn-link btn-sm px-3" data-ripple-color="dark"
-                            >Complete
-                        </button>
+                            @if ($order->status == 'Pending' && $order->artist_status == 'Ready')
+                            <form action="{{route('updateorder')}}" method="post">
+                                @csrf
+                                <input type="hidden" name="updatetype" value="admin">
+                                <input type="hidden" name="orderid" value="{{$order->id}}">
+                                <button type="submit" class="bun btn btn-link btn-sm px-3" data-ripple-color="dark">
+                                Complete
+                                </button>
+                            </form>
+                            
                             @endif
                             
                         

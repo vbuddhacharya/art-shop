@@ -142,22 +142,23 @@ body{
     }
 }
 #navbar{
-  background-color: #f0cf15;
+  /* background-color: #f0cf15; */
+  background-color: #ae7eae;
   padding-left: 50px;
 }
 #logo{
-  color: black;
+  color: #111111;
   font-weight: bold;
 }
 .nav-link{
-  color: white;
+  color: black;
   /* font-weight: bold; */
   /* text-shadow: 1px 1px 1px black; */
   margin-left: 15px;
   transition: 0.5s ease;
 }
 .nav-link:hover{
-  color: black;
+  color: white;
 }
 .icons{
   margin-right: 50px;
