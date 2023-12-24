@@ -18,6 +18,20 @@ class UserController extends Controller
     public function viewLogin(){
         return view('login');
     }
+
+    public function verifyLogin(Request $request){
+        $credentials = ($request->except('_token'));
+        if (Auth::attempt($credentials)){
+            $request->session()->regenerate();
+            return redirect()->route('home');
+        }
+        else{
+            return redirect()->route('login');
+        }
+    }
+
+
+
     public function viewSignup(){
         return view('signup');
     }

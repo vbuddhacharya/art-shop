@@ -42,7 +42,7 @@
  <nav class="navbar navbar-expand-md" id="navbar">
     <!-- Brand -->
     <a class="navbar-brand" href="#" id="logo"><img src="logo.png" alt="" width="30px"
-        style="margin-bottom: 10px; margin-right: 10px;">Art Shop</a>
+        style="margin-bottom: 10px; margin-right: 10px;">Kalaa</a>
 
     <!-- Toggler/collapsibe Button -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
