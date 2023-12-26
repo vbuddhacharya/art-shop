@@ -41,8 +41,8 @@
  <!-- navbar -->
  <nav class="navbar navbar-expand-md" id="navbar">
     <!-- Brand -->
-    <a class="navbar-brand" href="#" id="logo"><img src="logo.png" alt="" width="30px"
-        style="margin-bottom: 10px; margin-right: 10px;">Art Shop</a>
+    <a class="navbar-brand" href="#" id="logo"><img src="{{asset('images/homepage/mainlogo.png')}}" alt="" width="30px"
+      style="margin-bottom: 10px; margin-right: 10px;">Kalaa</a>
 
     <!-- Toggler/collapsibe Button -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -71,7 +71,7 @@
 
     </div>
     <div class="icons">
-      <img src="{{asset('images/homepage/search.png')}}" alt="" width="16px">
+      {{-- <img src="{{asset('images/homepage/search.png')}}" alt="" width="16px"> --}}
       <img src="{{asset('images/homepage/user.png')}}" alt="" width="20px">
       <img src="{{asset('images/homepage/shopping-cart (3).png')}}" alt="" width="20px">
     </div>
@@ -86,8 +86,9 @@
         <img src="{{ asset('images/art/1.jpg') }}" alt="Chosen Art">
         </div>
 
-        <form>
-            <h1>Place your Order Here</h1>
+        <form action="{{route('order')}}" method="post">
+          @csrf
+            <h1 style="font-family: 'Urbanist', sans-serif;">Place your Order Here</h1>
             <table cell-padding="0" cell-spacing="0" class="mytable">
                 <tr>
                     <div class="form-group">
@@ -95,7 +96,7 @@
                             <label for="location" class="larger-cell">Delivery Location</label>
                         </td>
                         <td>
-                            <input type="text" id="location" required>
+                            <input type="text" id="location" name="location" required>
                         </td>
                     </div>
                 </tr>
@@ -106,7 +107,7 @@
                             <label for="contact" class="larger-cell">Contact</label>
                         </td>
                         <td>
-                            <input type="text" id="contact" required>
+                            <input type="text" name="contact" id="contact" required>
                         </td>
                     </div>
                 </tr>
@@ -117,7 +118,7 @@
                             <label for="price" class="larger-cell">Total Price</label>
                         </td>
                         <td>
-                            <input type="text" id="price" value="1000" readonly>
+                            <input type="text" id="price" name="sum" value="{{$sum}}" readonly>
                         </td>
                     </div>
                 </tr>
@@ -128,7 +129,7 @@
                             <label for="delivery-charge" class="larger-cell">Delivery Charge</label>
                         </td>
                         <td>
-                            <input type="text" id="delivery-charge" value="100" readonly>
+                            <input type="text" id="delivery-charge" name="delivery" value="{{$delivery}}" readonly>
                         </td>
                     </div>
                 </tr>
@@ -139,13 +140,15 @@
                             <label for="total" class="larger-cell">Grand Total</label>
                         </td>
                         <td>
-                            <input type="text" id="total" value="1100" readonly>
+                            <input type="text" id="total" name="total" value="{{$total}}" readonly>
                         </td>
                     </div>
                 </tr>
             </table>
 
             <div class="buttons">
+                @if(isset($values['quantity']))<input type="hidden" name="quantity" value="{{$values['quantity']}}">@endif
+                @if(isset($values['artid']))<input type="hidden" name="artid" value="{{$values['artid']}}">@endif
                 <input type="submit" value="Confirm" class="confirm">
                 <input type="reset" value="Cancel" class="cancel">
             </div>

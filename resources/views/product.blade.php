@@ -34,8 +34,8 @@
 <body>
     <nav class="navbar navbar-expand-md" id="navbar">
         <!-- Brand -->
-        <a class="navbar-brand" href="#" id="logo"><img src="logo.png" alt="" width="30px"
-            style="margin-bottom: 10px; margin-right: 10px;">Art Shop</a>
+        <a class="navbar-brand" href="#" id="logo"><img src="{{asset('images/homepage/mainlogo.png')}}" alt="" width="30px"
+          style="margin-bottom: 10px; margin-right: 10px;">Kalaa</a>
     
         <!-- Toggler/collapsibe Button -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -73,11 +73,12 @@
         <div class="main-section">
             <div class="detail-section">
                 <div class="product-img">
-                    <img src="{{asset('images/art/3.jpg')}}" alt="Product Image">
+                    <img src="{{ url('/images/arts/'.$prod->image) }}" alt="Product Image">
+                    
                 </div>
                 <div class="details">
-                    <div class="title">Sukuna
-                        <div class="artist">ArtistCha</div>
+                    <div class="title">{{$prod->name}}
+                        <div class="artist">{{$prod->user->name}}</div>
                     </div>
                     
                     <div class="info">
@@ -86,14 +87,15 @@
                             {{-- <div class="de">Description</div> --}}
                             <div class="de">About the artwork</div>
                             {{-- A girl dressed traditionally with her hand under her chin. This is one of my favourite art that I've done. --}}
-                            Glass painting of Sukuna from Jujutsu Kaisen anime.
+                            {{-- Glass painting of Sukuna from Jujutsu Kaisen anime. --}}
+                            {{$prod->description}}
                         </div>
                         <div class="cat">
                             <div class="de">Details</div>
-                            Category: Glass Painting
+                            Category: {{$prod->category}}
                             <div class="size">
-                                Size: 5"x7" <br>
-                                Material: Glass
+                                Size: {{$prod->size}} <br>
+                                Material: {{$prod->material}}
                             </div>
                             
                         </div>
@@ -101,34 +103,41 @@
                         
                         <div class="delivery">
                             <div class="de">Delivery Information</div>
-                            Frame Included: Yes
+                            Frame Included:@if($prod->hasFrame==1) Yes @else No @endif
                             <div>
-                                Delivery Time: 7 days
+                                Delivery Time: {{$prod->time}}
                             </div>
-                            <div class="stock">Available: Yes</div>
-                            <div>Artist Contact: 9823541875</div>
+                            <div class="stock">Available:
+                              @if($prod->stock>0) Yes @else No @endif
+                            </div>
+                            <div>Artist Contact: {{$prod->user->contact}}</div>
                         </div>
                         
                     </div>
                     <div class="other">
-                        <div class="price">Rs 3000</div>
+                        <div class="price">Rs. {{$prod->price}}</div>
                         
                     </div>
-                    <form action="/" style="width:100%">
+                    <form action="{{route('add',$prod->id)}}" method="post" style="width:100%">
+                      @csrf
                         <div class="order"> 
                             <div class="qn">
                                 <label for="quantity">Quantity 
                                     {{-- <input type="number" name="quantity" id="quantity" value="1" min="1" max="5"> --}}
                                     <select name="quantity" id="quantity">
-                                        @for($i=1; $i<=5; $i++)
+                                      @if($prod->stock<1) <option value="0" selected>0</option> 
+                                      @else
+                                        @for($i=1; $i<=$prod->stock; $i++)
                                             <option value="{{ $i }}" @if($i == 1) selected @endif>{{ $i }}</option>
                                         @endfor
+                                      @endif
                                     </select>
                                 </label>
                             </div>
                             <div class="buttons">
-                                <button type="submit" value="buy">Buy</button>
-                                <button type="submit" value="cart">Add to Cart</button>
+                                <input type="hidden" name="artid" value="{{$prod->id}}">
+                                <button type="submit" name="button" value="buy">Buy</button>
+                                <button type="submit" name="button" value="cart">Add to Cart</button>
                             </div>                        
                         </div>
                     </form>

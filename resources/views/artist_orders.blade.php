@@ -33,6 +33,7 @@
   <!-- fonts links -->
   <!-- icons links -->
   <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+  
     <title>Artist Orders</title>
     <link rel="stylesheet" href="{{asset('css/artistord.css')}}">
 </head>
@@ -42,8 +43,8 @@
     </div> --}}
     <nav class="navbar navbar-expand-md" id="navbar">
         <!-- Brand -->
-        <a class="navbar-brand" href="#" id="logo"><img src="logo.png" alt="" width="30px"
-            style="margin-bottom: 10px; margin-right: 10px;">Art Shop</a>
+        <a class="navbar-brand" href="#" id="logo"><img src="{{asset('images/homepage/mainlogo.png')}}" alt="" width="30px"
+          style="margin-bottom: 10px; margin-right: 10px;">Kalaa</a>
     
         <!-- Toggler/collapsibe Button -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -97,48 +98,48 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>
-                        <div class="product">
-                            <img src="{{asset('images/art/1.jpg')}}" alt="" style="width: 100%">    
-                        </div></td>
-                    <td class="name">Beauty in Tradition</td>
-                    <td>1</td>
-                    <td>Nikita Maharjan</td>
-                    <td>9865534109</td>
-                    <td>NCCS College, Paknajol</td>
-                    <td>10/7/2023</td>
-                    <td>1100</td>
-                    <td>
-                    <button type="button" class="bun btn btn-link btn-sm px-3" data-ripple-color="dark"
-                    >
-                        Complete
-                    </button>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">12</th>
-                    <td>
-                        <div class="product">
-                            <img src="{{asset('images/art/3.jpg')}}" alt="" style="width: 100%">    
-                        </div></td>
-                    <td class="name">Sukuna</td>
-                    <td>1</td>
-                    <td>Ramesh Shakya</td>
-                    <td>9865109884</td>
-                    <td>Bhagwan Pau, Swoyambhu</td>
-                    <td>2/7/2023</td>
-                    <td>3100</td>
-                    <td>
-                        Completed
-                    {{-- <button type="button" class="btn btn-link btn-sm px-3" data-ripple-color="dark"
-                    style="background-color: aqua; color:brown">
-                        Complete
-                    </button> --}}
-                    </td>
-                </tr>
-                    
+                  @foreach ($orders as $order)
+                      @if($order->art->user->id == 3)
+                      <tr>
+                        <th scope="row">{{$order->id}}</th>
+                        <td>
+                            <div class="product">
+                                <img src="{{ url('/images/arts/'.$order->art->image) }}" alt="" style="width: 100%">    
+                            </div></td>
+                        <td class="name">{{$order->art->name}}</td>
+                        <td>{{$order->quantity}}</td>
+                        <td>{{$order->user->name}}</td>
+                        <td>{{$order->contact}}</td>
+                        <td>{{$order->location}}</td>
+                        {{-- @php
+                            $dt = $order->created_at;
+                            $dt->modify('+7 day');
+
+                        @endphp --}}
+                        <td>{{$order->created_at->format('Y-m-d')}}</td>
+                        <td>{{$order->total}}</td>
+                        <td>
+                          
+                          @if ($order->artist_status == 'Working')
+                          <p>{{$order->artist_status}}</p>
+                          <form action="{{route('updateorder')}}" method="post">
+                              @csrf
+                              <input type="hidden" name="orderid" value="{{$order->id}}">
+                              <input type="hidden" name="updatetype" value="artist">
+                              <button type="submit" class="bun btn btn-link btn-sm px-3" data-ripple-color="dark">
+                              Ready
+                              </button>
+                          </form>
+                          
+                          @elseif ($order->status == 'Completed')
+                            <p>{{$order->status}}</p>
+                          @else
+                            <p>{{$order->artist_status}}</p>
+                          @endif
+                      </td>
+                      </tr>
+                      @endif
+                  @endforeach
                 </tbody>
             </table>
         </div>

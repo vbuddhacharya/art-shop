@@ -48,8 +48,8 @@
  <!-- navbar -->
  <nav class="navbar navbar-expand-md" id="navbar">
     <!-- Brand -->
-    <a class="navbar-brand" href="#" id="logo"><img src="logo.png" alt="" width="30px"
-        style="margin-bottom: 10px; margin-right: 10px;">Art Shop</a>
+    <a class="navbar-brand" href="#" id="logo"><img src="{{asset('images/homepage/mainlogo.png')}}" alt="" width="30px"
+      style="margin-bottom: 10px; margin-right: 10px;">Kalaa</a>
 
     <!-- Toggler/collapsibe Button -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -78,7 +78,7 @@
 
     </div>
     <div class="icons">
-      <img src="{{asset('images/homepage/search.png')}}" alt="" width="16px">
+      {{-- <img src="{{asset('images/homepage/search.png')}}" alt="" width="16px"> --}}
       <img src="{{asset('images/homepage/user.png')}}" alt="" width="20px">
       <img src="{{asset('images/homepage/shopping-cart (3).png')}}" alt="" width="20px">
     </div>
@@ -97,29 +97,30 @@
 					</div>
 				</div>
 				<div class="d-flex justify-content-center form_container">
-					<form>
+					<form action="{{route('verify')}}" method="post">
+            @csrf
 						<div class="input-group mb-3">
 							<div class="input-group-append">
 								<span class="input-group-text"><i class="fas fa-user" style="color:black;"></i></span>
 							</div>
-							<input type="text" name="" class="form-control input_user" value="" placeholder="username">
+							<input type="text" name="username" class="form-control input_user" value="" placeholder="Username">
 						</div>
 						<div class="input-group mb-2">
 							<div class="input-group-append">
 								<span class="input-group-text"><i class="fas fa-key" style="color:black;"></i></span>
 							</div>
-							<input type="password" name="" class="form-control input_pass" value="" placeholder="password">
+							<input type="password" name="password" class="form-control input_pass" value="" placeholder="Password">
 						</div>
 					
 							<div class="d-flex justify-content-center mt-3 login_container">
-				 	<button type="button" name="button" class="btn login_btn">Login</button>
+				 	<button type="submit" class="btn login_btn" style="font-family: 'Urbanist', sans serif">Login</button>
 				   </div>
 					</form>
 				</div>
 		
 				<div class="mt-4">
 					<div class="d-flex justify-content-center links">
-						Don't have an account? <a href="#" class="ml-2">Sign Up</a>
+						Don't have an account? <a href="{{route('signup')}}" class="ml-2">Sign Up</a>
 					</div>
 					
 				</div>

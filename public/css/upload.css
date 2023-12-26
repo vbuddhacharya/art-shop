@@ -1,10 +1,12 @@
 body {
-    font-family: Arial, sans-serif;
+    /* font-family: Arial, sans-serif; */
     background-color: #f9f9f9;
     margin: 0;
     padding: 0;
   }
-
+*{
+  font-family: 'Lora', sans-serif;
+}
  /* navbar */
   /* *{
     margin: 0;
@@ -13,23 +15,23 @@ body {
     font-family: 'Roboto', sans-serif;
 } */
 #navbar{
-  background-color: #f0cf15;
+  background-color: #ae7eae;
   padding-left: 50px;
   margin-bottom: 8vh;
 }
 #logo{
-  color: black;
+  color: #111111;
   font-weight: bold;
 }
 .nav-link{
-  color: white;
-  font-weight: bold;
-  text-shadow: 1px 1px 1px black;
+  color: #111111;
+  /* font-weight: bold; */
+  /* text-shadow: 1px 1px 1px black; */
   margin-left: 15px;
   transition: 0.5s ease;
 }
 .nav-link:hover{
-  color: black;
+  color: white;
 }
 .icons{
   margin-right: 50px;
@@ -56,7 +58,10 @@ body {
     text-align: center;
     margin-bottom: 5vh;
     font-size: 42px;
-    background-color: #f7d201;
+    /* background-color: #f7d201; */
+    background-color: #ae7eae;
+    border-radius: 4px;
+    
   }
 
 
@@ -92,7 +97,7 @@ body {
   .file-input label {
     display: inline-block;
     padding: 10px 20px;
-    border: 2px solid #f0cf15;
+    border: 2px solid #ae7eae;;
     background-color: #f9f9f9;
     cursor: pointer;
   }
@@ -148,7 +153,7 @@ body {
 
   textarea {
     height: 50px;
-    width:73vh
+    /* width:73vh */
   }
 
   .form-row-group {
@@ -159,7 +164,7 @@ body {
   
   .form-group {
     flex: 1;
-    margin-right: 10px;
+    /* margin-right: 10px; */
   }
     
   select,
@@ -201,7 +206,8 @@ body {
     display: block;
     margin: 0 auto;
     padding: 10px 20px;
-    background-color: #f0cf15;
+    /* background-color: #f0cf15; */
+    background-color: #ae7eae;
     border: none;
     border-radius: 4px;
     font-size: 18px;

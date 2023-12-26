@@ -33,6 +33,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nanum Myeongjo">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Urbanist">
   <!-- fonts links -->
   <!-- icons links -->
   <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
@@ -43,8 +46,8 @@
  <!-- navbar -->
  <nav class="navbar navbar-expand-md" id="navbar">
     <!-- Brand -->
-    <a class="navbar-brand" href="#" id="logo"><img src="logo.png" alt="" width="30px"
-        style="margin-bottom: 10px; margin-right: 10px;">Art Shop</a>
+    <a class="navbar-brand" href="#" id="logo"><img src="{{asset('images/homepage/mainlogo.png')}}" alt="" width="30px"
+      style="margin-bottom: 10px; margin-right: 10px;">Kalaa</a>
 
     <!-- Toggler/collapsibe Button -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -73,7 +76,7 @@
 
     </div>
     <div class="icons">
-      <img src="{{asset('images/homepage/search.png')}}" alt="" width="16px">
+      {{-- <img src="{{asset('images/homepage/search.png')}}" alt="" width="16px"> --}}
       <img src="{{asset('images/homepage/user.png')}}" alt="" width="20px">
       <img src="{{asset('images/homepage/shopping-cart (3).png')}}" alt="" width="20px">
     </div>
@@ -81,19 +84,29 @@
 
   <!-- navbar -->
 
-
+  @if ($errors->any())
+  <div class="error">
+      <br>
+      <ul>
+          @foreach($errors->all() as $error)
+              <li>{{ $error }}</li>
+          @endforeach
+      </ul>
+  </div>
+  @endif
 <!-- upload form -->
   <div class="container-box">
-    <h1>Share Your Creative Works</h1>
-    <form action="upload.php" method="POST" enctype="multipart/form-data">
+    <h1 style="font-family: 'Urbanist',sans-serif;">Share Your Creative Works</h1>
+    <form action="{{route('check')}}" method="POST" enctype="multipart/form-data">
+      @csrf
         <div class="form-group">
             <label for="artTitle" class="artlabel">Art Title</label>
-            <input type="text" id="artTitle" name="artTitle" placeholder="Enter Art Title" required>
+            <input type="text" id="artTitle" name="artname" placeholder="Enter Art Title" required>
         </div>
         <div class="form-img">
   <label for="artImage" class="artimg">Art Image</label>
   <span class="file-input">
-    <input type="file" id="myFile" name="myFile" onchange="showFileName(this)">
+    <input type="file" id="myFile" name="artimage" onchange="showFileName(this)" required>
     <label for="myFile">Choose File</label>
     <span id="file-name"></span>
 
@@ -104,11 +117,11 @@
         <div class="form-row">
             <div class="form-group">
                 <label for="artSize" class="artlabel">Art Size</label>
-                <input type="text" id="artSize" name="artSize" placeholder="Enter Art Size" required>
+                <input type="text" id="artSize" name="artsize" placeholder="Enter Art Size" required>
             </div>
             <div class="form-group" style="margin-left: 10vh;">
                 <label for="artPrice" class="artlabel">Art Price</label>
-                <input type="number" id="artPrice" name="artPrice" min="0" step="50" value="50" required>
+                <input type="number" id="artPrice" name="artprice" min="0" required>
             </div>
 
         </div>
@@ -116,46 +129,46 @@
         <div class="form-row-group">
             <div class="form-group">
                 <label for="artMaterial" class="artlabel">Art Material</label>
-                <select id="artMaterial" name="artMaterial"  style="width: 30vh">
-                    <option value="paper">Paper</option>
-                    <option value="glass">Glass</option>
-                    <option value="canvas">Canvas</option>
+                <select id="artMaterial" name="material">
+                    <option value="Paper">Paper</option>
+                    <option value="Glass">Glass</option>
+                    <option value="Canvas">Canvas</option>
                 </select>
             </div>
             <div class="form-group" style="margin-left: 10vh;">
                 <label for="artCategory" class="artlabel">Art Category</label>
-                <select id="artCategory" name="artCategory" style="width: 31.5vh" required>
-                    <option value="coloredPencil">Color Pencil</option>
-                    <option value="pencilSketch">Pencil Sketch</option>
-                    <option value="oilPaint">Oil Paint</option>
-                    <option value="acrylicPaint">Acrylic Paint</option>
-                    <option value="watercolor">Watercolors</option>
+                <select id="artCategory" name="category" required>
+                    <option value="Color Pencil">Color Pencil</option>
+                    <option value="Pencil Sketch">Pencil Sketch</option>
+                    <option value="Oil Paint">Oil Paint</option>
+                    <option value="Acrylic Paint">Acrylic Paint</option>
+                    <option value="Watercolor">Watercolor</option>
                 </select>
             </div>
         </div>
 
         <div class="form-group">
             <label for="artDescription" class="artlabel">Art Description</label>
-            <textarea id="artDescription" name="artDescription" placeholder="Provide Proper Art Description" required></textarea>
+            <textarea id="artDescription" name="description" placeholder="Provide Proper Art Description" required></textarea>
         </div>
      
         <div class="form-row">
             <div class="form-group">
                 <label for="artStock" class="artlabel">Art Stock</label>
-                <input type="number" id="artStock" name="artStock" min="1" max="5" step="1" value="1" required>
+                <input type="number" id="artStock" name="stock" min="1" max="100" step="1" value="1" required>
             </div>
             <div class="form-group" style="margin-left: 10vh;">
                 <label for="artDeliver" class="artlabel">Delivery Time</label>
-                <input type="text" id="artDeliver" name="artDeliver" placeholder="Enter Delivery Time" required>
+                <input type="text" id="artDeliver" name="deliver" placeholder="Enter Delivery Time" required>
             </div>
         </div>
         <br/>
         <div class="form-group">
             <div class="radio-group">
                 <label for="frameIncluded" class="artlabel">Include Frame?</label>
-                <input type="radio" id="yes" name="radioField" value="yes"  style="font-weight: 100px;" required>
+                <input type="radio" id="yes" name="frame" value="1"  style="font-weight: 100px;" required>
                 <label for="yes">Yes</label>
-                <input type="radio" id="no" name="radioField" value="no" required>
+                <input type="radio" id="no" name="frame" value="0" required>
                 <label for="no">No</label>
                 
             </div>
