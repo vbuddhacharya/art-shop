@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Artists</title>
     <script src="https://kit.fontawesome.com/110779528c.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{asset('css/users.css')}}">
 
@@ -11,7 +12,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script> 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" ></script>
-    <title>Customers</title>
 </head>
 <body>
     <div class="side-menubar">
@@ -28,12 +28,12 @@
     </div>
     <main>
         <section>
-            <div class="path-title">Admin \ Customers</div>
+            <div class="path-title">Admin \ Artists</div>
             <div class="container mt-3">
                 <div class="row">
                   <div class="col-md-8 tb">
-                    <h2>Customers</h2>
-                    <p>Total Customers: {{$custcount}}</p>
+                    <h2>Artists</h2>
+                    <p>Total Artists: {{$artistcount}}</p>
                     <input class="form-control" id="myInput" type="text" placeholder="Search..">
                     <br>
                     <table class="table align-middle table-hover user-table">
@@ -42,16 +42,18 @@
                             <th scope="col">Name</th>
                             <th scope="col">Contact</th>
                             <th scope="col">Email</th>
+                            <th scope="col">Items</th>
                             <th scope="col">Orders</th>
                         </tr>
                       </thead>
                       <tbody id="tableData">
-                        @foreach ($customers as $cust)
+                        @foreach ($artists as $artist)
                         <tr>
-                            <td>{{$cust->name}}</td>
-                            <td>{{$cust->contact}}</td>
-                            <td>{{$cust->email}}</td>
-                            <td>{{$cust->order_count}}</td>
+                            <td>{{$artist->name}}</td>
+                            <td>{{$artist->contact}}</td>
+                            <td>{{$artist->email}}</td>
+                            <td>{{$artist->art_count}}</td>
+                            <td>{{$artist->order}}</td>
                         </tr>
                         @endforeach
                       </tbody>
@@ -61,42 +63,32 @@
                 </div>
               </div>
             {{-- <div>
-                <h1>Customers</h1>
-                <p>{{$custcount}}</p>
+                <h1>Artists</h1>
+                <p>{{$artistcount}}</p>
                 <table class="table align-middle table-hover" style="margin:auto; text-align:center">
                     <thead>
                     <tr class="color">
                         <th scope="col">Name</th>
                         <th scope="col">Contact</th>
                         <th scope="col">Email</th>
+                        <th scope="col">Items</th>
                         <th scope="col">Orders</th>
                     </tr>
                     </thead>
                     <tbody>
-                        @foreach ($customers as $cust)
+                        @foreach ($artists as $artist)
                         <tr>
-                            <td>{{$cust->name}}</td>
-                            <td>{{$cust->contact}}</td>
-                            <td>{{$cust->email}}</td>
-                            <td>{{$cust->order_count}}</td>
+                            <td>{{$artist->name}}</td>
+                            <td>{{$artist->contact}}</td>
+                            <td>{{$artist->email}}</td>
+                            <td>{{$artist->art_count}}</td>
+                            <td>{{$artist->order}}</td>
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
             </div> --}}
-
         </section>
-        
     </main>
-    <script>
-        $(document).ready(function(){
-          $("#myInput").on("keyup", function() {
-            var value = $(this).val().toLowerCase();
-            $("#tableData tr").filter(function() {
-              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-            });
-          });
-        });
-        </script>
 </body>
 </html>

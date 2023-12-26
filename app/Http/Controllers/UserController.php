@@ -221,6 +221,11 @@ class UserController extends Controller
         
         $customers = User::where('usertype','customer')->withCount('order')->get();
         $custcount = $customers->count();
+        return view('allusers', compact('customers','custcount'));
+        // dd($artists);
+    
+    }
+    public function viewAllArtists(){
         $artists = User::where('usertype','artist')->withCount('art')->get();
         $artistcount = $artists->count();
         // $custorders = $customers->get();
@@ -233,10 +238,7 @@ class UserController extends Controller
             }
             $art->order = $count;
         }
-        
-        return view('allusers', compact('customers','artists','artistcount','custcount'));
-        // dd($artists);
-    
+        return view('allartists', compact('artists','artistcount'));
     }
     /**
      * Show the form for editing the specified resource.
