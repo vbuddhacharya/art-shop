@@ -155,8 +155,8 @@ class OrderController extends Controller
             $order->total = $request->total;
             $order->location = $request->location;
             $order->contact = $request->contact;
-            $order->status = 'pending';
-            $order->artist_status = 'working';
+            $order->status = 'Pending';
+            $order->artist_status = 'Working';
             $order->save();
             return("hello");
         }

@@ -24,16 +24,45 @@ class UserController extends Controller
     }
     public function adminLogin(){
         // $order = Order::whereDate('created_at', '>=', date('Y-m-d'));
-        $order = Order::where('status','pending')->get();
+        $orders = Order::all()->sortByDesc('created_at')->take(5);
+        $usercount = User::all()->count();
+        $ordercount = Order::where('status','pending')->count();
         // dd($order);
-        $ordercount = $order->count();
         $sales = Order::where('status','completed')->whereDate('updated_at','=',date('Y-m-d'))->get();
         $total = 0;
         foreach ($sales as $sale) {
             $total += $sale->total;
         }
-        // dd($sales);
-        return view('admin', compact('ordercount', 'total'));
+        $tops = Art::withCount('order')->orderBy('order_count','desc')->take(3)->get();
+        // dd($tops);
+        return view('admin', compact('ordercount','usercount', 'total','orders','tops'));
+    }
+    public function adminStats(){
+        $orders = Order::whereYear('created_at',date('Y'))->orderBy('created_at','asc')->get()->groupBy(function(Order $order){
+            return $order->created_at->format('m');
+        })->toArray();
+        $months = [];
+        $monthsCount = [];
+        foreach($orders as $month => $values){
+            $months[] = $month;
+            $monthsCount[] = count($values);
+        }
+        for ($i=0; $i < 12; $i++) { 
+           $months[$i] = $i+1;
+           foreach($orders as $month => $values){
+            if($month == $i+1){
+                $monthsCount[$i] = count($values);
+                break;
+            }
+            else{
+                $monthsCount[$i] = 0;
+            }
+           }
+        }
+        // dd($months);
+        // dd($orders);
+        // return view('admin_stats')->with('month',json_encode($months, JSON_NUMERIC_CHECK))->with('monthsCount',json_encode($monthsCount, JSON_NUMERIC_CHECK));
+        return view('admin_stats')->with('monthsCount',json_encode($monthsCount, JSON_NUMERIC_CHECK));
     }
     public function viewLogin(){
         return view('login');
@@ -56,7 +85,11 @@ class UserController extends Controller
     }
     
     public function viewCustOrders(){
-        return view('cust_orders');
+        $cust_id = Auth::user()->id;
+        // $customers = User::all()->where('user_id', $cust_id)->get();
+        // dd($customers);
+        $orders = Order::where('user_id', $cust_id)->get();
+        return view('cust_orders',compact('orders'));
     }
     public function viewArtistOrders(){
         $id = 3;

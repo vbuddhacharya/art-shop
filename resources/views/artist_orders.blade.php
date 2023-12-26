@@ -33,6 +33,7 @@
   <!-- fonts links -->
   <!-- icons links -->
   <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+  
     <title>Artist Orders</title>
     <link rel="stylesheet" href="{{asset('css/artistord.css')}}">
 </head>
@@ -110,16 +111,16 @@
                         <td>{{$order->user->name}}</td>
                         <td>{{$order->contact}}</td>
                         <td>{{$order->location}}</td>
-                        @php
+                        {{-- @php
                             $dt = $order->created_at;
                             $dt->modify('+7 day');
 
-                        @endphp
-                        <td>{{$dt->format('Y-m-d')}}</td>
+                        @endphp --}}
+                        <td>{{$order->created_at->format('Y-m-d')}}</td>
                         <td>{{$order->total}}</td>
                         <td>
                           
-                          @if ($order->artist_status == 'Waiting')
+                          @if ($order->artist_status == 'Working')
                           <p>{{$order->artist_status}}</p>
                           <form action="{{route('updateorder')}}" method="post">
                               @csrf

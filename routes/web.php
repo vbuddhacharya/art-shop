@@ -47,4 +47,4 @@ Route::get('artstore/orders/all',[OrderController::class,'viewAllOrders'])->name
 
 Route::get('/artstore/admin',[UserController::class,'adminLogin'])->name('admin');
 Route::post('artstore/orders/update',[OrderController::class,'updateOrder'])->name('updateorder');
-
+Route::get('/artstore/admin/stats',[UserController::class,'adminStats'])->name('stats');
