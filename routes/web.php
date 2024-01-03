@@ -43,6 +43,7 @@ Route::post('artstore/place-order',[OrderController::class,'placeOrder'])->name(
 
 Route::get('artstore/editprofile',[UserController::class,'editProfile'])->name('edit');
 Route::get('artstore/users/all',[UserController::class,'viewAllUsers'])->name('allusers');
+Route::get('artstore/artists/all',[UserController::class,'viewAllArtists'])->name('allartists');
 Route::get('artstore/orders/all',[OrderController::class,'viewAllOrders'])->name('allorders');
 
 Route::get('/artstore/admin',[UserController::class,'adminLogin'])->name('admin');

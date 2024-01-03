@@ -31,7 +31,7 @@
             <a href="{{route('admin')}}"><i class="fa-solid fa-house"></i>Dashboard</a>
             <a href="{{route('allorders')}}"><i class="fa-solid fa-cart-shopping"></i>Orders</a>
             <a href="{{route('allusers')}}"><i class="fa-solid fa-users"></i>Customers</a>
-            <a href="{{route('allusers')}}"><i class="fa-solid fa-palette"></i>Artists</a>
+            <a href="{{route('allartists')}}"><i class="fa-solid fa-palette"></i>Artists</a>
             <a href="{{route('stats')}}"><i class="fa-solid fa-chart-simple"></i>Statistics</a>
             <a href="{{route('admin')}}"><i class="fa-solid fa-star"></i>Requests</a>
             <a href="{{route('admin')}}"><i class="fa-solid fa-user"></i>Profile</a>
@@ -88,8 +88,8 @@
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th>Item name</th>
-                                <th>Quantity</th>
+                                <th>Item</th>
+                                <th>Qty</th>
                                 <th>Customer</th>
                                 <th>Location</th>
                                 <th>Contact</th>

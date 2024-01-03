@@ -59,10 +59,12 @@ class UserController extends Controller
             }
            }
         }
-        // dd($months);
-        // dd($orders);
+        $completed = Order::where('status','Completed')->whereYear('updated_at',date('Y'))->count();
+        $pending = Order::where('status','Pending')->count();
+        $orderCount = [$pending, $completed];
+        // dd($orders1);
         // return view('admin_stats')->with('month',json_encode($months, JSON_NUMERIC_CHECK))->with('monthsCount',json_encode($monthsCount, JSON_NUMERIC_CHECK));
-        return view('admin_stats')->with('monthsCount',json_encode($monthsCount, JSON_NUMERIC_CHECK));
+        return view('admin_stats',compact('completed','pending'))->with('monthsCount',json_encode($monthsCount, JSON_NUMERIC_CHECK))->with('orderCount',json_encode($orderCount, JSON_NUMERIC_CHECK));
     }
     public function viewLogin(){
         return view('login');
@@ -221,6 +223,17 @@ class UserController extends Controller
         
         $customers = User::where('usertype','customer')->withCount('order')->get();
         $custcount = $customers->count();
+        forEach($customers as $c){
+            $c->joined = $c->created_at->format('Y-m-d');
+        }
+        // dd($customers);
+        $orders = Order::all();
+        return view('allusers', compact('customers','custcount','orders'));
+        // with('custs',json_decode($custs));
+        // dd($artists);
+    
+    }
+    public function viewAllArtists(){
         $artists = User::where('usertype','artist')->withCount('art')->get();
         $artistcount = $artists->count();
         // $custorders = $customers->get();
@@ -233,10 +246,10 @@ class UserController extends Controller
             }
             $art->order = $count;
         }
-        
-        return view('allusers', compact('customers','artists','artistcount','custcount'));
-        // dd($artists);
-    
+        forEach($artists as $a){
+            $a->joined = $a->created_at->format('Y-m-d');
+        }
+        return view('allartists', compact('artists','artistcount'));
     }
     /**
      * Show the form for editing the specified resource.
