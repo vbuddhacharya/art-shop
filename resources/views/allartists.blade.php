@@ -27,7 +27,46 @@
         </div>
     </div>
     <main>
-        <section>
+        <div class="path-title">Admin \ Artists</div>
+      <div class="main-sec">
+        <section id="customers">
+          {{-- <p>Total Customers: {{$custcount}}</p> --}}
+          <div class="container mt-3">
+              <div class="row">
+                <div class="col-md-8 tb">
+                  <div class="titles">
+                    <h2 class="user-title">All Artists</h2>
+                    <p class="total-cust"><b>Total Artists</b> {{$artistcount}}</p>
+                  </div>
+                  <input class="form-control" id="myInput" type="text" placeholder="Search..">
+                  <br>
+                  <table class="table align-middle table-hover user-table">
+                    <thead>
+                      <tr class="color">
+                          <th scope="col">Name</th>
+                          <th scope="col">Contact</th>
+                          <th scope="col">Email</th>
+                          <th scope="col">Items</th>
+                          <th scope="col">Orders</th>
+                      </tr>
+                    </thead>
+                    <tbody id="tableData">
+                      @foreach ($artists as $artist)
+                      <tr onclick="showInfo({{$artist->id}})">
+                          <td>{{$artist->name}}</td>
+                          <td>{{$artist->contact}}</td>
+                          <td>{{$artist->email}}</td>
+                          <td>{{$artist->art_count}}</td>
+                          <td>{{$artist->order}}</td>
+                      </tr>
+                      @endforeach
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+      </section>
+        {{-- <section id="customers">
             <div class="path-title">Admin \ Artists</div>
             <div class="container mt-3">
                 <div class="row">
@@ -48,7 +87,7 @@
                       </thead>
                       <tbody id="tableData">
                         @foreach ($artists as $artist)
-                        <tr>
+                        <tr onclick="showInfo({{$artist->id}})>
                             <td>{{$artist->name}}</td>
                             <td>{{$artist->contact}}</td>
                             <td>{{$artist->email}}</td>
@@ -59,36 +98,64 @@
                       </tbody>
                     </table>
                   </div>
-                  {{-- <div class="col-md-4"> Sidebar </div> --}}
                 </div>
               </div>
-            {{-- <div>
-                <h1>Artists</h1>
-                <p>{{$artistcount}}</p>
-                <table class="table align-middle table-hover" style="margin:auto; text-align:center">
-                    <thead>
-                    <tr class="color">
-                        <th scope="col">Name</th>
-                        <th scope="col">Contact</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Items</th>
-                        <th scope="col">Orders</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($artists as $artist)
-                        <tr>
-                            <td>{{$artist->name}}</td>
-                            <td>{{$artist->contact}}</td>
-                            <td>{{$artist->email}}</td>
-                            <td>{{$artist->art_count}}</td>
-                            <td>{{$artist->order}}</td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div> --}}
-        </section>
+        </section> --}}
+        <section id="profile">
+            <div class="details">
+              <h2 class="profile-title">Artist Profile</h2>
+              <div class="pic">
+                <img src="{{asset('images/profile.png')}}" alt="Profile Picture">
+              </div>
+              <div class="user-info">
+                <span class="profile-data"><span>Name </span><span id="name"></span></span>
+                <span class="profile-data"><span>Contact </span><span id="contact"></span></span>
+                <span class="profile-data"><span>Email </span><span id="email"></span></span>
+                <span class="profile-data"><span>Joined Date </span><span id="joined"></span></span>
+                <span class="profile-data"><span>Items </span><span id="arts"></span></span>
+                <span class="profile-data"><span>Orders </span><span id="orders"></span></span>
+              </div>
+            </div>
+            <div class="buttons artist-det">
+              <form action="/" method="get">
+                @csrf
+                <input type="hidden" name="id" value="" id="custdetail">
+                <button type="submit">View Orders</button>
+                <button type="submit">View Items</button>
+              </form>
+            </div>
+          </section>
+      </div>
     </main>
+    <script>
+        $(document).ready(function(){
+          $("#myInput").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#tableData tr").filter(function() {
+              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+          });
+        });
+        </script>
+      <script>
+        function showInfo(id){
+          var id = id;
+          var users = {!! $artists->toJson() !!};
+          var profile = document.getElementById('profile');
+          profile.style.display = 'block';
+          users.forEach(function(user){
+            if(user['id']==id){
+              // console.log(user['id']);
+              document.getElementById('name').innerHTML = user['name'];
+              document.getElementById('contact').innerHTML = user['contact'];
+              document.getElementById('email').innerHTML = user['email'];
+              document.getElementById('joined').innerHTML = user['joined'];
+              document.getElementById('orders').innerHTML = user['order'];
+              document.getElementById('arts').innerHTML = user['art_count'];
+              document.getElementById('custdetail').value = user['id'];
+            }
+          });          
+        }
+      </script>
 </body>
 </html>
