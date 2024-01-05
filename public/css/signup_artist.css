@@ -2,7 +2,7 @@
 
 
 :root {
-    --background: #ababadea;
+    --background: #ebebeefa;
     --color: #000000;
     --primary-color: #530606;
 }
@@ -10,6 +10,7 @@
 * {
     box-sizing: border-box;
 }
+
 
 html {
     scroll-behavior: smooth;
@@ -42,12 +43,12 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 200vh;
 }
 
 .login-container {
     position: relative;
-    width: 22.2rem;
+    width: 40%;
 }
 .form-container {
     border: 1px solid hsla(0, 0%, 65%, 0.158);
@@ -66,7 +67,8 @@ h1 {
 .login-container form input {
     display: block;
     padding: 14.5px;
-    width: 100%;
+    width: 80%;
+    /* opacity: 0.7; */
     margin: 2rem 0;
     color: var(--color);
     outline: none;
@@ -143,18 +145,18 @@ h1 {
     -o-border-radius: 50%;
     position: absolute;
 }
-
+/* 
 .password-container {
 	position: relative;
   }
   
   #passwordInput {
-	padding-right: 30px; /* Provide space for the eye icon */
-  }
+	padding-right: 10px; /* Provide space for the eye icon */
+ /* }
   
   .toggle-password {
 	position: absolute;
-	top: 50%;
+	top: 70%;
 	right: 10px;
 	transform: translateY(-50%);
 	cursor: pointer;
@@ -164,13 +166,52 @@ h1 {
 	color: #b9b2b2;
   }
   
+  .toggle-password-icon {
+	position: fixed;
+	top: 47.5%;
+    right: 115px;
+	transform: translateY(-50%);
+	cursor: pointer;
+  }
+  
+  .toggle-password-icon i {
+	color: #b9b2b2; */
+  /*} */
   /* Style for eye icon when password is visible */
   #passwordInput[type="text"] + .toggle-password i {
+    /* position: fixed; */
 	color: #b9b2b2;
+    top: 0;
+    right:0;
   }
   
 
+  .password-container {
+    position: relative;
+    margin-bottom: 0;
+    /* width: 50%; */
+}
 
+.password-input {
+    width: 50%;
+    margin-right: 100px;
+    margin-bottom: 0;
+    padding-right: 30px; /* Ensure space for the eye icon */
+}
+
+.toggle-password,
+.toggle-password-icon {
+    position: relative;
+    right: -85%;
+    top: -35%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #b9b2b2;
+}
+
+.toggle-password {
+    right: -60%;
+}
 
 .illustration {
     position: absolute;
@@ -210,14 +251,11 @@ h1 {
     -ms-transform: translate(45%, 45%);
     -o-transform: translate(45%, 45%);
 }
-
-.forget-password {
+.inline-fields {
     display: flex;
-	flex-direction: row-reverse;
-	font-size: small;
-	margin-top: 0.2rem;
-	margin-bottom: 1rem;
+    margin-top: 0;
 }
+
 .register-forget {
     margin: 1rem 0;
     display: flex;

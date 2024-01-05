@@ -2,7 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+use App\Models\Artist;
+
+
 
 class UserController extends Controller
 {
@@ -19,9 +25,12 @@ class UserController extends Controller
         return view('login');
     }
 
+
     public function verifyLogin(Request $request){
-        $credentials = ($request->except('_token'));
+        
+        $credentials = $request->only('username', 'password');
         if (Auth::attempt($credentials)){
+            // dd($request);
             $request->session()->regenerate();
             return redirect()->route('home');
         }
@@ -31,9 +40,53 @@ class UserController extends Controller
     }
 
 
+    public function artistSignupStore(Request $request)
+    {
+        //  dd($request);
+        $validated = $request->validate([
+            'name'=> 'required|string',
+            'address'=> 'required|string',
+            'contact'=> 'required|string',
+            'email'=>'required|email:filter|unique:users',
+            'username'=> 'required|string|unique:users',
+            'password'=>'required|string|min:8',
+            'facebook' => 'nullable|string',
+            'twitter' => 'nullable|string',
+            'instagram' => 'nullable|string',
+            'bio' => 'nullable|text',
+        ]);
 
-    public function viewSignup(){
-        return view('signup');
+        $user = User::create($validated);
+
+        // $newUser = new User();
+        // $newArtist = new Artist();
+
+        // $newUser->name = $request->name;
+        // $newUser->address = $request->address;
+        // $newUser->contact = $request->contact;
+        // $newUser->email = $request->email;
+        // $newUser->username = $request->username;
+        // $newUser->password = bcrypt($request->password);
+        // $newUser->user_type = $request->user_type;
+
+        // $newUser = User::find($request->id);
+        // $newArtist->artist_id = $request->$newUser->id;
+        $artistData = $request->only(['facebook_profile', 'twitter_profile', 'instagram_profile', 'bio']);
+        // $newArtist->facebook = $request->facebook;
+        // $newArtist->twitter = $request->twitter;
+        // $newArtist->instagram = $request->instagram;
+        // $newArtist->bio = $request->bio;
+
+        $user->artist()->create($artistData);
+        // $newUser->save();
+        // $newArtist->save();
+
+        return redirect()->route('login');
+    }
+
+
+    public function viewArtistSignup(){
+        return view('signup_artist');
     }
 
     public function viewUpload(){

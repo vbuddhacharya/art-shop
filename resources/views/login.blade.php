@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kalaa|Login</title>
-    <link rel="shortcut icon" type="image" href="logo.png">
+    <link rel="shortcut icon" type="image" href="{{ asset('images/homepage/logo.png') }}">
 
     <link rel="stylesheet" href="{{asset('css/login.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
 
   </head>
   <body>
@@ -18,18 +19,18 @@
             <div class="form-container">
                 <img src="{{asset('images/login/illustration.png')}}" alt="illustration" class="illustration" />
                 <h1 class="opacity">WELCOME</h1>
-                <form action="{{ route('verify') }}" method="post">
+                <form action="{{ route('login.verify') }}" method="post">
                 @csrf
-                    <input type="text" name="username" placeholder="Username" required />
+                    <input type="text" name="username" placeholder="Username"  autocomplete="username" required />
                     
                     <div class="password-container">
-                      <input type="password" name="password" id="passwordInput" class="password-input" style="margin-bottom: 0;" placeholder="Password"  required>
+                      <input type="password" name="password" id="passwordInput" class="password-input" style="margin-bottom: 0;" placeholder="Password" autocomplete="current-password"  required>
                       <span class="toggle-password" onclick="togglePasswordVisibility()"><i class="fas fa-eye"></i></span>
                     </div>
                     <div class="forget-password opacity">
-                        <a href="" style="color:#009bd6;">Forgot Password?</a>
+                        <a href="" style="color:#800e0e;">Forgot Password?</a>
                     </div>
-                    <button type="submit" class="opacity">Login</button>
+                    <button type="submit" style="color: #F0FFF0">Login</button>
                 </form>
                 <div class="icons">
                   <div class="opacity" style="text-align: center; margin-bottom: 1rem">Or Login with</div>
@@ -40,8 +41,12 @@
               </div>
       
                 <div class="register-forget opacity">
-                    <span>Don't have an account? <a href="" style="color:#009bd6;">Signup</a></span>
+                    <span>Don't have an account? <a href="" style="color:#800e0e;" id="signupLink" onclick="showSignupDialog()">Signup</a></span>
                 </div>
+                
+
+
+
             </div>
             <div class="circle circle-two"></div>
         </div>
@@ -66,6 +71,26 @@
   }
 }
 
+function showSignupDialog() {
+            var choice = window.prompt('Sign up as an Artist or Customer?\nEnter "artist" or "customer"');
+
+            if (choice !== null) {
+                // User entered something in the prompt
+                var userType = choice.toLowerCase();
+
+                if (userType === 'artist' || userType === 'customer') {
+                    alert('You chose to sign up as ' + userType);
+                    // Redirect to the register page based on the user's choice
+                    if (userType === 'artist') {
+                        window.location.href = '{{route("signup")}}';
+                    } else {
+                        window.location.href = '{{route("signup")}}';
+                    }
+                } else {
+                    alert('Invalid choice. Please enter "artist" or "customer".');
+                }
+            }
+        }
   </script>
 
 </html>
