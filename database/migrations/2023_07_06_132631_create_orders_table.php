@@ -21,7 +21,7 @@ return new class extends Migration
             $table->unsignedBigInteger('art_id');
             $table->unsignedBigInteger('cart_id')->setDefault('0');
             $table->foreign('art_id')->references('id')->on('arts');
-            $table->foreign('cart_id')->references('id')->on('carts')->onDelete('null');
+            $table->foreign('cart_id')->references('id')->on('carts');
             $table->string('location');
             $table->string('contact');
             $table->unsignedBigInteger('quantity');

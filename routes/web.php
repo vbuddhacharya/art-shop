@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ArtistController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,8 +23,12 @@ Route::get('/', function () {
 Route::get('/artstore',[UserController::class,'index'])->name('home');
 Route::get('/artstore/explore',[UserController::class,'viewAll'])->name('explore');
 Route::get('/artstore/login',[UserController::class,'viewLogin'])->name('login');
-Route::get('/artstore/signup',[UserController::class,'viewSignup'])->name('signup');
-Route::post('/artstore/register',[UserController::class,'store'])->name('register');
+Route::post('/artstore/verify-login',[UserController::class,'verifyLogin'])->name('login.verify');
+
+Route::get('/artstore/register',[UserController::class,'viewArtistSignup'])->name('signup');
+Route::post('/artstore/register',[UserController::class,'artistSignupStore'])->name('register');
+
+
 Route::get('/artstore/upload',[UserController::class,'viewUpload'])->name('upload');
 Route::get('/artstore/arts/order',[UserController::class,'viewOrderForm'])->name('orderform');
 Route::get('/artstore/product/{id}',[UserController::class,'viewProduct'])->name('product');
@@ -30,7 +36,10 @@ Route::get('/artstore/user/orders',[UserController::class,'viewCustOrders'])->na
 Route::get('/artstore/artist/orders',[UserController::class,'viewArtistOrders'])->name('artist.orders');
 Route::get('/artstore/user/cart',[OrderController::class,'viewCart'])->name('cart');
 
-Route::post('/artstore/verify-login',[UserController::class,'verifyLogin'])->name('verify');
+//art feature 
+Route::get('/artstore/artist/feature',[UserController::class,'viewArtistFeature'])->name('artist.feature');
+Route::post('/artstore/artist/check-feature',[UserController::class,'verifyFeature'])->name('checkFeature');
+
 Route::get('/artstore/user/logout',[UserController::class,'logout'])->name('logout');
 
 Route::post('/artstore/check-upload',[UserController::class,'verifyUpload'])->name('check');
@@ -54,3 +63,7 @@ Route::get('artstore/orders/all',[OrderController::class,'viewAllOrders'])->name
 Route::get('/artstore/admin',[UserController::class,'adminLogin'])->name('admin');
 Route::post('artstore/orders/update',[OrderController::class,'updateOrder'])->name('updateorder');
 Route::get('/artstore/admin/stats',[UserController::class,'adminStats'])->name('stats');
+
+//Artist Side
+Route::get('/artstore/artists',[UserController::class,'viewArtist'])->name('artist.home');
+Route::get('/artstore/artists/viewCustomers',[UserController::class,'viewCustomers'])->name('artist.customers');

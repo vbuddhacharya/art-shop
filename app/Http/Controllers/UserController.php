@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Art;
+use App\Http\Controllers\Controller;
+Use App\Models\Art;
 use App\Models\Order;
 use App\Models\Saved;
 
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Models\User;
+use App\Models\Feature;
+
 use Illuminate\Support\Facades\Auth;
 
 
@@ -155,13 +158,83 @@ class UserController extends Controller
     public function viewLogin(){
         return view('login');
     }
-    public function viewSignup(){
-        return view('signup1');
+
+
+
+    public function artistSignupStore(Request $request)
+    {
+        //  dd($request);
+        // $Validated = $request->validate([
+        //     'name'=> 'required|string',
+        //     'address'=> 'required|string',
+        //     'contact'=> 'required|string',
+        //     'email'=>'required|email:filter|unique:users',
+        //     'username'=> 'required|string|unique:users',
+        //     'password'=>'required|string|min:8',
+        //     'facebook' => 'nullable|string',
+        //     'twitter' => 'nullable|string',
+        //     'instagram' => 'nullable|string',
+        //     'bio' => 'nullable|text',
+        // ]);
+
+        $newUser = new User();
+        $newUser->name = $request->name;
+        $newUser->address = $request->address;
+        $newUser->contact = $request->contact;
+        $newUser->email = $request->email;
+        $newUser->username = $request->username;
+        $newUser->password = bcrypt($request->password);
+        $newUser->user_type = $request->user_type;
+        $newUser->facebook = $request->facebook;
+        $newUser->twitter = $request->twitter;
+        $newUser->instagram = $request->instagram;
+        $newUser->bio = $request->bio;
+
+        $newUser->save();
+
+        return redirect()->route('login');
+    }
+
+
+    public function viewArtistSignup(){
+        return view('signup_artist');
     }
 
     public function viewUpload(){
         return view('upload');
     }
+
+    public function viewCustomers(){
+        return view('customer_artist');
+    }
+
+    public function viewArtistFeature(){
+        $user = Auth::User();
+        // Access the username
+        $username = $user->name;
+        $arts = Art::all();
+        // $art = Auth::user()->Arts;
+        return view('feature_artist',compact('username', 'arts'));
+    }
+
+    public function viewArtist(){
+        // $order = Order::whereDate('created_at', '>=', date('Y-m-d'));
+        $user = Auth::User();
+        $orders = Order::all()->sortByDesc('created_at')->take(5);
+        $usercount = User::all()->count();
+        $ordercount = Order::where('status','pending')->count();
+        // dd($order);
+        $sales = Order::where('status','completed')->whereDate('updated_at','=',date('Y-m-d'))->get();
+        $total = 0;
+        foreach ($sales as $sale) {
+            $total += $sale->total;
+        }
+        $tops = Art::withCount('order')->orderBy('order_count','desc')->take(3)->get();
+        // dd($tops);
+        return view('artist_home', compact('user', 'ordercount','usercount', 'total','orders','tops'));
+    }
+    
+
     public function viewOrderForm(){
         return view('orderform');
     }
@@ -198,8 +271,10 @@ class UserController extends Controller
         $credentials = ($request->except('_token'));
         if (Auth::attempt($credentials)){
             $request->session()->regenerate();
-            if(Auth::user()->usertype == 'admin')
+            if(Auth::user()->user_type == 'admin')
                 return redirect()->route('admin');
+            elseif(Auth::user()->user_type == 'artist')
+                return redirect()->route('artist.home');
             else
                 return redirect()->route('home');
         }
@@ -252,42 +327,78 @@ class UserController extends Controller
          }
     }
     public function verifyUpload(Request $request){
-        $validated = $request->validate([
-            'artname' => 'required|string',
-            'artimage' => 'required|mimes:jpeg,png,jpg',
-            'artsize' => 'required|string',
-            'material' => 'required|string',
-            'category' => 'required|string',
-            'deliver' => 'required|string',
-            'description' => 'required|string',
-            'stock' => 'required|numeric',
-            'frame' => 'required|boolean',
-            'artprice' => 'required|numeric',
-        ]);
-        $data = new Art();
-        if($request->hasFile('artimage')){
-            $file = $request->file('artimage');
-            $extension = $file->getClientOriginalExtension();
-            $fileName = time().'.'.$extension;
-            $path = public_path().'/images/arts';
-            $upload = $file->move($path,$fileName);
-            $data->image = $fileName;
-        }
-        $data->name = $request->artname;
-        $data->size = $request->artsize;
-        $data->material = $request->material;
-        $data->category = $request->category;
-        $data->description = $request->description;
-        $data->stock = $request->stock;
-        $data->time = $request->deliver;
-        $data->hasFrame = $request->frame;
-        $data->price = $request->artprice;
-        // $data->user_id = "1";
-        $data->user_id = Auth::user()->id;
-        // dd($data);
-        $data->save();
-        return redirect()->route('upload')->withErrors('Upload Complete');
-    } 
+        // dd($request);
+        // $validated = $request->validate([
+        //     'artname' => 'required|string',
+        //     'image' => 'required|mimes:jpeg,png,jpg',
+        //     'artsize' => 'required|string',
+        //     'material' => 'required|string',
+        //     'category' => 'required|string',
+        //     'deliver' => 'required|string',
+        //     'description' => 'required|string',
+        //     'stock' => 'required|numeric',
+        //     'frame' => 'required|boolean',
+        //     'artprice' => 'required|numeric',
+        // ]);
+            // Your code for storing data
+            $data = new Art();
+            if($request->hasFile('image')){
+                // dd($request);
+                $file = $request->file('image');
+                $extension = $file->getClientOriginalExtension();
+                $fileName = time().'.'.$extension;
+                $path = public_path().'/images/arts';
+                $upload = $file->move($path,$fileName);
+                $data->image = $fileName;
+            }
+            // $imagePath = $request->file('image')->verifyUpload('image', 'public');
+            $data->name = $request->artname;
+            // $data->image = $imagePath;
+            $data->size = $request->artsize;
+            $data->material = $request->material;
+            $data->category = $request->category;
+            $data->description = $request->description;
+            $data->stock = $request->stock;
+            // $data->time = $request->deliver;
+            $data->hasFrame = $request->frame;
+            $data->price = $request->artprice;
+            // $data->user_id = "1";
+            $data->user_id = Auth::user()->id;
+            // dd($data);
+            $data->save();
+            return redirect()->route('upload')->withErrors('Upload Complete');
+        } 
+
+    public function verifyFeature(Request $request){
+        // dd($request);
+        // $validated = $request->validate([
+        //     'artist_name' => 'required|string',
+        //     'art_title' => 'required|string',
+        //     'art_creation_date' => 'required|date',
+        //     'artworkImages' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        //     'art_size' => 'required|string',
+        // ]);
+        // if ($validator->fails()) {
+        //     return redirect()->back()->withErrors($validator)->withInput();
+        // }
+       // Store the feature
+       $feature = new Feature();
+       $feature->artist_name = $request->input('artist_name');
+       $feature->arts = $request->input('arts');
+       $feature->featureprice = $request->input('featureprice');
+    //    $art = Art::find($request->arts);
+// $art_id = Art::find($art_id);
+       $feature->user_id = Auth::user()->id;
+       $feature->art_id = $request->arts;
+
+       // Save the feature
+       $feature->save();
+
+       return redirect()->back()->with('success', 'Art feature stored successfully.');
+   
+}
+     
+
 
     public function logout(Request $request){
         Auth::logout();
@@ -307,7 +418,7 @@ class UserController extends Controller
     }
     public function viewAllUsers(){
         
-        $customers = User::where('usertype','customer')->withCount('order')->get();
+        $customers = User::where('user_type','customer')->withCount('order')->get();
         $custcount = $customers->count();
         forEach($customers as $c){
             $c->joined = $c->created_at->format('Y-m-d');
@@ -320,7 +431,7 @@ class UserController extends Controller
     
     }
     public function viewAllArtists(){
-        $artists = User::where('usertype','artist')->withCount('art')->get();
+        $artists = User::where('user_type','artist')->withCount('art')->get();
         $artistcount = $artists->count();
         // $custorders = $customers->get();
         foreach ($artists as $art){

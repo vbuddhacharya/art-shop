@@ -41,6 +41,7 @@
  <!-- navbar -->
  <nav class="navbar navbar-expand-md" id="navbar">
     <!-- Brand -->
+
     <a class="navbar-brand" href="#" id="logo"><img src="{{asset('images/homepage/mainlogo.png')}}" alt="" width="30px"
       style="margin-bottom: 10px; margin-right: 10px;">Kalaa</a>
 

@@ -19,12 +19,19 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'username',
+        'address',
+        'contact',
         'email',
+        'username',
         'password',
         'contact',
         'usertype',
+        'facebook',
+        'twitter',
+        'instagram',
+        'bio',    
     ];
+
 
     /**
      * The attributes that should be hidden for serialization.
@@ -53,5 +60,8 @@ class User extends Authenticatable
     }
     public function order(){
         return $this->hasMany(Order::class);
+    }
+    public function feature(){
+        return $this->hasMany(Feature::class);
     }
 }

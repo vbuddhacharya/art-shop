@@ -21,4 +21,8 @@ class Art extends Model
     {
         return $this->hasMany(Cart::class);
     }
+    public function feature()
+    {
+        return $this->belongsTo(Feature::class);
+    }
 }
