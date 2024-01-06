@@ -204,8 +204,8 @@ class UserController extends Controller
         return view('upload');
     }
 
-    public function viewCustomers(){
-        return view('customer_artist');
+    public function viewCustomerOrders(){
+        return view('orders_artist');
     }
 
     public function viewArtistFeature(){
@@ -385,7 +385,9 @@ class UserController extends Controller
        $feature = new Feature();
        $feature->artist_name = $request->input('artist_name');
        $feature->arts = $request->input('arts');
-       $feature->featureprice = $request->input('featureprice');
+       $feature->time = $request->input('featuring_period');
+       $feature->payment_method = $request->payment_method;
+
     //    $art = Art::find($request->arts);
 // $art_id = Art::find($art_id);
        $feature->user_id = Auth::user()->id;

@@ -21,7 +21,9 @@ return new class extends Migration
 
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreign('art_id')->references('id')->on('arts');
-            $table->unsignedBigInteger('featureprice');
+            $table->string('time');
+            $table->string('payment_method')->default('COD');
+
 
 
             $table->timestamps();

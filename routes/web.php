@@ -66,4 +66,4 @@ Route::get('/artstore/admin/stats',[UserController::class,'adminStats'])->name('
 
 //Artist Side
 Route::get('/artstore/artists',[UserController::class,'viewArtist'])->name('artist.home');
-Route::get('/artstore/artists/viewCustomers',[UserController::class,'viewCustomers'])->name('artist.customers');
+Route::get('/artstore/artists/viewCustomersOrders',[UserController::class,'viewCustomerOrders'])->name('artist.orders');
