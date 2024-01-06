@@ -21,7 +21,6 @@ return new class extends Migration
             $table->string('material');
             $table->string('category');
             $table->text('description');
-            // $table->text('time');
             $table->boolean('hasFrame');
             $table->unsignedBigInteger('price');
             $table->unsignedBigInteger('stock');
