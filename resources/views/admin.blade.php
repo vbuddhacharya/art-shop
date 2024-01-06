@@ -34,7 +34,7 @@
             <a href="{{route('allartists')}}"><i class="fa-solid fa-palette"></i>Artists</a>
             <a href="{{route('stats')}}"><i class="fa-solid fa-chart-simple"></i>Statistics</a>
             <a href="{{route('admin')}}"><i class="fa-solid fa-star"></i>Requests</a>
-            <a href="{{route('admin')}}"><i class="fa-solid fa-user"></i>Profile</a>
+            <a href="{{route('login')}}"><i class="fa-solid fa-user"></i>Profile</a>
         </div>
     </div>
     <main class="main-section">

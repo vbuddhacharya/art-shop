@@ -37,6 +37,7 @@ body{
 .side-menu{
     margin-left: 10px;
     height: 80vh;
+    font-size: 15px;
 }
 
 .side-menu a{

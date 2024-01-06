@@ -75,7 +75,7 @@
                     {{-- <div class="categories"> --}}
                         {{-- <div class="sub-category"> --}}
                             <div class="row1">
-                            <div class="col1-4">
+                            <a href="{{route('category',['id'=>'Pencil'])}}" class="col1-4">
                                 <img src="/images/pencil.png">
                                 {{-- <div class="middle">
                                     <div class="more">View All</div>
@@ -86,8 +86,8 @@
                                     </div>
                                 </div>
                                         
-                            </div>
-                            <div class="col1-4">
+                            </a>
+                            <a href="{{route('category',['id'=>'Acrylic'])}}" class="col1-4">
                                 <img src="/images/acrylic.png">
                                 <div class="details">
                                     <div class="names">                                           
@@ -95,8 +95,8 @@
                                     </div>
                                 </div>
                                         
-                            </div>
-                            <div class="col1-4">
+                            </a>
+                            <a href="{{route('category',['id'=>'Watercolor'])}}" class="col1-4">
                                 <img src="/images/water.png">
                                 <div class="details">
                                     <div class="names">                                           
@@ -104,8 +104,8 @@
                                     </div>
                                 </div>
                                         
-                            </div>
-                            <div class="col1-4">
+                            </a>
+                            <a href="{{route('category',['id'=>'Color'])}}" class="col1-4">
                                 <img src="/images/color.png">
                                 <div class="details">
                                     <div class="names">                                           
@@ -113,16 +113,15 @@
                                     </div>
                                 </div>
                                         
-                            </div>
-                            <div class="col1-4">
+                            </a>
+                            <a href="{{route('category',['id'=>'Others'])}}" class="col1-4">
                                 <img src="/images/others.png">
                                 <div class="details">
                                     <div class="names">                                           
                                         <h4 class="name">Others</h4>
                                     </div>
-                                </div>
-                                        
-                            </div>
+                                </div>       
+                            </a>
                             
                         </div>
                     {{-- </div> --}}
