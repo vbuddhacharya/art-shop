@@ -67,7 +67,7 @@ right:24%;
         <div class="side-menu">
             <a href="{{route('artist.home')}}"><i class="fa-solid fa-house"></i>Dashboard</a>
             <a href="{{route('allorders')}}"><i class="fa-solid fa-cart-shopping"></i>Orders</a>
-            <a href="{{route('allusers')}}"><i class="fa-solid fa-users"></i>Customers</a>
+            <!-- <a href="{{route('allusers')}}"><i class="fa-solid fa-users"></i>Customers</a> -->
             <a href="{{route('allartists')}}"><i class="fa-solid fa-palette"></i>My Arts</a>
             <a href="{{route('artist.feature')}}"><i class="fa-solid fa-font-awesome"></i>Feature</a>
             <a href="{{route('upload')}}"><i class="fa-solid fa-upload"></i>Upload</a>

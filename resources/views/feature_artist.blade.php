@@ -23,7 +23,6 @@
         <div class="side-menu">
             <a href="{{route('artist.home')}}"><i class="fa-solid fa-house"></i>Dashboard</a>
             <a href="{{route('allorders')}}"><i class="fa-solid fa-cart-shopping"></i>Orders</a>
-            <a href="{{route('allusers')}}"><i class="fa-solid fa-users"></i>Customers</a>
             <a href="{{route('allartists')}}"><i class="fa-solid fa-palette"></i>My Arts</a>
             <a href="{{route('artist.feature')}}"><i class="fa-solid fa-font-awesome"></i>Feature</a>
             <a href="{{route('upload')}}"><i class="fa-solid fa-upload"></i>Upload</a>
@@ -34,14 +33,15 @@
     <main class="main-section" style="margin-top: 2rem;">
       <section id="at-glance">
             <div class="container-box">
-            <span class="glance-text category-title">Featuring Artwork Form</span><br>
-<br>
+            <span class="glance-text category-title">Featuring Artwork Form</span>
+
                 <form action="{{route('checkFeature')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label for="artistName" class="opacity">Artist Name:</label>
                         <input type="text" id="artistName" name="artist_name" value="{{ auth()->user()->name }}" readonly>
                     </div>
+                    <div class="form-row-group">
 
                     <div class="form-group">
                     <label for="arts" class="opacity">Arts</label>
@@ -56,9 +56,22 @@
                 </select>                    
             </div>
 
-            <div class="form-group">
-                        <label for="artprice" class="opacity">Featured Price:</label>
-                        <input type="text" id="featurePrice" name="featureprice" value="3000" readonly>
+            <div class="form-group" style="margin-left:10vh;">
+                        <label for="artprice" class="opacity">Featuring Time Period:</label>
+                        <select id="featuring_period" name="featuring_period">
+                            <option value="1">1 Day</option>
+                            <option value="7">1 Week</option>
+                            <option value="30">1 Month</option>
+                        </select>                    
+                    </div>
+            </div>
+
+                    <div class="form-group opacity">
+                        <label for="payment_method">Select Payment Method:</label>
+                            <br>
+                            <input type="radio" name="payment_method" value="cod" id=""  checked> COD 
+                            &nbsp; &nbsp; &nbsp;<input type="radio" name="payment_method" id="" value="e-sewa"> E-Sewa
+                        
                     </div>
 
                     
@@ -67,7 +80,37 @@
                 
                 </form>
             </div>
-        </section>
+                        </div>
+       <div id="products">
+       <div class="orders container">
+       <span class="sec-title">Featuring Price Schema</span><br>
+                <div class="orders-data table-responsive">
+                <div class="orders-data table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>1 Day</th>
+                                <th>300</th>
+                                
+                            </tr>
+                            <tr>
+                                <th>1 Week / 7 Days</th>
+                                <th>2100</th>
+                                
+                            </tr>
+                            <tr>
+                                <th>1 month / 30 Days</th>
+                                <th>6300</th>
+                                
+                            </tr>
+                        </thead>
+                    
+                    </table>
+                </div>
+            </div>
+
+                        </div>
+       </section>
     </main>
 
 
