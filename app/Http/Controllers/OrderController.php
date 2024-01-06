@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Art;
 use App\Models\Cart;
+use App\Models\Saved;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,6 +16,27 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    // public function addToSaved(Request $request){
+    //     // dd($request);
+    //     switch ($request->button) {
+    //         case "save":
+                
+    //             $save = new Saved();
+    //             $save->user_id = Auth::user()->id;
+    //             $save->art_id = $request->artid;
+    //             $save->save();
+    //             return redirect()->back()->with('message',"Product Added to Saved");
+    //             break;
+    //         case "cart":
+    //             return redirect()->route('add');
+    //             break;
+    //         case "remove":
+    //             $saved = Saved::where('user_id',Auth::user()->id)->where('art_id',$request->artid);
+    //             // dd($save);
+    //             $saved->delete();
+    //             return back();
+    //     }
+    // }
     public function viewCart(){
         $user = Auth::user()->id;
         $carts = Cart::where('user_id',$user)->get();
@@ -35,6 +57,20 @@ class OrderController extends Controller
     }
     public function addToCart(Request $request){
         switch($request->button){
+            case "save":
+                
+                $save = new Saved();
+                $save->user_id = Auth::user()->id;
+                $save->art_id = $request->artid;
+                $save->save();
+                return redirect()->back()->with('message',"Product Added to Saved");
+                break;
+            case "remove":
+                $saved = Saved::where('user_id',Auth::user()->id)->where('art_id',$request->artid);
+                // dd($save);
+                $saved->delete();
+                return back();
+                break;
             case 'cart':
                 $old = Cart::where('user_id',Auth::user()->id)->get();
                 foreach($old as $ol){
@@ -53,8 +89,11 @@ class OrderController extends Controller
                 $values = $request->except('_token');
                 // dd($values);
 
-                $art = Art::find($request->artid)->first();
-                $sum = $art->price * $request->quantity;
+                $art = Art::where('id',$request->artid)->first();
+                
+                $price = $art->price;
+                // dd($price);
+                $sum = $price * $request->quantity;
                 $delivery = 100;
                 $total = $sum+$delivery;
                 return view('orderform',compact('values','sum','delivery','total'));
@@ -158,7 +197,7 @@ class OrderController extends Controller
             $order->status = 'Pending';
             $order->artist_status = 'Working';
             $order->save();
-            return("hello");
+            return view('completed');
         }
         else{
             $carts = Cart::where('user_id', Auth::user()->id);

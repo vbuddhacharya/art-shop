@@ -18,9 +18,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('completed');
 });
 Route::get('/artstore',[UserController::class,'index'])->name('home');
+Route::get('/artstore/explore',[UserController::class,'viewAll'])->name('explore');
 Route::get('/artstore/login',[UserController::class,'viewLogin'])->name('login');
 Route::post('/artstore/verify-login',[UserController::class,'verifyLogin'])->name('login.verify');
 
@@ -45,11 +46,15 @@ Route::post('/artstore/check-upload',[UserController::class,'verifyUpload'])->na
 // Route::post('/artstore/upload',[UserController::class,'uploadArt'])->name('upload');
 
 Route::get('artstore/image',[UserController::class,'viewImage'])->name('images.view');
-Route::post('artstore/cart/add/{id}',[OrderController::class,'addToCart'])->name('add');
-Route::post('artstore/cart/remove',[OrderController::class,'removeFromCart'])->name('remove');
-Route::post('artstore/cart/next',[OrderController::class,'nextCart'])->name('next');
-Route::post('artstore/place-order',[OrderController::class,'placeOrder'])->name('order');
 
+Route::middleware('auth')->group(function () {
+    Route::get('artstore/user/saved',[UserController::class,'viewSaved'])->name('saved');
+    // Route::post('artstore/user/saved/add',[OrderController::class,'addToSaved'])->name('addsaved');
+    Route::post('artstore/cart/add',[OrderController::class,'addToCart'])->name('add');
+    Route::post('artstore/cart/remove',[OrderController::class,'removeFromCart'])->name('remove');
+    Route::post('artstore/cart/next',[OrderController::class,'nextCart'])->name('next');
+    Route::post('artstore/place-order',[OrderController::class,'placeOrder'])->name('order');
+});
 Route::get('artstore/editprofile',[UserController::class,'editProfile'])->name('edit');
 Route::get('artstore/users/all',[UserController::class,'viewAllUsers'])->name('allusers');
 Route::get('artstore/artists/all',[UserController::class,'viewAllArtists'])->name('allartists');

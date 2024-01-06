@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 Use App\Models\Art;
 use App\Models\Order;
+use App\Models\Saved;
+
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Feature;
 
@@ -21,9 +24,17 @@ class UserController extends Controller
      */
     public function index()
     {
-        $arts = Art::all();
-        return view('index', compact('arts'));
+        $arts = Art::inRandomOrder()->take(3)->get();
+        return view('home', compact('arts'));
 
+    }
+    public function viewAll(){
+        $arts = Art::inRandomOrder()->paginate(16);
+        return view('explore', compact('arts'));
+    }
+    public function viewSaved(){
+        $saveds = Saved::where('user_id',Auth::user()->id)->orderBy('created_at','desc')->get();
+        return view('saved', compact('saveds'));
     }
     public function adminLogin(){
         // $order = Order::whereDate('created_at', '>=', date('Y-m-d'));
@@ -46,10 +57,12 @@ class UserController extends Controller
         })->toArray();
         $months = [];
         $monthsCount = [];
+        
         foreach($orders as $month => $values){
             $months[] = $month;
             $monthsCount[] = count($values);
         }
+        
         for ($i=0; $i < 12; $i++) { 
            $months[$i] = $i+1;
            foreach($orders as $month => $values){
@@ -62,12 +75,85 @@ class UserController extends Controller
             }
            }
         }
+
+        $users = User::whereYear('created_at',date('Y'))->orderBy('created_at','asc')->get()->groupBy(function (User $user){
+            return $user->created_at->format('m');
+        })->toArray();
+        $usersCount = [];
+        for ($i= 0; $i < 12; $i++) {
+            $usersCount[$i] = 0;
+            foreach($users as $month => $user){
+                if($month-1 == $i)
+                    $usersCount[$i] = count($user);
+            }
+        }
+        // $articles=Order::->get();
+        $sales = Order::where('status','Completed')->where("updated_at",">", Carbon::now()->subMonths(6))->orderBy('updated_at','asc')->get()->groupBy(function(Order $order){
+            return $order->updated_at->format('m');
+        })->toArray();
+        $salesCount = [];
+        $d = Carbon::now()->subMonths(5)->month;
+        // dd($sales);
+        for($i=0;$i<6;$i++){
+            
+            $salesCount[$d] = 0;
+            foreach($sales as $month => $values){
+                if($month== $d){
+                    $sale = 0;
+                    foreach ($values as $value) {
+                        $sale += $value['total'];
+                    }
+                    // $salesCount[$month-1] = $sale;
+                    $salesCount[$d] = $sale;
+                }  
+            }
+            if($d==12){
+                $d = 1;
+            }
+            else
+                $d++;
+        }
+        $salesCount = array_values($salesCount);
+        // dd($salesCount);
         $completed = Order::where('status','Completed')->whereYear('updated_at',date('Y'))->count();
         $pending = Order::where('status','Pending')->count();
         $orderCount = [$pending, $completed];
-        // dd($orders1);
+
+        $yearly = Order::where('status','Completed')->orderBy('updated_at','desc')->get()->groupBy(function(Order $order){
+            return $order->updated_at->format('Y');
+        })->toArray();
+        // dd($yearly);
+        $users = User::orderBy('created_at','desc')->get()->groupBy(function(User $user){
+            return $user->created_at->format('Y');
+        })->toArray();
+        $order_data = [];
+        $i =0;
+        foreach($yearly as $year => $values){
+            $sales = 0;
+            $user_count = 0;
+            foreach($values as $value){
+                $sales += $value['total'];
+            }
+            foreach($users as $year1=> $data){
+                if ($year1 == $year){
+                    $user_count = count($data); 
+                }
+            }
+            $order_data[$year] = [count($values),$sales,$user_count];
+            $i++;
+            if($i==5){
+                break;
+            }
+        }
+        // dd($order_data);
         // return view('admin_stats')->with('month',json_encode($months, JSON_NUMERIC_CHECK))->with('monthsCount',json_encode($monthsCount, JSON_NUMERIC_CHECK));
-        return view('admin_stats',compact('completed','pending'))->with('monthsCount',json_encode($monthsCount, JSON_NUMERIC_CHECK))->with('orderCount',json_encode($orderCount, JSON_NUMERIC_CHECK));
+        $all_sales = Order::where('status','Completed')->get();
+        $total = 0;
+        foreach($all_sales as $sales){
+            $total+= $sales->total;
+        }
+        
+        return view('admin_stats',compact('completed','pending','order_data','total'))->with('monthsCount',json_encode($monthsCount, JSON_NUMERIC_CHECK))->with('orderCount',json_encode($orderCount, JSON_NUMERIC_CHECK))->with('salesCount',json_encode($salesCount, JSON_NUMERIC_CHECK))->with('usersCount',json_encode($usersCount, JSON_NUMERIC_CHECK));
     }
     public function viewLogin(){
         return view('login');
