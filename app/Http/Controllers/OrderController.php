@@ -6,6 +6,7 @@ use App\Models\Art;
 use App\Models\Cart;
 use App\Models\Saved;
 use App\Models\Order;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -143,6 +144,23 @@ class OrderController extends Controller
     public function viewAllOrders(){
         $orders = Order::all()->sortBy('created_at');
         return view('admin_orders',compact('orders'));
+    }
+    public function viewCustOrders(Request $request){
+        // dd($request->button);
+        $cust = User::find($request->custid);
+        // dd($cust);
+
+        switch($request->button){
+            case 'item':
+                return view("home");
+            case 'custorder':
+                $orders = Order::where('user_id',$request->custid)->get();
+                return view('each_orders',compact('orders','cust'));
+            case 'artorder':
+                $orders = Order::all();
+                return view('each_orders',compact('orders','cust'));
+        }
+        
     }
     public function updateOrder(Request $request){
         $order = Order::find($request->orderid);

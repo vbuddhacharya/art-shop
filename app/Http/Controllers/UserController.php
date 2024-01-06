@@ -32,6 +32,10 @@ class UserController extends Controller
         $arts = Art::inRandomOrder()->paginate(16);
         return view('explore', compact('arts'));
     }
+    public function viewCategory($id){
+        $arts = Art::where('category',$id)->paginate(16);
+        return view('category', compact('arts','id'));
+    }
     public function viewSaved(){
         $saveds = Saved::where('user_id',Auth::user()->id)->orderBy('created_at','desc')->get();
         return view('saved', compact('saveds'));

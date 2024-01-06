@@ -22,6 +22,8 @@ Route::get('/', function () {
 });
 Route::get('/artstore',[UserController::class,'index'])->name('home');
 Route::get('/artstore/explore',[UserController::class,'viewAll'])->name('explore');
+Route::get('/artstore/category/{id}',[UserController::class,'viewCategory'])->name('category');
+
 Route::get('/artstore/login',[UserController::class,'viewLogin'])->name('login');
 Route::post('/artstore/verify-login',[UserController::class,'verifyLogin'])->name('login.verify');
 
@@ -59,6 +61,7 @@ Route::get('artstore/editprofile',[UserController::class,'editProfile'])->name('
 Route::get('artstore/users/all',[UserController::class,'viewAllUsers'])->name('allusers');
 Route::get('artstore/artists/all',[UserController::class,'viewAllArtists'])->name('allartists');
 Route::get('artstore/orders/all',[OrderController::class,'viewAllOrders'])->name('allorders');
+Route::post('artstore/admin/user/orders',[OrderController::class,'viewCustOrders'])->name('custorder');
 
 Route::get('/artstore/admin',[UserController::class,'adminLogin'])->name('admin');
 Route::post('artstore/orders/update',[OrderController::class,'updateOrder'])->name('updateorder');

@@ -221,7 +221,10 @@ body{
     font-family: 'Roboto', sans-serif;
     text-align: center;
 }
-
+.row1 a{
+    text-decoration: none;
+    color: black;
+}
 .col1-4{
     background-color: white;
     width: 16%;

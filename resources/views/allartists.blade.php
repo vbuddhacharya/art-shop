@@ -117,11 +117,11 @@
               </div>
             </div>
             <div class="buttons artist-det">
-              <form action="/" method="get">
+              <form action="{{route('custorder')}}" method="post">
                 @csrf
-                <input type="hidden" name="id" value="" id="custdetail">
-                <button type="submit">View Orders</button>
-                <button type="submit">View Items</button>
+                <input type="hidden" name="custid" value="" id="custdetail">
+                <button type="submit" name="button" value="artorder">View Orders</button>
+                <button type="submit" name="button" value="item">View Items</button>
               </form>
             </div>
           </section>

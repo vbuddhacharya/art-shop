@@ -80,10 +80,10 @@
           </div>
         </div>
         <div class="buttons">
-          <form action="/" method="get">
+          <form action="{{route('custorder')}}" method="post">
             @csrf
-            <input type="hidden" name="id" value="" id="custdetail">
-            <button type="submit">View Orders</button>
+            <input type="hidden" name="custid" value="" id="custdetail">
+            <button type="submit" name="button" value="custorder">View Orders</button>
           </form>
         </div>
       </section>
