@@ -275,9 +275,10 @@ class UserController extends Controller
         $credentials = ($request->except('_token'));
         if (Auth::attempt($credentials)){
             $request->session()->regenerate();
-            if(Auth::user()->user_type == 'admin')
+            if(Auth::user()->usertype == 'admin')
                 return redirect()->route('admin');
-            elseif(Auth::user()->user_type == 'artist')
+            elseif(Auth::user()->usertype == 'artist')
+                // dd("yo");
                 return redirect()->route('artist.home');
             else
                 return redirect()->route('home');
@@ -422,7 +423,7 @@ class UserController extends Controller
     }
     public function viewAllUsers(){
         
-        $customers = User::where('user_type','customer')->withCount('order')->get();
+        $customers = User::where('usertype','customer')->withCount('order')->get();
         $custcount = $customers->count();
         forEach($customers as $c){
             $c->joined = $c->created_at->format('Y-m-d');
@@ -435,7 +436,7 @@ class UserController extends Controller
     
     }
     public function viewAllArtists(){
-        $artists = User::where('user_type','artist')->withCount('art')->get();
+        $artists = User::where('usertype','artist')->withCount('art')->get();
         $artistcount = $artists->count();
         // $custorders = $customers->get();
         foreach ($artists as $art){

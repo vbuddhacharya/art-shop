@@ -17,27 +17,7 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    // public function addToSaved(Request $request){
-    //     // dd($request);
-    //     switch ($request->button) {
-    //         case "save":
-                
-    //             $save = new Saved();
-    //             $save->user_id = Auth::user()->id;
-    //             $save->art_id = $request->artid;
-    //             $save->save();
-    //             return redirect()->back()->with('message',"Product Added to Saved");
-    //             break;
-    //         case "cart":
-    //             return redirect()->route('add');
-    //             break;
-    //         case "remove":
-    //             $saved = Saved::where('user_id',Auth::user()->id)->where('art_id',$request->artid);
-    //             // dd($save);
-    //             $saved->delete();
-    //             return back();
-    //     }
-    // }
+    
     public function viewCart(){
         $user = Auth::user()->id;
         $carts = Cart::where('user_id',$user)->get();
@@ -110,6 +90,7 @@ class OrderController extends Controller
 
     }
     public function nextCart(Request $request){
+        // dd($request);
         switch($request->but){
             case 'checkout':
                 $diff = "cart";
@@ -218,7 +199,8 @@ class OrderController extends Controller
             return view('completed');
         }
         else{
-            $carts = Cart::where('user_id', Auth::user()->id);
+            $carts = Cart::where('user_id', Auth::user()->id)->get();
+            // dd($carts);
             foreach($carts as $cart){
                 $order = new Order();
                 $order->user_id = Auth::user()->id;
@@ -227,8 +209,11 @@ class OrderController extends Controller
                 $order->total = $request->total;
                 $order->location = $request->location;
                 $order->contact = $request->contact;
+                $order->artist_status = "Working";
+                $order->status = 'Pending';
                 $order->save();
             }
+            return view('completed');
             
         }
         
