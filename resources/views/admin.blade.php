@@ -58,7 +58,7 @@
                 <div class="sales">
                     <span class="glance-title">Sales Today</span>
                     <div class="data">
-                        <span class="data-value">{{$total}}</span>
+                        <span class="data-value">{{number_format($total)}}</span>
                     </div>
                     <hr class="line1">
                     <hr class="line2">

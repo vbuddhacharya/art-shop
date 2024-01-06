@@ -138,11 +138,12 @@
             <div class="form-group" style="margin-left: 10vh;">
                 <label for="artCategory" class="artlabel">Art Category</label>
                 <select id="artCategory" name="category" required>
-                    <option value="Color Pencil">Color Pencil</option>
-                    <option value="Pencil Sketch">Pencil Sketch</option>
-                    <option value="Oil Paint">Oil Paint</option>
+                    {{-- <option value="Color Pencil">Color Pencil</option> --}}
+                    <option value="Pencil">Pencil</option>
+                    {{-- <option value="Oil Paint">Oil Paint</option> --}}
                     <option value="Acrylic Paint">Acrylic Paint</option>
                     <option value="Watercolor">Watercolor</option>
+                    <option value="Others">Others</option>
                 </select>
             </div>
         </div>

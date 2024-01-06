@@ -168,10 +168,7 @@
 /* product cards */
 #product-cards h1, #category-title{
     margin-top: 50px;
-    /* font-weight: bold; */
-    /* color: #f0cf15; */
     color: #ae7eae;
-    /* text-shadow: 1px 1px 1px black; */
     font-family: 'Lora', sans-serif;
 }
 #product-cards .card{
@@ -194,7 +191,6 @@
 }
 .overlay i img{
     cursor: pointer;
-    /* background-color: #f0cf15; */
     background-color: #ae7eae;
     height: 35px;
     width: 35px;
