@@ -37,11 +37,11 @@
                   <center><i class="fab fa-facebook-f"></i>
                   <i class="fab fa-twitter"></i>
                   <i class="fab fa-instagram"></i>
-                  <i class="fab fa-youtube"></i></center>
+                  <i class="fab fa-google"></i></center>
               </div>
       
                 <div class="register-forget opacity">
-                    <span>Don't have an account? <a href="" style="color:#800e0e;" id="signupLink" onclick="showSignupDialog()">Signup</a></span>
+                    <span>Don't have an account? <a href="{{route('signup')}}" style="color:#800e0e;" id="signupLink" onclick="showSignupDialog()">Signup</a></span>
                 </div>
                 
 
@@ -71,26 +71,6 @@
   }
 }
 
-function showSignupDialog() {
-            var choice = window.prompt('Sign up as an Artist or Customer?\nEnter "artist" or "customer"');
-
-            if (choice !== null) {
-                // User entered something in the prompt
-                var userType = choice.toLowerCase();
-
-                if (userType === 'artist' || userType === 'customer') {
-                    alert('You chose to sign up as ' + userType);
-                    // Redirect to the register page based on the user's choice
-                    if (userType === 'artist') {
-                        window.location.href = '{{route("signup")}}';
-                    } else {
-                        window.location.href = '{{route("signup")}}';
-                    }
-                } else {
-                    alert('Invalid choice. Please enter "artist" or "customer".');
-                }
-            }
-        }
   </script>
 
 </html>

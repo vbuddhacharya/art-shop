@@ -27,7 +27,6 @@ return new class extends Migration
             $table->string('instagram')->nullable()->default(null);
             $table->text('bio')->nullable()->default(null);
 
-
             $table->rememberToken();
             $table->timestamps();
         });

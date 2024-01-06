@@ -35,8 +35,8 @@
 <body>
     <nav class="navbar navbar-expand-md" id="navbar">
         <!-- Brand -->
-        <a class="navbar-brand" href="#" id="logo"><img src="logo.png" alt="" width="30px"
-            style="margin-bottom: 10px; margin-right: 10px;">Art Shop</a>
+        <a class="navbar-brand" href="#" id="logo"><img src="{{asset('images/homepage/mainlogo.png')}}" alt="" width="30px"
+          style="margin-bottom: 10px; margin-right: 10px;">Kalaa</a>
     
         <!-- Toggler/collapsibe Button -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -72,32 +72,52 @@
       </nav>
     <main>
         <div class="main">
+          {{-- @if($count == 0)
+            <div class="cart">
+              <div class="title">Cart Empty</div>
+            </div>
+          @else --}}
             <div class="cart">
                 <div class="title">
                     Cart Items
                 </div>
                 <hr style="background-color: rgb(228, 197, 197);width:100%; margin-top:0px"">
+                @if($count == 0)
+              
+                <div class="empty">Cart Empty</div>
+              
+              @else
+                @foreach($carts as $cart)
+                <a href="{{route('product',$cart->art_id)}}" style="text-decoration: none; color:initial">
                 <div class="order">
                     <div class="pic">
-                        <img src="{{asset('images/art/3.jpg')}}" alt="Product Image">
+                        <img src="{{ url('/images/arts/'.$cart->art->image) }}" alt="Product Image">
                     </div>
                     <div class="prod-detail">
                         <div class="det">
-                            <div class="prod-title">Sukuna</div>
-                            <div class="artist">ArtistCha</div>
-                            <div>Glass Painting</div>
-                            <div class="quan">Quantity: 1</div>
-                            <div>Delivery within 7 days</div>
+                            <div class="prod-title">{{$cart->art->name}}</div>
+                            <div class="artist">{{$cart->art->user->name}}</div>
+                            <div>{{$cart->art->category}}</div>
+                            <div class="quan">Quantity: {{$cart->quantity}}</div>
+                            <div>Delivery within {{$cart->art->time}}</div>
                         </div>
                         
                         <div class="side">
-                            <div class="price">Rs. 3000</div>   
-                            <button>Remove</button> 
+                            <div class="price">Rs. {{$cart->art->price}}</div>   
+                            <form action="{{route('remove')}}" method="post">
+                              @csrf
+                              <input type="hidden" name="cartid" id="cartid" value="{{$cart->id}}">
+                            
+                              <button>Remove</button> 
+                            </form>
                         </div>
                         
                     </div>
                 </div>
-                <div class="order">
+              </a>
+                @endforeach
+                @endif
+                {{-- <div class="order">
                     <div class="pic">
                         <img src="{{asset('images/art/2.jpg')}}" alt="Product Image">
                     </div>
@@ -116,7 +136,8 @@
                         </div>
                         
                     </div>
-                </div>
+                </div> --}}
+                
             </div>
             <div class="total">
                 <div class="title">
@@ -124,16 +145,22 @@
                 </div>
                 <hr style="background-color: rgb(228, 197, 197);width:100%; margin-top:0px">
                 <div class="info">
-                    <div class="tot tots"><span>Total</span><span>Rs. 5000</span></div>
-                    <div class="shipping tots"><span>Delivery Charge</span> <span>2x100</span></div>
-                    <div class="tota tots"><span>Grand Total</span><span>Rs. 5200</span></div>
+                    <div class="tot tots"><span>Total</span><span>Rs. {{$sum}}</span></div>
+                    <div class="shipping tots"><span>Delivery Charge</span> <span>{{$count}}x100</span></div>
+                    <div class="tota tots"><span>Grand Total</span><span>Rs. {{$total}}</span></div>
                 </div>
                 
                 <div class="buttons">
-                    <button>Checkout</button>
-                    <button>Empty Cart</button>
+                  <form action="{{route('next')}}" method="post">
+                  @csrf
+                  {{-- <input type="hidden" name="cartid" value="{{$cart->id}}"> --}}
+                  <button name="but" value="checkout">Checkout</button>
+                  <button name="but" value="empty">Empty Cart</button>
+                  </form>
+                    
                 </div>
             </div>
+          {{-- @endif --}}
         </div>
     </main>
     <footer id="footer" style="margin-top: 50px;">

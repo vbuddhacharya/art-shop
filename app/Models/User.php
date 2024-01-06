@@ -24,6 +24,12 @@ class User extends Authenticatable
         'email',
         'username',
         'password',
+        'contact',
+        'usertype',
+        'facebook',
+        'twitter',
+        'instagram',
+        'bio',    
     ];
 
 
@@ -45,4 +51,17 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function art(){
+        return $this->hasMany(Art::class);
+    }
+    public function cart()
+    {
+        return $this->hasOne(Cart::class);
+    }
+    public function order(){
+        return $this->hasMany(Order::class);
+    }
+    public function feature(){
+        return $this->hasMany(Feature::class);
+    }
 }

@@ -1,8 +1,12 @@
 body {
-    font-family: Arial, sans-serif;
+    /* font-family: Arial, sans-serif; */
+    font-family: 'Lora', sans-serif;
     background-color: #f2f2f2;
     margin: 0;
     padding: 0;
+  }
+  *{
+    font-family: 'Lora', sans-serif;
   }
 
   /* navbar */
@@ -13,23 +17,23 @@ body {
     font-family: 'Roboto', sans-serif;
 } */
 #navbar{
-    background-color: #ae7eae;
+  background-color: #ae7eae;
     padding-left: 50px;
     margin-bottom: 8vh;
 }
 #logo{
-    color: black;
+  color:#111111;
     font-weight: bold;
 }
 .nav-link{
-    color: white;
-    font-weight: bold;
-    text-shadow: 1px 1px 1px black;
-    margin-left: 15px;
-    transition: 0.5s ease;
+  color: #111111;
+  /* font-weight: bold; */
+  /* text-shadow: 1px 1px 1px black; */
+  margin-left: 15px;
+  transition: 0.5s ease;
 }
 .nav-link:hover{
-    color: black;
+  color: white;
 }
 .icons{
     margin-right: 50px;
@@ -43,7 +47,8 @@ body {
   /* orderform */
   .container-box {
     margin-top: 20px;
-    max-width: 750px;
+    max-width: 800px;
+    width:70%;
     margin: 0 auto;
     background-color: rgba(0, 0, 0, 0.3);
     padding: 20px;
@@ -98,6 +103,7 @@ border-color: #999;
   h1 {
     text-align: center;
     margin-bottom: 10%;
+    font-family: 'Urbanist', sans-serif;
   }
   .larger-cell {
     width: 30vh;
@@ -146,29 +152,35 @@ border-color: #999;
 
  /* Style for submit button */
 input[type="submit"] {
-  background-color: #f0cf15;
+    background-color: #602760;
+    color: white;
     padding: 10px 20px;
     font-size: 16px;
     border: none;
     cursor: pointer;    
     font-weight: 550;
     margin-right: 5%; 
+    border-radius: 2px;
   }
   
   /* Style for clear button */
   input[type="reset"] {
-    background-color: #f0cf15;
+    background-color: #602760;
+    color: white;
     padding: 10px 20px;
     font-size: 16px;
     border: none;
     cursor: pointer;
     font-weight: 550;
+    border-radius: 2px;
     }
   
   /* Hover effect for buttons */
   input[type="submit"]:hover,
   input[type="reset"]:hover {
     opacity: 0.8;
+    background-color: #ae7eae;
+    color: #111111;
   }
 
 

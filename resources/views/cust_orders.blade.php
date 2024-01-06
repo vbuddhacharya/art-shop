@@ -35,8 +35,8 @@
 <body>
     <nav class="navbar navbar-expand-md" id="navbar">
         <!-- Brand -->
-        <a class="navbar-brand" href="#" id="logo"><img src="logo.png" alt="" width="30px"
-            style="margin-bottom: 10px; margin-right: 10px;">Art Shop</a>
+        <a class="navbar-brand" href="#" id="logo"><img src="{{asset('images/homepage/mainlogo.png')}}" alt="" width="30px"
+          style="margin-bottom: 10px; margin-right: 10px;">Kalaa</a>
     
         <!-- Toggler/collapsibe Button -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -80,66 +80,28 @@
                 
             </div>
             <div class="orders">
-                <div class="order">
+                @foreach ($orders as $order)
+                  <div class="order">
                     <div class="product">
-                        <img src="{{asset('images/homepage/buddha2.jpg')}}" alt="Product Image">
+                        <img src="{{ url('/images/arts/'.$order->art->image) }}" alt="Product Image">
                     </div>
                     <div class="details">
                         
                         <div class="side">
-                            <div class="title">Buddha's Blessing</div>
-                            <div class="inf ord">Order #12</div>
+                            <div class="title">{{$order->art->name}}</div>
+                            <div class="inf ord">{{$order->id}}</div>
                         </div>
                         <div class="info">
-                            <div class="inf">Contact: 9823383030</div>
-                            <div class="inf">Delivery Location: <span class="deet">NCCS College, Paknajol</span></div>
-                            <div class="inf">Delivery Date: <span class="deet">10/7/2023</span></div>
-                            <div class="inf">Status: <span class="deet">Processing</span></div>
-                            <div class="inf total"><span class="deet">Rs.2100</span></div>
+                            <div class="inf">Contact: {{$order->contact}}</div>
+                            <div class="inf">Delivery Location: <span class="deet">{{$order->location}}</span></div>
+                            <div class="inf">Delivery Date: <span class="deet">{{$order->created_at}}</span></div>
+                            <div class="inf">Status: <span class="deet">{{$order->status}}</span></div>
+                            <div class="inf total"><span class="deet">Rs.{{$order->total}}</span></div>
                             
                         </div>
                     </div>
-                </div>
-                <div class="order">
-                    <div class="product">
-                        <img src="{{asset('images/art/6.jpg')}}" alt="Product Image">
-                    </div>
-                    <div class="details">
-                        
-                        <div class="side">
-                            <div class="title">Nezuko</div>
-                            <div class="inf ord">Order #10</div>
-                        </div>
-                        <div class="info">
-                            <div class="inf">Contact: 9823383030</div>
-                            <div class="inf">Delivery Location: <span class="deet">NCCS College, Paknajol</span></div>
-                            <div class="inf">Delivery Date: <span class="deet">6/7/2023</span></div>
-                            <div class="inf">Status: <span class="deet">Completed</span></div>
-                            <div class="inf total"><span class="deet">Rs.2000</span></div>
-                            
-                        </div>
-                    </div>
-                </div>
-                <div class="order">
-                    <div class="product">
-                        <img src="{{asset('images/art/7.jpg')}}" alt="Product Image">
-                    </div>
-                    <div class="details">
-                        
-                        <div class="side">
-                            <div class="title">Peace in the Village</div>
-                            <div class="inf ord">Order #7</div>
-                        </div>
-                        <div class="info">
-                            <div class="inf">Contact: 9823383030</div>
-                            <div class="inf">Delivery Location: <span class="deet">NCCS College, Paknajol</span></div>
-                            <div class="inf">Delivery Date: <span class="deet">1/7/2023</span></div>
-                            <div class="inf">Status: <span class="deet">Completed</span></div>
-                            <div class="inf total"><span class="deet">Rs.3000</span></div>
-                            
-                        </div>
-                    </div>
-                </div>
+                  </div>
+                @endforeach
             </div>
         </div>
     </main>

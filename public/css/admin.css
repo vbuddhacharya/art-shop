@@ -1,0 +1,229 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;300&display=swap');
+
+*{
+    box-sizing: border-box;
+    /* border: 1px solid red; */
+}
+body{
+    display: flex;
+    /* flex-direction: column; */
+    height: 100%;
+    background-color: #f2f2f2;
+    margin: 0;
+
+}
+.side-menubar{
+    background-color: white;
+    width: 15%;
+} 
+
+.sm-logo{
+    height: 7vh;
+    padding: 10px 25px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    color: #5C5C5C;
+}
+
+.side-menu{
+    margin-left: 10px;
+    height: 80vh;
+}
+
+.side-menu a{
+    padding: 15px 25px;
+    display: block;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    color: #757575;
+    cursor: pointer;
+}
+
+.side-menu a i{
+    padding-right: 15px;
+}
+.main-section{
+    
+    width: 85%;
+    margin: 0 auto;
+    /* padding-left: 7px; */
+    /* padding-right: 10px; */
+    padding: 15px;
+    padding-top: 1px;
+}
+.path-title{
+    font-size: 15px;
+    font-family: 'Roboto', sans-serif;
+    color: #8a191da9;
+    /* display: flex; */
+    /* align-items: center; */
+    position: relative;
+    top: 4px;
+    left: 5px;
+}
+#welcome{
+    /* background-color: darkturquoise; */
+    height: 3pc;
+    /* text-align: center; */
+}
+.welcome-text{
+    position: relative;
+    top: 8px;
+    left: 5px;
+    font-size: 25px;
+    font-family: 'Roboto', sans-serif;
+    color: #8A191D;
+}
+#at-glance{
+    display: flex;
+    flex-direction: column;
+    height: 17pc;
+    min-height: 50px;
+    /* background-color: rgba(163, 123, 123, 0.5); */
+    padding: 5px;
+    /* border: 0.5px solid black; */
+    box-shadow: 0 0 5px rgba(174, 173, 173, 0.651);
+    background-color: white;
+}
+.glance-text{
+    font-size: 25px;
+    /* font-weight: bold; */
+    margin-left: 10px;
+    margin-top: 10px;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+}
+.info{
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    padding: 5px;
+    overflow: auto;
+    /* max-width: 500px; */
+}
+.glance-title{
+    font-size: 23px;
+    /* font-weight: bold; */
+    text-align: center;
+    margin-bottom: 10px;
+    display: block;
+    overflow: hidden;
+    background-color: white;
+    padding: 5px;
+    border-bottom: 0.5px solid rgba(0, 0, 0, 0.515);
+    height: 50px;
+}
+.sales, .features, .pending, .users{
+    margin-top: 20px;
+    /* background-color: rgb(229, 255, 246); */
+    background-color: white;
+    /* padding: 5px; */
+    width: 250px;
+    height: 85%;
+    /* border: 0.5px solid black; */
+    box-shadow: 0 0 3px rgb(150, 143, 143) ;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+.data{
+    /* border: 10px solid rgb(95, 137, 227); */
+    /* border-radius: 50px 50px; */
+    width: 100px;
+    margin: auto;
+    text-align: center;
+    font-size: 42px;
+}
+.data-value{
+    margin: auto;
+    position: relative;
+    display: block;
+    /* top:20px; */
+    /* left: 30px; */
+}
+.line1, .line2{
+    background-color: rgba(0, 0, 0, 0.388);
+    height: 10px;
+    margin-left: 20px;
+}
+.line1{
+    width: 60%;
+    margin-bottom: 0;
+    margin-top: 6px;
+}
+.line2{
+    width: 80%;
+    margin-top: 5px;
+}
+#products{
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    gap: 12px;
+    /* padding-top: 5px; */
+}
+.orders{
+    /* flex-grow: 2; */
+    width: 75%;
+    /* border: 1px solid black; */
+    box-shadow: 0 0 5px rgba(174, 173, 173, 0.651);
+    background-color: white;
+    padding-top: 10px;
+}
+.sec-title{
+    font-size: 20px;
+    /* font-weight: bold; */
+    text-align: center;
+}
+.orders table{
+    /* width: 100%; */
+    text-align: left;
+    margin-top: 8px;
+    border: 0.2px solid rgba(169, 169, 169, 0.667);
+    
+}
+.orders table thead{
+    /* background-color: aquamarine; */
+    font-size: 16px;
+    /* height: 40px; */
+}
+.orders table tbody{
+    font-size: 14px;
+}
+.top{
+    width: 25%;
+    /* width: 120px; */
+    box-shadow: 0 0 5px rgba(174, 173, 173, 0.651);
+    background-color: white;
+    padding-top: 10px;
+}
+.pic{
+    width: 55px;
+}
+.pic img{
+    width: 100%;
+}
+.top-data table{
+    margin-top: 8px;
+    /* border: 1px solid black; */
+    text-align: left;
+    /* width: 100%; */
+    
+}
+.top-data table td{
+    /* border: 1px solid black;
+    border-collapse: collapse; */
+    padding: 2px;
+    font-size: 14px;
+}
+@media screen and (max-width: 800px) {
+    .glance-title{
+        height: 60px;
+    }
+    .sales, .features, .pending{
+        width: 150px;
+    }
+}
