@@ -106,8 +106,8 @@
                                 <form action="{{route('next')}}" method="post">
                                     @csrf
                                     {{-- <input type="hidden" name="cartid" value="{{$cart->id}}"> --}}
-                                    <button name="but" value="checkout"><label>PROCEED TO CHECKOUT</label></button>
-                                    <button name="but" value="empty"><label>EMPTY CART</label></button>
+                                    <button name="but" value="checkout">PROCEED TO CHECKOUT</button>
+                                    <button name="but" value="empty">EMPTY CART</button>
                                     </form>
                                 
                             </div>

@@ -13,13 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('orders', function (Blueprint $table) {
+        Schema::create('temps', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             // $table->foreignId('cart_id')->constrained()->onDelete('cascade');
             // $table->foreignId('art_id')->constrained()->onDelete('cascade');
             $table->unsignedBigInteger('art_id');
-            $table->unsignedBigInteger('cart_id')->setDefault('0');
+            $table->unsignedBigInteger('cart_id')->nullable()->default(NULL);
             $table->foreign('art_id')->references('id')->on('arts');
             $table->foreign('cart_id')->references('id')->on('carts');
             $table->string('pay_id')->nullable();
@@ -30,7 +30,7 @@ return new class extends Migration
             $table->string('artist_status')->default('Waiting');
             $table->string('status')->default('Pending');
             $table->string('payment')->default('Incomplete');
-            $table->string('payment_methd');
+            $table->string('payment_method');
             $table->timestamps();
         });
     }
@@ -42,6 +42,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('orders');
+        Schema::dropIfExists('temps');
     }
 };

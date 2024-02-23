@@ -18,7 +18,7 @@
                 <a href="{{route('explore')}}"><i class="fa-regular fa-compass"></i>Explore</a>
                 <a href="{{route('saved')}}"><i class="fa-regular fa-heart"></i>Saved</a>
                 <a href="{{route('cart')}}"><i class="fa-solid fa-cart-shopping"></i>Cart</a>
-                <a href="profile.html"><i class="fa-regular fa-user"></i>Profile</a>
+                <a href="{{route('edit')}}"><i class="fa-regular fa-user"></i>Profile</a>
                 <a href="{{route('orders')}}"><i class="fa-solid fa-clock-rotate-left"></i>Orders</a>
                 <a href="contact.html"><i class="fa-regular fa-message"></i>Contact us</a>
                 <a href="setting.html"><i class="fa-solid fa-gear"></i>Setting</a>
@@ -27,7 +27,7 @@
         <div class="main-container">
             <div class="navbar-container">
                 <div class="path">
-                    <h4 class="path-name">Art Store / Home</h4>
+                    <h4 class="path-name">Kalaa / Home</h4>
                 </div>
                 <div class="profile-container">
                     <a href="{{route('login')}}"><i class="fa-solid fa-user" style="color: #8A191D;"></i> Login</a>
@@ -45,18 +45,18 @@
                         <div class="daily-deals-title">Featured <a href="">View all<i class="fa-solid fa-arrow-right"></i></a></div>
 
                         <div class="daily-deals-container">
-                            @foreach ($arts as $art)
+                            @foreach ($features as $art)
                             <div class="daily-deals">
                                 <div class="daily-deals-img">
-                                    <img src="{{ url('/images/arts/'.$art->image) }}">
+                                    <img src="{{ url('/images/arts/'.$art->art->image) }}">
                                     
                                 </div>
                                 <div class="daily-deals-headings">
-                                    <div class="daily-deals-h1">{{$art->name}}</div>
+                                    <div class="daily-deals-h1">{{$art->art->name}}</div>
                                     <div class="daily-deals-price">
-                                        <div class="price1">Rs. {{$art->price}}</div>
+                                        <div class="price1">Rs. {{$art->art->price}}</div>
                                     </div>
-                                    <a href="/" class="deets">DETAILS</a>
+                                    <a href="{{route('product',$art->art->id)}}" class="deets">DETAILS</a>
                                 </div>
                                 <div class="add-icons"></div>
                             </div>  

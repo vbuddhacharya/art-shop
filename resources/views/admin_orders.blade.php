@@ -54,6 +54,7 @@
                       <th>Artist</th>
                       <th>Completion</th>
                       <th>Status</th>
+                      <th>Payment</th>
                       <th>Update</th>
                   </tr>
                   </thead>
@@ -80,6 +81,7 @@
                         <td>{{$order->art->user->name}}</td>
                         <td>{{$order->artist_status}}</td>
                         <td>{{$order->status}}</td>
+                        <td>{{$order->payment}}</td>
                         <td>
                             {{-- <p>{{$order->status}}</p> --}}
                             @if ($order->status == 'Pending' && $order->artist_status == 'Ready')

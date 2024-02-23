@@ -51,6 +51,7 @@
                                 <th>Purchase Date</th>
                                 <th>Contact</th>
                                 <th>Status</th>
+                                <th>Payment</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -62,6 +63,7 @@
                                 <td>{{$order->created_at}}</td>
                                 <td>{{$order->contact}}</td>
                                 <td>{{$order->status}}</td>
+                                <td>{{$order->payment}}</td>
                             </tr>
                           @endforeach
                         </tbody>

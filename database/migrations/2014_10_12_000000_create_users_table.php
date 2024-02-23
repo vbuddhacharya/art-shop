@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('username');
             $table->string('password');
+            $table->string('image')->nullable()->default(null);
             $table->enum('user_type', ['admin', 'artist', 'customer'])->default('customer');
             $table->string('facebook')->nullable()->default(null);
             $table->string('twitter')->nullable()->default(null);
