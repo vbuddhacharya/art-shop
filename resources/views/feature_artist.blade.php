@@ -16,8 +16,10 @@
     <link rel="stylesheet" href="{{asset('css/feature_artist.css')}}">
 
 </head>
-<body>
-
+<body @if (Session::has('message')) onLoad="showMessage()"
+    
+@endif>
+    
     <div class="side-menubar">
         <div class="sm-logo">Kalaa</div>
         <div class="side-menu">
@@ -35,7 +37,7 @@
             <div class="container-box">
             <span class="glance-text category-title">Featuring Artwork Form</span>
 
-                <form action="{{route('checkFeature')}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('checkFeature')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label for="artistName" class="opacity">Artist Name:</label>
@@ -70,7 +72,7 @@
                         <label for="payment_method">Select Payment Method:</label>
                             <br>
                             <input type="radio" name="payment_method" value="cod" id=""  checked> COD 
-                            &nbsp; &nbsp; &nbsp;<input type="radio" name="payment_method" id="" value="e-sewa"> E-Sewa
+                            &nbsp; &nbsp; &nbsp;<input type="radio" name="payment_method" id="" value="khalti"> Khalti
                         
                     </div>
 
@@ -113,8 +115,12 @@
        </section>
     </main>
 
-
 <script>
+    function showMessage(){
+        alert("Product already featured");
+    }
+</script>
+{{-- <script>
     $("document").ready( function (){
             $("#confirm_submit").on("click", function (evt) {
                 let confirmation = confirm("Are you sure?");
@@ -124,6 +130,6 @@
             })
         })
 
-</script>
+</script> --}}
 </body>
 </html>

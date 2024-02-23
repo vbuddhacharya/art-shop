@@ -68,6 +68,8 @@
               <div class="col-sm-10">          
                 <input type="text" class="form-control" id="pwd1" name="total" value="{{$total}}" readonly>
               </div>
+              <input type="radio" name="payment_method" value="khalti">Khalti <br>
+              <input type="radio" name="payment_method" value="cod" checked>COD
             </div>
             <div class="buttons">
               @if(isset($values['quantity']))<input type="hidden" name="quantity" value="{{$values['quantity']}}">@endif

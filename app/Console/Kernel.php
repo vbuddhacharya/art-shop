@@ -4,6 +4,8 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Carbon\Carbon;
+use App\Models\Feature;
 
 class Kernel extends ConsoleKernel
 {
@@ -16,6 +18,15 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
+        // $schedule->call(function(){
+        //     $feature = Feature::where('status','running')->get();
+        //     $now = Carbon::now();
+        //     foreach($feature as $f){
+        //         if ($now->diffInDays($f->expiry)<0){
+        //             $f->delete();
+        //         }
+        //     }
+        // })->daily();
     }
 
     /**

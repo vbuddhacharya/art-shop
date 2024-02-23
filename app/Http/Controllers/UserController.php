@@ -6,12 +6,14 @@ use App\Http\Controllers\Controller;
 Use App\Models\Art;
 use App\Models\Order;
 use App\Models\Saved;
+use App\Models\Temp;
 
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Feature;
 
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -24,8 +26,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        $arts = Art::inRandomOrder()->take(3)->get();
-        return view('home', compact('arts'));
+        // $arts = Art::inRandomOrder()->take(3)->get();
+        $features = Feature::where('status','running')->inRandomOrder()->take(3)->get();
+        return view('home', compact('features'));
 
     }
     public function viewAll(){
@@ -213,6 +216,8 @@ class UserController extends Controller
     }
 
     public function viewArtistFeature(){
+    //    dd(url()->previous());
+        $this->deleteFeature();
         $user = Auth::User();
         // Access the username
         $username = $user->name;
@@ -221,6 +226,98 @@ class UserController extends Controller
         return view('feature_artist',compact('username', 'arts'));
     }
 
+    public function verifyFeature(Request $request){
+        $this->deleteFeature();
+        $old = Feature::where('user_id',Auth::user()->id)->where('art_id',$request->arts)->count();
+        if($old == 0){
+            $feature = new Feature();
+            $feature->artist_name = $request->input('artist_name');
+            $feature->arts = $request->input('arts');
+            $feature->time = $request->input('featuring_period');
+            $feature->payment_method = $request->payment_method;
+            $feature->user_id = Auth::user()->id;
+            $feature->art_id = $request->arts;
+            $feature->payment = 0;
+            $feature->save();
+            $featureid = $feature->id;
+            // Save the feature
+            
+           if($request->payment_method == "cod"){
+            return redirect()->back()->with('success', 'Art feature stored successfully.');
+           }
+           else{
+            switch ($request->featuring_period){
+                case 1:
+                    $amount = 30000;
+                    break;
+                case 7:
+                    $amount = 210000;
+                    break;
+                case 30: 
+                    $amount = 630000;
+                default:
+                    $amount = 0;
+            }
+            $d = Time();
+            // $pur_id = "".Auth::user()->id.$request->arts.$d;
+            $art = Art::find($request->arts);
+            $name = $art->name;
+            $custname = Auth::user()->name;
+            $custemail = Auth::user()->email;
+            $custcontact = Auth::user()->contact;
+            $curl = curl_init();
+            curl_setopt_array($curl, array(
+                CURLOPT_URL => 'https://a.khalti.com/api/v2/epayment/initiate/',
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_ENCODING => '',
+                CURLOPT_MAXREDIRS => 10,
+                CURLOPT_TIMEOUT => 0,
+                CURLOPT_FOLLOWLOCATION => true,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => 'POST',
+                CURLOPT_POSTFIELDS =>'{
+                    "return_url": "http://127.0.0.1:8000/artstore/artists/payment/status",
+                    "website_url": "http://127.0.0.1:8000/artstore",
+                    "amount":"'.$amount.'",
+                    "purchase_order_id": '.$featureid.',
+                    "purchase_order_name": "'.$name.'",
+                    "customer_info": {
+                        "name": "'.$custname.'",
+                        "email": "'.$custemail.'",
+                        "phone": "'.$custcontact.'"
+                }
+            }
+    
+            ',
+            CURLOPT_HTTPHEADER => array(
+                'Authorization: key 286f7475b4c943e1a656959c50389c08',
+                'Content-Type: application/json',
+            ),
+            ));
+    
+            $response = curl_exec($curl);
+    
+            curl_close($curl);
+            $parsed = json_decode($response, true);
+            if ($response == FALSE){
+                $feature->delete();
+                // dd($response);
+                return redirect()->back();
+            }
+            else
+                return redirect()->to($parsed['payment_url'])->send();
+        }
+    }
+        else{
+            return redirect()->back()->with('message','Already Featuring');
+        }
+    }
+    public function deleteFeature(){
+        $feature = Feature::where('user_id',Auth::user()->id)->where('payment',0)->get();
+        foreach($feature as $f){
+            $f->delete();
+        }
+    }
     public function viewArtist(){
         // $order = Order::whereDate('created_at', '>=', date('Y-m-d'));
         $user = Auth::User();
@@ -248,8 +345,15 @@ class UserController extends Controller
         // dd($prod);
         return view('product',compact('prod'));
     }
-    
     public function viewCustOrders(){
+        $orders = Order::where('user_id',Auth::user()->id)->where('payment','Incomplete')->where('payment_method','khalti')->get();
+        // dd($orders);
+        foreach($orders as $order){
+            $art = Art::find($order->art_id);
+            $art->stock += $order->quantity;
+            $art->save();
+            $order->delete();
+        } // to delete outstanding orders
         $cust_id = Auth::user()->id;
         // $customers = User::all()->where('user_id', $cust_id)->get();
         // dd($customers);
@@ -280,8 +384,11 @@ class UserController extends Controller
             elseif(Auth::user()->usertype == 'artist')
                 // dd("yo");
                 return redirect()->route('artist.home');
-            else
+            else{
+                $this->deleteOutstandingOrders();
                 return redirect()->route('home');
+            }
+
         }
         else{
             // dd($request);
@@ -332,20 +439,7 @@ class UserController extends Controller
          }
     }
     public function verifyUpload(Request $request){
-        // dd($request);
-        // $validated = $request->validate([
-        //     'artname' => 'required|string',
-        //     'image' => 'required|mimes:jpeg,png,jpg',
-        //     'artsize' => 'required|string',
-        //     'material' => 'required|string',
-        //     'category' => 'required|string',
-        //     'deliver' => 'required|string',
-        //     'description' => 'required|string',
-        //     'stock' => 'required|numeric',
-        //     'frame' => 'required|boolean',
-        //     'artprice' => 'required|numeric',
-        // ]);
-            // Your code for storing data
+        
             $data = new Art();
             if($request->hasFile('image')){
                 // dd($request);
@@ -364,7 +458,7 @@ class UserController extends Controller
             $data->category = $request->category;
             $data->description = $request->description;
             $data->stock = $request->stock;
-            // $data->time = $request->deliver;
+            $data->time = "7 days";
             $data->hasFrame = $request->frame;
             $data->price = $request->artprice;
             // $data->user_id = "1";
@@ -374,39 +468,46 @@ class UserController extends Controller
             return redirect()->route('upload')->withErrors('Upload Complete');
         } 
 
-    public function verifyFeature(Request $request){
-        // dd($request);
-        // $validated = $request->validate([
-        //     'artist_name' => 'required|string',
-        //     'art_title' => 'required|string',
-        //     'art_creation_date' => 'required|date',
-        //     'artworkImages' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-        //     'art_size' => 'required|string',
-        // ]);
-        // if ($validator->fails()) {
-        //     return redirect()->back()->withErrors($validator)->withInput();
-        // }
-       // Store the feature
-       $feature = new Feature();
-       $feature->artist_name = $request->input('artist_name');
-       $feature->arts = $request->input('arts');
-       $feature->time = $request->input('featuring_period');
-       $feature->payment_method = $request->payment_method;
+     public function  adminFeatures(){
+        $this->updateFeature();
+        $pending = Feature::where('status','pending')->get();
+        $running = Feature::where('status','running')->get();
+        return view('admin_features',compact('pending','running'));
+     }
+    public function addFeature(Request $request){
+        $id = $request->featureid;
+        $feature = Feature::find($id);
+        // dd($feature);
+        $feature->status = 'running';
+        switch ($feature->time){
+        case 1:
+            $feature->expiry = Carbon::now()->addDays(1);
+            break;
+        case 7:
+            $feature->expiry = Carbon::now()->addDays(7);
+            break;
+        case 30:
+            $feature->expiry = Carbon::now()->addDays(30);
+            break;
+        default:
+            $feature->expiry = Carbon::now();
+       }
 
-    //    $art = Art::find($request->arts);
-// $art_id = Art::find($art_id);
-       $feature->user_id = Auth::user()->id;
-       $feature->art_id = $request->arts;
-
-       // Save the feature
-       $feature->save();
-
-       return redirect()->back()->with('success', 'Art feature stored successfully.');
-   
-}
-     
-
-
+        $feature->save();
+        return redirect()->back();
+    }
+    public function updateFeature(){
+        $feature = Feature::where('status','running')->get();
+            $now = Carbon::now();
+            // $yes = Carbon::tomorrow();
+            // dd($now->diffInDays($yes,false));
+            foreach($feature as $f){
+                // dd($now->diffInDays($f->expiry,false));
+                if ($now->diffInDays($f->expiry,false)<0){
+                    $f->delete();
+                }
+            }
+    }
     public function logout(Request $request){
         Auth::logout();
          $request->session()->invalidate();
@@ -465,9 +566,6 @@ class UserController extends Controller
     {
         //
     }
-    public function editProfile(){
-        return view('index');
-    }
 
     /**
      * Update the specified resource in storage.
@@ -494,6 +592,48 @@ class UserController extends Controller
     public function viewImage(){
         $imageData= Art::all();
         return view('test', compact('imageData'));
+    }
+
+    public function editProfile(){
+        $user = User::find(Auth::user()->id);
+        return view('edit_profile',compact('user'));
+    }
+    public function updateProfile(Request $request){
+        
+        $user = User::find(Auth::user()->id);
+        if(isset($request->newpassword) && !Hash::check($request->oldpassword,$user->password)){
+            return redirect()->back()->with('message','Incorrect Password');
+        }
+        
+        if($request->hasFile('image')){
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $fileName = time().'.'.$extension;
+            $path = public_path().'/images/arts';
+            $upload = $file->move($path,$fileName);
+            $user->image = $fileName;
+        }
+        if($request->name)
+            $user->name = $request->name;
+        if($request->email)
+            $user->email = $request->email;
+        if($request->contact)
+            $user->contact = $request->contact;
+        if($request->newpassword)
+            $user->password = bcrypt($request->newpassword);
+        if($request->username)
+            $user->username = $request->username;
+        $user->save();
+        return redirect()->back();
+        // dd($user);
+    }
+
+    public function deleteOutstandingOrders(){
+        $orders = Temp::where('user_id',Auth::user()->id)->where('payment','Incomplete')->where('payment_method','khalti')->get();
+        // dd($orders);
+        foreach($orders as $order){
+            $order->delete();
+        }
     }
 //     $file = $request->file('artimage');
 //             $filename = $file->getClientOriginalName();

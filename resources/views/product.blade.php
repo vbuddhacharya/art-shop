@@ -83,7 +83,7 @@
                           <div class="qn">
                               <label for="quantity">Quantity 
                                   <select name="quantity" id="quantity">
-                                    @if($prod->stock<1) <option value="0" selected>0</option> 
+                                    @if($prod->stock<1) <option value="0" selected>Out of Stock</option> 
                                     @else
                                       @for($i=1; $i<=$prod->stock; $i++)
                                           <option value="{{ $i }}" @if($i == 1) selected @endif>{{ $i }}</option>
@@ -94,7 +94,9 @@
                           </div>
                           <div class="buttons">
                               <input type="hidden" name="artid" value="{{$prod->id}}">
-                              <button type="submit" name="button" value="buy">Buy</button>
+                              <button type="submit" name="button" value="buy" @if ($prod->stock<1)
+                                  disabled
+                              @endif>Buy</button>
                               <button type="submit" name="button" value="cart">Add to Cart</button>
                           </div>                        
                       </div>

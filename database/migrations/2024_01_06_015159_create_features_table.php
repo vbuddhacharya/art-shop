@@ -22,8 +22,10 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreign('art_id')->references('id')->on('arts');
             $table->string('time');
+            $table->string('expiry')->nullable();
             $table->string('payment_method')->default('COD');
-
+            $table->boolean('payment')->default(0);
+            $table->string('status')->default('pending');
 
 
             $table->timestamps();
