@@ -69,7 +69,7 @@
         <div class="details">
           <h2 class="profile-title">Customer Profile</h2>
           <div class="pic">
-            <img src="{{asset('images/profile.png')}}" alt="Profile Picture">
+            <img src="{{asset('images/profile.png')}}" id="picture" alt="Profile Picture">
           </div>
           <div class="user-info">
             <span class="profile-data"><span>Name </span><span id="name"></span></span>
@@ -107,6 +107,7 @@
           var users = {!! $customers->toJson() !!};
           var profile = document.getElementById('profile');
           profile.style.display = 'block';
+          var pict = "/images/profile/";
           users.forEach(function(user){
             if(user['id']==id){
               // console.log(user['id']);
@@ -116,6 +117,9 @@
               document.getElementById('joined').innerHTML = user['joined'];
               document.getElementById('orders').innerHTML = user['order_count'];
               document.getElementById('custdetail').value = user['id'];
+              console.log(user['image']);
+              if(user['image'] !=null)
+                document.getElementById('picture').src = pict.concat(user['image']);
             }
           });          
         }

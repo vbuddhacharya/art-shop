@@ -464,7 +464,7 @@ class OrderController extends Controller
             foreach($temps as $temp){
                 $order = new Order();
                 $order->user_id = Auth::user()->id;
-                $order->art_id =  $temp->artid;
+                $order->art_id =  $temp->art_id;
                 $order->quantity = $temp->quantity;
                 $order->total = $temp->total;
                 $order->location = $temp->location;

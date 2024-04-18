@@ -38,8 +38,13 @@
                     <h4 class="path-name">Kalaa / Edit Profile</h4>
                 </div>
                 <div class="profile-container">
-                    <a href="{{route('login')}}"><i class="fa-solid fa-user" style="color: #8A191D;"></i> Login</a>
-                    <a href="{{route('signup')}}"><i class="fa-solid fa-user-plus" style="color: #8A191D;"></i> Register</a>
+                    @if (Auth::check())
+                        <a href="{{route('edit')}}"><i class="fa-solid fa-user"></i> {{ Auth::user()->name}}</a>
+                        <a href="{{route('logout')}}"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+                    @else
+                        <a href="{{route('login')}}"><i class="fa-solid fa-user" style="color: #8A191D;"></i> Login</a>
+                        <a href="{{route('signup')}}"><i class="fa-solid fa-user-plus" style="color: #8A191D;"></i> Register</a>
+                    @endif
                 </div>
             </div>
             <div class="container">
@@ -49,7 +54,7 @@
                     <div class="updateform">
                         <div class="form-group profile-pic left">
                             @if (isset($user->image))
-                                <img src="{{ url('/images/arts/'.$user->image) }}" class="pic" alt="Profile Picture">
+                                <img src="{{ url('/images/profile/'.$user->image) }}" class="pic" alt="Profile Picture">
                             @else
                                 <img src="{{asset('images/profile.png')}}" class="pic" alt="Profile Picture">
                             @endif
@@ -66,7 +71,9 @@
                             <div class="form-group row">
                                 <label for="user" class="col-sm-4 col-form-label pr-0">Username</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" name="username" id="user" value="{{$user->username}}" required>
+                                    <input type="text" class="form-control" name="username" id="user" value="{{$user->username}}" @if (Auth::user()->usertype == 'admin')
+                                        readonly                                      
+                                    @endif required>
                                 </div>
                             </div>
                             <div class="form-group row">

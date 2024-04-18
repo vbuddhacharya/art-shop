@@ -20,7 +20,7 @@
                 <a href="{{route('cart')}}"><i class="fa-solid fa-cart-shopping"></i>Cart</a>
                 <a href="{{route('edit')}}"><i class="fa-regular fa-user"></i>Profile</a>
                 <a href="{{route('orders')}}"><i class="fa-solid fa-clock-rotate-left"></i>Orders</a>
-                <a href="contact.html"><i class="fa-regular fa-message"></i>Contact us</a>
+                <a href="{{route('contact')}}"><i class="fa-regular fa-message"></i>Contact us</a>
                 <a href="setting.html"><i class="fa-solid fa-gear"></i>Setting</a>
             </div>
         </div>
@@ -30,8 +30,13 @@
                     <h4 class="path-name">Kalaa / Home</h4>
                 </div>
                 <div class="profile-container">
-                    <a href="{{route('login')}}"><i class="fa-solid fa-user" style="color: #8A191D;"></i> Login</a>
-                    <a href="{{route('signup')}}"><i class="fa-solid fa-user-plus" style="color: #8A191D;"></i> Register</a>
+                    @if (Auth::check())
+                        <a href="{{route('edit')}}"><i class="fa-solid fa-user"></i> {{ Auth::user()->name}}</a>
+                        <a href="{{route('logout')}}"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+                    @else
+                        <a href="{{route('login')}}"><i class="fa-solid fa-user" style="color: #8A191D;"></i> Login</a>
+                        <a href="{{route('signup')}}"><i class="fa-solid fa-user-plus" style="color: #8A191D;"></i> Register</a>
+                    @endif
                 </div>
             </div>
             <div class="content">
@@ -42,7 +47,7 @@
                         </div>
                     </div>
                     <div class="deals">
-                        <div class="daily-deals-title">Featured <a href="">View all<i class="fa-solid fa-arrow-right"></i></a></div>
+                        <div class="daily-deals-title">Featured <a href="{{route('features')}}">View all<i class="fa-solid fa-arrow-right"></i></a></div>
 
                         <div class="daily-deals-container">
                             @foreach ($features as $art)
