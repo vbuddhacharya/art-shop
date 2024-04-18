@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{asset('css/completed.css')}}">
     <script src="https://kit.fontawesome.com/110779528c.js" crossorigin="anonymous"></script>
 
-    <title>Error</title>
+    <link rel="stylesheet" href="{{asset('css/contact1.css')}}">
+    <title>Contact Us</title>
 </head>
 <body>
     <div class="whole-container">
@@ -27,7 +27,7 @@
         <div class="main-container">
             <div class="navbar-container">
                 <div class="path">
-                    <h4 class="path-name">Art Store / Payement/ Error</h4>
+                    <h4 class="path-name">Kalaa / Contact</h4>
                 </div>
                 <div class="profile-container">
                     @if (Auth::check())
@@ -40,10 +40,16 @@
                 </div>
             </div>
             <div class="note">
-                <div class="title"><i class="fa-solid fa-circle-exclamation"></i> Error Encountered!</div>
+                <div class="title"><i class="fa-solid fa-circle-info"></i> Contact Kalaa!</div>
                 <div class="details">
-                    There has been an error during the process. We are sorry for the inconvenience. For any queries, please see 
-                    <a href="/">Contact Us</a>!
+                    Reach us through any of the following means. We are always ready to help you with any queries you have about our site.
+                    <ul class="info">
+                        @foreach ($user as $u)
+                            <li class="contact-details"><i class="fa-solid fa-envelope icon"></i> {{$u->email}}</li>
+                            <li class="contact-details"><i class="fa-solid fa-phone icon"></i>{{$u->contact}}</li>
+                            <li class="contact-details"><i class="fa-solid fa-location-dot icon"></i> Paknajol, Kathmandu</li>
+                        @endforeach
+                    </ul>
                 </div>
             </div>
             

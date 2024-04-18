@@ -30,7 +30,7 @@
         <div class="main-container">
             <div class="navbar-container">
                 <div class="path">
-                    <h4 class="path-name">Kalaa / {{$id}}</h4>
+                    <h4 class="path-name">Art Store / Featured</h4>
                 </div>
                 <div class="profile-container">
                     @if (Auth::check())
@@ -44,34 +44,35 @@
             </div>
             <div class="content">
                 <div class="content-1">
-                    <div class="category-title">{{$id}}</div>
+                    <div class="category-title">Featured Arts</div>
 
                     <div class="categories">
                         
                         <div class="row1">
                             @foreach($arts as $art)
-                                @if($art->stock!=0)
-                                    <div class="col1-4">
-                                        <img src="{{ url('/images/arts/'.$art->image) }}">
-                                        <div class="details">
-                                            <div class="names">
-                                                <h4 class="name">{{$art->name}}</h4>
-                                                <h5 class="price">Rs. {{$art->price}}</h5>
-                                            </div>
-                                            <div class="buttons">                                       
-                                                <a href="{{route('product',$art->id)}}">DETAILS</a>
-                                                <form action="{{route('add')}}" method="post">
-                                                    @csrf
-                                                    <input type="hidden" name="artid" value="{{$art->id}}">
-                                                    <input type="hidden" name="quantity" value="1">
-                                                    <button class="add" name="button" value="cart"><i class="fa-solid fa-cart-plus"></i></button>
-                                                    <button class="add" name="button" value="save"><i class="fa-solid fa-heart-circle-plus"></i></button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                        
+                            <div class="col1-4">
+                                <img src="{{ url('/images/arts/'.$art->art->image) }}">
+                                <div class="details">
+                                    <div class="names">
+                                        <h4 class="name">{{$art->art->name}}</h4>
+                                        <h5 class="price">Rs. {{$art->art->price}}</h5>
                                     </div>
-                                @endif
+                                    <div class="buttons">                                       
+                                        <a href="{{route('product',$art->art->id)}}">DETAILS</a>
+                                        <form action="{{route('add')}}" method="post">
+                                            @csrf
+                                            <input type="hidden" name="artid" value="{{$art->art->id}}">
+                                            <input type="hidden" name="quantity" value="1">
+                                            @if($art->stock>0)
+                                            <button class="add" name="button" value="cart"><i class="fa-solid fa-cart-plus"></i></button>
+                                            @endif
+                                            <button class="add" name="button" value="save"><i class="fa-solid fa-heart-circle-plus"></i></button>
+                                        </form>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                                
                             @endforeach
                             
                         </div>

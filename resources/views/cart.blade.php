@@ -30,8 +30,13 @@
                     <h4 class="path-name">Art Store / Cart</h4>
                 </div>
                 <div class="profile-container">
-                    <a href=""><i class="fa-solid fa-user" style="color: #8A191D;"></i> {{Auth::user()->name}}</a>
-                    {{-- <a href=""><i class="fa-solid fa-user-plus" style="color: #8A191D;"></i> Register</a> --}}
+                    @if (Auth::check())
+                        <a href="{{route('edit')}}"><i class="fa-solid fa-user"></i> {{ Auth::user()->name}}</a>
+                        <a href="{{route('logout')}}"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+                    @else
+                        <a href="{{route('login')}}"><i class="fa-solid fa-user" style="color: #8A191D;"></i> Login</a>
+                        <a href="{{route('signup')}}"><i class="fa-solid fa-user-plus" style="color: #8A191D;"></i> Register</a>
+                    @endif
                 </div>
             </div>
             <div class="content">
@@ -39,15 +44,6 @@
                     <!-- <div class="cart-title">My Cart</div> -->
                     <div class="cart-section">
                         <div class="cart-items-list">
-                            {{-- <div class="cart-edit">
-                                <div class="cart-edit1">
-                                    <input type="checkbox">
-                                    <label>SELECT ALL (0 ITEMS(S))</label>
-                                </div>
-                                <div class="cart-edit2">
-                                    <a><i class="fa-solid fa-trash" style="color: #757575;"></i> DELETE</a>
-                                </div>
-                            </div> --}}
                             <div class="cart-title">
                                 Your Cart
                             </div>

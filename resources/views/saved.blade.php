@@ -33,8 +33,13 @@
                     <h4 class="path-name">Art Store / Saved</h4>
                 </div>
                 <div class="profile-container">
-                    <a href=""><i class="fa-solid fa-user" style="color: #8A191D;"></i> {{Auth::user()->name}}</a>
-                    {{-- <a href=""><i class="fa-solid fa-user-plus" style="color: #8A191D;"></i> Register</a> --}}
+                    @if (Auth::check())
+                        <a href="{{route('edit')}}"><i class="fa-solid fa-user"></i> {{ Auth::user()->name}}</a>
+                        <a href="{{route('logout')}}"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+                    @else
+                        <a href="{{route('login')}}"><i class="fa-solid fa-user" style="color: #8A191D;"></i> Login</a>
+                        <a href="{{route('signup')}}"><i class="fa-solid fa-user-plus" style="color: #8A191D;"></i> Register</a>
+                    @endif
                 </div>
             </div>
             <div class="content">
@@ -53,7 +58,7 @@
                                                 <h5 class="price">Rs. {{$saved->art->price}}</h5>
                                             </div>
                                             <div class="buttons">
-                                                <a href="/">DETAILS</a>
+                                                <a href="{{route('product',$saved->art->id)}}">DETAILS</a>
                                                 <form action="{{route('add')}}" method="post">
                                                     @csrf
                                                     <input type="hidden" name="artid" value="{{$saved->art->id}}">

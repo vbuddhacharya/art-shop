@@ -78,3 +78,6 @@ Route::get('/artstore/artists/pay',[OrderController::class,'paymentTest'])->name
 Route::post('/artstore/pay',[OrderController::class,'makePayment'])->name('pay');
 Route::get('/artstore/artists/payment/status',[OrderController::class,'verifyPayment'])->name('payment.verify');
 Route::get('/artstore/orders/payment/status',[OrderController::class,'verifyOrderPayment'])->name('order.verify');
+
+Route::get('/artstore/contact',[UserController::class,'contactAdmin'])->name('contact');
+Route::get('/artstore/features',[UserController::class,'viewAllFeatured'])->name('features');

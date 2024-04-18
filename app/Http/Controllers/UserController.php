@@ -15,6 +15,7 @@ use App\Models\Feature;
 
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 
 
 class UserController extends Controller
@@ -38,6 +39,11 @@ class UserController extends Controller
     public function viewCategory($id){
         $arts = Art::where('category',$id)->paginate(16);
         return view('category', compact('arts','id'));
+    }
+    public function viewAllFeatured(){
+        $arts = Feature::where('status','running')->paginate(16);
+        // dd($arts);
+        return view ('featured', compact('arts'));
     }
     public function viewSaved(){
         $saveds = Saved::where('user_id',Auth::user()->id)->orderBy('created_at','desc')->get();
@@ -234,7 +240,7 @@ class UserController extends Controller
             $feature->artist_name = $request->input('artist_name');
             $feature->arts = $request->input('arts');
             $feature->time = $request->input('featuring_period');
-            $feature->payment_method = $request->payment_method;
+            $feature->payment_method = "khalti";
             $feature->user_id = Auth::user()->id;
             $feature->art_id = $request->arts;
             $feature->payment = 0;
@@ -251,10 +257,10 @@ class UserController extends Controller
                     $amount = 30000;
                     break;
                 case 7:
-                    $amount = 210000;
+                    $amount = 21000;
                     break;
                 case 30: 
-                    $amount = 630000;
+                    $amount = 63000;
                 default:
                     $amount = 0;
             }
@@ -470,9 +476,18 @@ class UserController extends Controller
 
      public function  adminFeatures(){
         $this->updateFeature();
-        $pending = Feature::where('status','pending')->get();
-        $running = Feature::where('status','running')->get();
-        return view('admin_features',compact('pending','running'));
+        $pending = Feature::where('status','pending')->where('payment',1)->orderBy('created_at')->get();
+        foreach($pending as $p){
+            $p->date = $p->created_at->format('d-M-Y');
+        }
+        $running = Feature::where('status','running')->where('payment',1)->orderBy('expiry')->get();
+        $completed = Feature::where('status','completed')->orderBy('updated_at')->get();
+        foreach($completed as $c){
+            $exp = Carbon::parse($c->expiry);
+            $c->start_date = $exp->addDays($c->time);
+        }
+        // dd($completed);
+        return view('admin_features',compact('pending','running','completed'));
      }
     public function addFeature(Request $request){
         $id = $request->featureid;
@@ -499,12 +514,11 @@ class UserController extends Controller
     public function updateFeature(){
         $feature = Feature::where('status','running')->get();
             $now = Carbon::now();
-            // $yes = Carbon::tomorrow();
-            // dd($now->diffInDays($yes,false));
             foreach($feature as $f){
                 // dd($now->diffInDays($f->expiry,false));
                 if ($now->diffInDays($f->expiry,false)<0){
-                    $f->delete();
+                    $f->status = "Completed";
+                    $f->save();
                 }
             }
     }
@@ -512,8 +526,7 @@ class UserController extends Controller
         Auth::logout();
          $request->session()->invalidate();
          return redirect()->route('login');
- 
-     }
+    }
     /**
      * Display the specified resource.
      *
@@ -606,13 +619,21 @@ class UserController extends Controller
         }
         
         if($request->hasFile('image')){
+            if($user->image){
+                $image_path = public_path("/images/profile/".$user->image);
+                // dd($image_path);
+                if(File::exists($image_path)) {
+                    File::delete($image_path);
+                }
+            }
             $file = $request->file('image');
             $extension = $file->getClientOriginalExtension();
             $fileName = time().'.'.$extension;
-            $path = public_path().'/images/arts';
+            $path = public_path().'/images/profile';
             $upload = $file->move($path,$fileName);
             $user->image = $fileName;
         }
+
         if($request->name)
             $user->name = $request->name;
         if($request->email)
@@ -634,6 +655,11 @@ class UserController extends Controller
         foreach($orders as $order){
             $order->delete();
         }
+    }
+
+    public function contactAdmin(){
+        $user = User::where('usertype','admin')->get();
+        return view('contact',compact('user'));
     }
 //     $file = $request->file('artimage');
 //             $filename = $file->getClientOriginalName();
